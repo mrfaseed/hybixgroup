@@ -6,74 +6,95 @@ import { MdPhone, MdEmail, MdLocationOn } from 'react-icons/md';
 const Footer = () => {
     return (
         <footer className="footer">
+            <div className="footer-bg-animation"></div>
             <div className="footer-container">
-                {/* Column 1: Company Info */}
-                <div className="footer-col">
-                    <h2 className="footer-logo">Hybix Group</h2>
+                {/* Column 1: Company Info & 3D Element */}
+                <div className="footer-col brand-col">
+                    <div className="logo-section">
+                        <div className="cube-wrapper">
+                            <div className="cube">
+                                <div className="face front"></div>
+                                <div className="face back"></div>
+                                <div className="face right"></div>
+                                <div className="face left"></div>
+                                <div className="face top"></div>
+                                <div className="face bottom"></div>
+                            </div>
+                        </div>
+                        <h2 className="footer-logo">Hybix Group</h2>
+                    </div>
                     <p className="footer-desc">
-                        Hybix Group — Leading IT company offering custom software, web, mobile app, and digital solutions for businesses and career-oriented IT training.
+                        Pioneering the future of digital innovation. We craft immersive web experiences, robust software, and cutting-edge AI solutions.
                     </p>
                     <div className="social-links">
-                        <a href="#" className="social-icon"><FaFacebookF /></a>
-                        <a href="#" className="social-icon"><FaTwitter /></a>
-                        <a href="#" className="social-icon"><FaLinkedinIn /></a>
-                        <a href="#" className="social-icon"><FaInstagram /></a>
+                        <a href="#" className="social-icon" aria-label="Facebook"><FaFacebookF /></a>
+                        <a href="#" className="social-icon" aria-label="Twitter"><FaTwitter /></a>
+                        <a href="#" className="social-icon" aria-label="LinkedIn"><FaLinkedinIn /></a>
+                        <a href="#" className="social-icon" aria-label="Instagram"><FaInstagram /></a>
                     </div>
                 </div>
 
-                {/* Column 2: Useful Links */}
+                {/* Column 2: Quick Links */}
                 <div className="footer-col">
-                    <h3 className="footer-title">Useful Links</h3>
+                    <h3 className="footer-title">Company</h3>
                     <ul className="footer-links">
-                        <li><a href="#">About Company</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Career</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News & Media</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
 
-                {/* Column 3: Our Services */}
+                {/* Column 3: Services */}
                 <div className="footer-col">
-                    <h3 className="footer-title">Our Services</h3>
+                    <h3 className="footer-title">Solutions</h3>
                     <ul className="footer-links">
-                        <li><a href="#">Software Development</a></li>
-                        <li><a href="#">Website Development</a></li>
-                        <li><a href="#">Mobile App Development</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">Artificial Intelligence</a></li>
-                        <li><a href="#">Cloud Solution</a></li>
-                        <li><a href="#">IoT Solutions</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Enterprise Software</a></li>
+                        <li><a href="#">AI & Machine Learning</a></li>
+                        <li><a href="#">Cloud Infrastructure</a></li>
                     </ul>
                 </div>
 
-                {/* Column 4: Contact Information */}
-                <div className="footer-col">
-                    <h3 className="footer-title">Contact Information</h3>
+                {/* Column 4: Contact */}
+                <div className="footer-col contact-col">
+                    <h3 className="footer-title">Get in Touch</h3>
                     <ul className="contact-info">
                         <li>
-                            <MdPhone className="contact-icon" />
-                            <span>+91 95143 22444</span>
+                            <div className="icon-box"><MdPhone /></div>
+                            <div className="contact-details">
+                                <span>+91 95143 22444</span>
+                                <span className="sub-text">Mon-Fri, 9am-6pm</span>
+                            </div>
                         </li>
                         <li>
-                            <MdPhone className="contact-icon" />
-                            <span>+91 95143 22445</span>
+                            <div className="icon-box"><MdEmail /></div>
+                            <div className="contact-details">
+                                <span>hybixgroup@gmail.com</span>
+                                <span className="sub-text">Online Support</span>
+                            </div>
                         </li>
                         <li>
-                            <MdEmail className="contact-icon" />
-                            <span>hybixgroup@gmail.com</span>
-                        </li>
-                        <li>
-                            <MdLocationOn className="contact-icon" />
-                            <span>153/2 North Veli Street, Simmakkal, Madurai-01</span>
+                            <div className="icon-box"><MdLocationOn /></div>
+                            <div className="contact-details">
+                                <span>153/2 North Veli Street,</span>
+                                <span className="sub-text">Simmakkal, Madurai-01</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div className="footer-bottom">
-                <p>&copy; 2025 Hybix Group. All Rights Reserved.</p>
+                <div className="footer-bottom-content">
+                    <p>&copy; 2025 Hybix Group. All Rights Reserved.</p>
+                    <div className="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </footer>
     );
