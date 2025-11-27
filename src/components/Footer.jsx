@@ -65,8 +65,8 @@ const Footer = () => {
                         <li>
                             <div className="icon-box"><MdPhone /></div>
                             <div className="contact-details">
-                                <span>+91 95143 22444</span>
-                                <span className="sub-text">Mon-Fri, 9am-6pm</span>
+                                <span>+91 6383721027</span>
+                                <span className="sub-text">24/7 open</span>
                             </div>
                         </li>
                         <li>
@@ -79,8 +79,8 @@ const Footer = () => {
                         <li>
                             <div className="icon-box"><MdLocationOn /></div>
                             <div className="contact-details">
-                                <span>153/2 North Veli Street,</span>
-                                <span className="sub-text">Simmakkal, Madurai-01</span>
+                                <span>64/116 colony ,</span>
+                                <span className="sub-text">Aruppukottai road,Virudhunagar</span>
                             </div>
                         </li>
                     </ul>

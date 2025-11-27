@@ -1,30 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Navbar.css';
-import { FaBars, FaTimes, FaChevronDown, FaSearch } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt } from 'react-icons/fa';
 
 const navItems = [
     {
         id: 1,
         title: 'Services',
-        description: 'We offer a wide range of digital solutions tailored to your needs.',
-        links: ['Web Development', 'App Development', 'UI/UX Design', 'SEO Optimization']
+        type: 'mega',
+        description: 'Comprehensive digital solutions tailored for your business growth.',
+        links: [
+            { name: 'Web Development', icon: '💻' },
+            { name: 'App Development', icon: '📱' },
+            { name: 'UI/UX Design', icon: '🎨' },
+            { name: 'SEO Optimization', icon: '🚀' },
+            { name: 'Digital Marketing', icon: '📢' },
+            { name: 'Cloud Solutions', icon: '☁️' },
+            { name: 'E-commerce', icon: '🛒' },
+            { name: 'Blockchain', icon: '🔗' },
+            { name: 'AI & ML', icon: '🤖' },
+            { name: 'DevOps', icon: '⚙️' },
+            { name: 'Cyber Security', icon: '🔒' },
+            { name: 'IT Consulting', icon: '💡' }
+        ]
     },
     {
         id: 2,
         title: 'Solutions',
-        description: 'Innovative strategies to help your business grow and succeed.',
-        links: ['Enterprise ERP', 'Cloud Solutions', 'Data Analytics', 'Cybersecurity']
+        type: 'dropdown',
+        description: 'Strategic innovations for success.',
+        links: ['Enterprise ERP', 'Data Analytics', 'Business Intelligence', 'Automation']
     },
     {
         id: 3,
         title: 'Company',
-        description: 'Learn more about our mission, vision, and the team behind Hybix.',
+        type: 'dropdown',
+        description: 'Discover our vision and team.',
         links: ['About Us', 'Careers', 'Blog', 'Press']
     },
     {
         id: 4,
         title: 'Resources',
-        description: 'Access our latest case studies, whitepapers, and guides.',
+        type: 'dropdown',
+        description: 'Insights and expert guides.',
         links: ['Case Studies', 'Documentation', 'Community', 'Support']
     }
 ];
@@ -34,39 +51,45 @@ const Navbar = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [scrolled, setScrolled] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const searchInputRef = useRef(null);
+    const navRef = useRef(null);
 
-    // Handle scroll effect for navbar background
+    // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            setScrolled(window.scrollY > 20);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Handle click outside to close dropdowns
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (navRef.current && !navRef.current.contains(event.target)) {
+                setActiveDropdown(null);
+                setIsSearchOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    // Focus search input when opened
+    useEffect(() => {
+        if (isSearchOpen && searchInputRef.current) {
+            setTimeout(() => searchInputRef.current.focus(), 100);
+        }
+    }, [isSearchOpen]);
+
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
-        setActiveDropdown(null); // Reset dropdowns when toggling menu
+        setActiveDropdown(null);
+        setIsSearchOpen(false);
     };
 
-    const handleMouseEnter = (id) => {
-        if (window.innerWidth > 768) {
-            setActiveDropdown(id);
-        }
-    };
-
-    const handleMouseLeave = () => {
-        if (window.innerWidth > 768) {
-            setActiveDropdown(null);
-        }
-    };
-
-    const handleMobileItemClick = (id) => {
+    const toggleDropdown = (id) => {
         if (activeDropdown === id) {
             setActiveDropdown(null);
         } else {
@@ -75,93 +98,137 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-            <div className="navbar-container">
-                <div className="navbar-logo">
-                    <h1>Hybix<span>Group</span></h1>
-                </div>
-
-                {/* Desktop Menu */}
-                <div className="navbar-menu-desktop">
-                    {navItems.map((item) => (
-                        <div
-                            key={item.id}
-                            className="nav-item"
-                            onMouseEnter={() => handleMouseEnter(item.id)}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <span className="nav-link">
-                                {item.title} <FaChevronDown className={`chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
-                            </span>
-
-                            {/* Desktop Dropdown (Scroll Down Effect) */}
-                            <div className={`dropdown-content ${activeDropdown === item.id ? 'active' : ''}`}>
-                                <div className="dropdown-inner">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.description}</p>
-                                    <ul>
-                                        {item.links.map((link, index) => (
-                                            <li key={index}><a href="#">{link}</a></li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-
-                    {/* Animated Search Bar */}
-                    <div className={`search-container ${isSearchOpen ? 'active' : ''}`}>
-                        <input type="text" placeholder="Search..." className="search-input" />
-                        <button className="search-btn" onClick={() => setIsSearchOpen(!isSearchOpen)}>
-                            <FaSearch />
-                        </button>
+        <>
+            <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
+                <div className="navbar-container">
+                    {/* Logo */}
+                    <div className="navbar-logo">
+                        <a href="/">
+                            <h1>Hybix<span>Group</span></h1>
+                        </a>
                     </div>
-                </div>
 
-                {/* Mobile Menu Button */}
-                <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
-                    {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-                </div>
-
-                {/* Mobile Menu Drawer */}
-                <div className={`mobile-menu-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
-                    <div className="mobile-menu-content">
-                        {/* Mobile Search */}
-                        <div className="mobile-search">
-                            <input type="text" placeholder="Search..." />
-                            <button><FaSearch /></button>
-                        </div>
-
+                    {/* Desktop Menu */}
+                    <div className="navbar-menu-desktop">
                         {navItems.map((item) => (
-                            <div key={item.id} className="mobile-nav-item">
+                            <div key={item.id} className="nav-item-wrapper">
                                 <div
-                                    className="mobile-nav-header"
-                                    onClick={() => handleMobileItemClick(item.id)}
+                                    className={`nav-item ${activeDropdown === item.id ? 'active' : ''}`}
+                                    onClick={() => toggleDropdown(item.id)}
                                 >
-                                    <span>{item.title}</span>
-                                    <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
+                                    <span className="nav-link">
+                                        {item.title} <FaChevronDown className={`chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
+                                    </span>
                                 </div>
 
-                                {/* Mobile Accordion (Scroll Down Effect) */}
-                                <div
-                                    className={`mobile-dropdown-content ${activeDropdown === item.id ? 'expanded' : ''}`}
-                                    style={{ maxHeight: activeDropdown === item.id ? '500px' : '0px' }}
-                                >
-                                    <div className="mobile-dropdown-inner">
-                                        <p>{item.description}</p>
-                                        <ul>
-                                            {item.links.map((link, index) => (
-                                                <li key={index}><a href="#">{link}</a></li>
-                                            ))}
-                                        </ul>
+                                {/* Mega Menu / Dropdown Content */}
+                                <div className={`dropdown-container ${item.type === 'mega' ? 'mega-menu' : 'standard-dropdown'} ${activeDropdown === item.id ? 'visible' : ''}`}>
+                                    <div className="dropdown-wrapper">
+                                        {item.type === 'mega' ? (
+                                            <div className="mega-menu-content">
+                                                <div className="mega-menu-header">
+                                                    <h3>Explore Our {item.title}</h3>
+                                                    <p>{item.description}</p>
+                                                </div>
+                                                <div className="mega-menu-grid">
+                                                    {item.links.map((link, index) => (
+                                                        <a key={index} href="#" className="mega-link-item">
+                                                            <span className="mega-icon">{link.icon}</span>
+                                                            <span className="mega-text">{link.name}</span>
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="standard-dropdown-content">
+                                                <div className="dropdown-header">
+                                                    <h3>{item.title}</h3>
+                                                </div>
+                                                <ul className="dropdown-list">
+                                                    {item.links.map((link, index) => (
+                                                        <li key={index}>
+                                                            <a href="#">{link} <FaArrowRight className="link-arrow" /></a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+
+                    {/* Actions */}
+                    <div className="navbar-actions">
+                        {/* Search Bar */}
+                        <div className={`search-wrapper ${isSearchOpen ? 'active' : ''}`}>
+                            <div className="search-icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+                                <FaSearch />
+                            </div>
+                            <div className="search-input-container">
+                                <input
+                                    ref={searchInputRef}
+                                    type="text"
+                                    placeholder="Search..."
+                                    className="search-input"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Book a Call Button */}
+                        <a href="#book-call" className="btn-book-call">
+                            <span>Book a Call</span>
+                        </a>
+
+                        {/* Mobile Menu Toggle */}
+                        <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+                            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            {/* Mobile Menu Overlay */}
+            <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+                <div className="mobile-menu-content">
+                    {navItems.map((item) => (
+                        <div key={item.id} className="mobile-nav-group">
+                            <div
+                                className={`mobile-nav-header ${activeDropdown === item.id ? 'active' : ''}`}
+                                onClick={() => toggleDropdown(item.id)}
+                            >
+                                <span>{item.title}</span>
+                                <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
+                            </div>
+                            <div
+                                className="mobile-nav-body"
+                                style={{ maxHeight: activeDropdown === item.id ? '800px' : '0px' }}
+                            >
+                                <div className="mobile-links-grid">
+                                    {item.type === 'mega' ? (
+                                        item.links.map((link, index) => (
+                                            <a key={index} href="#" className="mobile-link-item">
+                                                {link.name}
+                                            </a>
+                                        ))
+                                    ) : (
+                                        item.links.map((link, index) => (
+                                            <a key={index} href="#" className="mobile-link-item">
+                                                {link}
+                                            </a>
+                                        ))
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    <div className="mobile-cta-container">
+                        <a href="#book-call" className="mobile-btn-book">Book a Call</a>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </>
     );
 };
 
