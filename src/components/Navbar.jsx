@@ -9,18 +9,18 @@ const navItems = [
         type: 'mega',
         description: 'Comprehensive digital solutions tailored for your business growth.',
         links: [
-            { name: 'Web Development', icon: '💻' },
-            { name: 'App Development', icon: '📱' },
-            { name: 'UI/UX Design', icon: '🎨' },
-            { name: 'SEO Optimization', icon: '🚀' },
-            { name: 'Digital Marketing', icon: '📢' },
-            { name: 'Cloud Solutions', icon: '☁️' },
-            { name: 'E-commerce', icon: '🛒' },
-            { name: 'Blockchain', icon: '🔗' },
-            { name: 'AI & ML', icon: '🤖' },
-            { name: 'DevOps', icon: '⚙️' },
-            { name: 'Cyber Security', icon: '🔒' },
-            { name: 'IT Consulting', icon: '💡' }
+            { name: 'Web Development' },
+            { name: 'App Development' },
+            { name: 'UI/UX Design' },
+            { name: 'SEO Optimization' },
+            { name: 'Digital Marketing' },
+            { name: 'Cloud Solutions' },
+            { name: 'E-commerce' },
+            { name: 'Blockchain' },
+            { name: 'AI & ML' },
+            { name: 'DevOps' },
+            { name: 'Cyber Security' },
+            { name: 'IT Consulting' }
         ]
     },
     {
@@ -192,6 +192,12 @@ const Navbar = () => {
             {/* Mobile Menu Overlay */}
             <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
                 <div className="mobile-menu-content">
+                    {/* Mobile Search */}
+                    <div className="mobile-search-container">
+                        <FaSearch className="mobile-search-icon" />
+                        <input type="text" placeholder="Search..." className="mobile-search-input" />
+                    </div>
+
                     {navItems.map((item) => (
                         <div key={item.id} className="mobile-nav-group">
                             <div
@@ -223,9 +229,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     ))}
-                    <div className="mobile-cta-container">
-                        <a href="#book-call" className="mobile-btn-book">Book a Call</a>
-                    </div>
+                  
                 </div>
             </div>
         </>
@@ -233,3 +237,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
