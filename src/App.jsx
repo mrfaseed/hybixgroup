@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
+import AboutUs from './components/AboutUs'
 import CustomerReviews from './components/CustomerReviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -16,6 +17,7 @@ function App() {
         <div style={{ height: '400px' }}></div> {/* Spacer to test scrolling */}
       </div>
 
+      <AboutUs />
       <CustomerReviews />
       <Contact />
       <Footer />
