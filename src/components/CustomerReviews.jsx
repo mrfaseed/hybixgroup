@@ -1,13 +1,58 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './CustomerReviews.css';
 
 const CustomerReviews = () => {
     const [activeCard, setActiveCard] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const marqueeContainerRef = useRef(null);
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+    // Manual scroll handlers for mouse
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setStartX(e.pageX - marqueeContainerRef.current.offsetLeft);
+        setScrollLeft(marqueeContainerRef.current.scrollLeft);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - marqueeContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 2;
+        marqueeContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    // Touch handlers for mobile
+    const handleTouchStart = (e) => {
+        setIsDragging(true);
+        setStartX(e.touches[0].pageX - marqueeContainerRef.current.offsetLeft);
+        setScrollLeft(marqueeContainerRef.current.scrollLeft);
+    };
+
+    const handleTouchMove = (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - marqueeContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 2;
+        marqueeContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+    };
 
     const reviews = [
         {
@@ -177,8 +222,18 @@ const CustomerReviews = () => {
                 </div>
             </div>
 
-            {/* Reviews Marquee - 4 sets for seamless infinite scroll */}
-            <div className="reviews-marquee-container">
+            {/* Reviews Marquee with Manual Scroll */}
+            <div
+                className="reviews-marquee-container"
+                ref={marqueeContainerRef}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+            >
                 <div className="reviews-marquee">
                     {reviews.map(review => renderCard(review, 'set1'))}
                     {reviews.map(review => renderCard(review, 'set2'))}

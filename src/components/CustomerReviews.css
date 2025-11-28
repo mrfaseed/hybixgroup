@@ -262,7 +262,7 @@
     background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
-/* Marquee Container with Manual Scrolling */
+/* Marquee Container - Manual Scroll with Hidden Scrollbar */
 .reviews-marquee-container {
     position: relative;
     z-index: 1;
@@ -274,31 +274,16 @@
     cursor: grab;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .reviews-marquee-container:active {
     cursor: grabbing;
 }
 
-/* Custom Scrollbar Styling */
 .reviews-marquee-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.reviews-marquee-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin: 0 20px;
-}
-
-.reviews-marquee-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 10px;
-    transition: background 0.3s ease;
-}
-
-.reviews-marquee-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+    display: none;
 }
 
 .reviews-marquee {
@@ -307,13 +292,13 @@
     animation: marquee 40s linear infinite;
     width: fit-content;
     padding: 0 20px;
+    will-change: transform;
 }
 
 .reviews-marquee:hover {
     animation-play-state: paused;
 }
 
-/* Updated for 4 sets of cards - move 25% for seamless loop */
 @keyframes marquee {
     0% {
         transform: translateX(0);
@@ -357,7 +342,6 @@
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
-/* Card Glow Effect */
 .card-glow {
     position: absolute;
     top: -50%;
@@ -389,7 +373,6 @@
     }
 }
 
-/* Card Header */
 .card-header {
     display: flex;
     align-items: flex-start;
@@ -478,7 +461,6 @@
     white-space: nowrap;
 }
 
-/* Rating Section */
 .rating-section {
     display: flex;
     align-items: center;
@@ -543,7 +525,6 @@
     color: #ffd700;
 }
 
-/* Review Text */
 .review-text {
     font-size: 16px;
     line-height: 1.8;
@@ -562,7 +543,6 @@
     font-family: Georgia, serif;
 }
 
-/* Card Footer */
 .card-footer {
     display: flex;
     justify-content: space-between;
@@ -614,7 +594,6 @@
     transform: rotate(180deg);
 }
 
-/* Decorative Elements */
 .card-decoration {
     position: absolute;
     border-radius: 50%;
@@ -650,7 +629,6 @@
     }
 }
 
-/* Call to Action */
 .reviews-cta {
     position: relative;
     z-index: 1;
@@ -783,7 +761,6 @@
     }
 }
 
-/* Responsive Design */
 @media (max-width: 1200px) {
     .reviews-title {
         font-size: 52px;
@@ -834,7 +811,6 @@
     .reviews-marquee-container {
         padding: 20px 0;
         margin: 40px 0;
-        overflow-x: scroll;
     }
 
     .reviews-marquee {
@@ -1081,14 +1057,8 @@
     .reviews-cta {
         margin-top: 50px;
     }
-
-    /* Smaller scrollbar on mobile */
-    .reviews-marquee-container::-webkit-scrollbar {
-        height: 6px;
-    }
 }
 
-/* Pulse Animation */
 @keyframes pulse {
 
     0%,
