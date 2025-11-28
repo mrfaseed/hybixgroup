@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import { MdPhone, MdEmail, MdLocationOn } from 'react-icons/md';
@@ -50,11 +51,11 @@ const Footer = () => {
                 <div className="footer-col">
                     <h3 className="footer-title">Solutions</h3>
                     <ul className="footer-links">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Mobile Apps</a></li>
-                        <li><a href="#">Enterprise Software</a></li>
-                        <li><a href="#">AI & Machine Learning</a></li>
-                        <li><a href="#">Cloud Infrastructure</a></li>
+                        <li><Link to="/solutions/web-development">Web Development</Link></li>
+                        <li><Link to="/solutions/mobile-apps">Mobile Apps</Link></li>
+                        <li><Link to="/solutions/enterprise-software">Enterprise Software</Link></li>
+                        <li><Link to="/solutions/ai-machine-learning">AI & Machine Learning</Link></li>
+                        <li><Link to="/solutions/cloud-infrastructure">Cloud Infrastructure</Link></li>
                     </ul>
                 </div>
 
