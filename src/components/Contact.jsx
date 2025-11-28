@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Contact.css';
 import {
     FaPaperPlane,
-    FaMapMarkerAlt,
-    FaEnvelope,
-    FaPhoneAlt,
     FaReact,
     FaNodeJs,
     FaPython,
@@ -16,8 +13,11 @@ import {
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript } from 'react-icons/si';
 
+import favicon from '../assets/favicon.png';
+
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [rotation, setRotation] = useState(0);
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -34,69 +34,68 @@ const Contact = () => {
             observer.observe(sectionRef.current);
         }
 
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            const rotationValue = Math.min(scrollPosition / 2, 180);
+            setRotation(rotationValue);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
         return () => {
             if (sectionRef.current) {
                 observer.unobserve(sectionRef.current);
             }
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
     return (
         <section className="contact-section" ref={sectionRef} id="contact">
-            {/* Animated Tech Background Icons */}
-            <div className="tech-background">
-                <FaReact className="tech-icon icon-1" />
-                <FaNodeJs className="tech-icon icon-2" />
-                <FaPython className="tech-icon icon-3" />
-                <FaDatabase className="tech-icon icon-4" />
-                <FaCode className="tech-icon icon-5" />
-                <FaLaptopCode className="tech-icon icon-6" />
-                <FaServer className="tech-icon icon-7" />
-                <FaMicrochip className="tech-icon icon-8" />
-                <SiJavascript className="tech-icon icon-9" />
-                <SiTypescript className="tech-icon icon-10" />
+            {/* Animated Background */}
+            <div className="contact-background">
+                <div className="gradient-orb orb-1"></div>
+                <div className="gradient-orb orb-2"></div>
+                <div className="gradient-orb orb-3"></div>
+                <div className="floating-particles">
+                    {[...Array(20)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="particle"
+                            style={{
+                                left: `${Math.random() * 100}%`,
+                                animationDelay: `${Math.random() * 5}s`,
+                                animationDuration: `${5 + Math.random() * 10}s`
+                            }}
+                        ></div>
+                    ))}
+                </div>
             </div>
 
             <div className="contact-container">
-                <div className="section-title">
-                    <h2>Contact Us</h2>
-                    <div className="title-underline"></div>
+                <div className={`contact-header ${isVisible ? 'visible' : ''}`}>
+                    <div className="header-badge">
+                        <span className="badge-icon">✉️</span>
+                        <span className="badge-text">Get in Touch</span>
+                    </div>
+                    <h1 className="section-title">
+                        Let's Start a <span className="gradient-text">Conversation</span>
+                    </h1>
+                    <p className="section-subtitle">
+                        Have a project in mind? We'd love to hear from you.
+                    </p>
                 </div>
 
                 <div className="contact-content">
-                    {/* Left Side - Contact Info Boxes */}
-                    <div className={`contact-info-wrapper ${isVisible ? 'animate-left' : ''}`}>
-                        <div className="info-box">
-                            <div className="icon-circle">
-                                <FaMapMarkerAlt />
-                            </div>
-                            <div className="info-text">
-                                <h3>Address</h3>
-                                <p>123 Tech Park, Innovation City, Digital State, 560001</p>
-                            </div>
-                        </div>
-
-                        <div className="info-box">
-                            <div className="icon-circle">
-                                <FaEnvelope />
-                            </div>
-                            <div className="info-text">
-                                <h3>Email</h3>
-                                <p>hello@hybixgroup.com</p>
-                                <p>support@hybixgroup.com</p>
-                            </div>
-                        </div>
-
-                        <div className="info-box">
-                            <div className="icon-circle">
-                                <FaPhoneAlt />
-                            </div>
-                            <div className="info-text">
-                                <h3>Phone</h3>
-                                <p>+91 98765 43210</p>
-                                <p>+91 12345 67890</p>
-                            </div>
-                        </div>
+                    {/* Left Side - Favicon with Rotation */}
+                    <div className={`contact-image-wrapper ${isVisible ? 'animate-left' : ''}`}>
+                        <div className="image-glow"></div>
+                        <img
+                            src={favicon}
+                            alt="Contact Icon"
+                            className="rotating-favicon"
+                            style={{ transform: `rotate(${rotation}deg)` }}
+                        />
                     </div>
 
                     {/* Right Side - Contact Form */}
@@ -123,7 +122,9 @@ const Contact = () => {
                             </div>
 
                             <button type="submit" className="submit-btn">
-                                Send Message <FaPaperPlane className="plane-icon" />
+                                <span className="button-text">Send Message</span>
+                                <FaPaperPlane className="plane-icon" />
+                                <div className="button-glow"></div>
                             </button>
                         </form>
                     </div>
