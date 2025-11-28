@@ -1,4 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 import './Contact.css';
 import {
     FaPaperPlane,
@@ -17,8 +21,8 @@ import favicon from '../assets/favicon.png';
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [rotation, setRotation] = useState(0);
     const sectionRef = useRef(null);
+    const faviconRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -34,19 +38,28 @@ const Contact = () => {
             observer.observe(sectionRef.current);
         }
 
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            const rotationValue = Math.min(scrollPosition / 2, 180);
-            setRotation(rotationValue);
-        };
-
-        window.addEventListener('scroll', handleScroll);
+        // GSAP Animation
+        const ctx = gsap.context(() => {
+            gsap.fromTo(faviconRef.current,
+                { rotation: -180 },
+                {
+                    rotation: 180,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1,
+                    }
+                }
+            );
+        }, sectionRef);
 
         return () => {
             if (sectionRef.current) {
                 observer.unobserve(sectionRef.current);
             }
-            window.removeEventListener('scroll', handleScroll);
+            ctx.revert();
         };
     }, []);
 
@@ -91,10 +104,10 @@ const Contact = () => {
                     <div className={`contact-image-wrapper ${isVisible ? 'animate-left' : ''}`}>
                         <div className="image-glow"></div>
                         <img
+                            ref={faviconRef}
                             src={favicon}
                             alt="Contact Icon"
                             className="rotating-favicon"
-                            style={{ transform: `rotate(${rotation}deg)` }}
                         />
                     </div>
 
