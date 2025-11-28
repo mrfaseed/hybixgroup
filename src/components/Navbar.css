@@ -31,6 +31,21 @@
   --transition-smooth: 0.4s var(--ease-out-expo);
 }
 
+/* Aurora Animation */
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* =========================================
    Navbar Base Structure
    ========================================= */
@@ -40,7 +55,20 @@
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  background: var(--nav-bg);
+
+  /* Aurora Gradient Background - Enhanced for visibility */
+  background: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(219, 234, 254, 0.95),
+      /* Light Blue */
+      rgba(243, 232, 255, 0.95),
+      /* Light Purple */
+      rgba(209, 250, 229, 0.95)
+      /* Light Teal */
+    );
+  background-size: 400% 400%;
+  animation: aurora 10s ease infinite;
+
   backdrop-filter: var(--nav-backdrop-blur);
   -webkit-backdrop-filter: var(--nav-backdrop-blur);
   border-bottom: 1px solid var(--dropdown-border);
@@ -50,7 +78,14 @@
 
 .navbar.scrolled {
   height: var(--nav-height-scrolled);
-  background: var(--nav-bg-scrolled);
+  /* Keep the aurora effect but slightly more opaque or solid if preferred */
+  background: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(219, 234, 254, 0.98),
+      rgba(243, 232, 255, 0.98),
+      rgba(209, 250, 229, 0.98));
+  background-size: 400% 400%;
+  animation: aurora 10s ease infinite;
   box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
 }
 
@@ -144,7 +179,16 @@
   top: var(--nav-height);
   left: 0;
   width: 100%;
-  background: var(--dropdown-bg);
+
+  /* Aurora Gradient Background for Dropdown */
+  background: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(219, 234, 254, 0.98),
+      rgba(243, 232, 255, 0.98),
+      rgba(209, 250, 229, 0.98));
+  background-size: 400% 400%;
+  animation: aurora 10s ease infinite;
+
   border-top: 1px solid var(--dropdown-border);
   box-shadow: var(--dropdown-shadow);
   overflow: hidden;
@@ -186,7 +230,7 @@
 .mega-menu-header {
   flex: 0 0 280px;
   padding-right: 40px;
-  border-right: 1px solid var(--dropdown-border);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .mega-menu-header h3 {
@@ -213,27 +257,46 @@
   gap: 20px;
 }
 
+/* Redesigned Card Style for Services */
 .mega-link-item {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
-  padding: 12px 16px;
-  background: #f8fafc;
-  border-radius: 10px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  /* Glassy background */
+  border-radius: 16px;
   text-decoration: none;
-  transition: all var(--transition-fast);
-  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
 }
 
 .mega-link-item:hover {
-  background: #eff6ff;
-  border-color: rgba(37, 99, 235, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--nav-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.15);
 }
 
 .mega-icon {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  color: var(--nav-accent);
+  background: rgba(37, 99, 235, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.mega-link-item:hover .mega-icon {
+  background: var(--nav-accent);
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
 .mega-text {
@@ -241,6 +304,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--nav-text-primary);
+  transition: color 0.3s ease;
 }
 
 .mega-link-item:hover .mega-text {
@@ -421,7 +485,15 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: var(--mobile-overlay-bg);
+  /* Aurora Gradient Background - Enhanced */
+  background: linear-gradient(-45deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(219, 234, 254, 0.98),
+      rgba(243, 232, 255, 0.98),
+      rgba(209, 250, 229, 0.98));
+  background-size: 400% 400%;
+  animation: aurora 10s ease infinite;
+
   z-index: 999;
 
   /* Animation State */
@@ -444,15 +516,21 @@
   margin: 0 auto;
 }
 
-/* Mobile Search Styles */
+/* Mobile Top Actions (Search + Contact) */
+.mobile-top-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
 .mobile-search-container {
+  flex: 1;
   display: flex;
   align-items: center;
   background: #f8fafc;
   border-radius: 12px;
   padding: 12px 16px;
-  margin-bottom: 24px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all var(--transition-fast);
 }
 
@@ -482,15 +560,37 @@
   color: #94a3b8;
 }
 
+.mobile-contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  /* Match search height roughly */
+  background: var(--nav-accent);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  text-decoration: none;
+}
+
+.mobile-contact-btn:hover {
+  background: var(--nav-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
 .mobile-nav-group {
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .mobile-nav-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0;
+  padding: 20px 0;
   cursor: pointer;
 
   font-family: 'Outfit', sans-serif;
@@ -518,19 +618,22 @@
 .mobile-nav-body {
   overflow: hidden;
   transition: max-height 0.4s ease-out;
+  background: rgba(248, 250, 252, 0.5);
+  /* Subtle background for expanded content */
+  border-radius: 8px;
 }
 
 .mobile-links-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  padding-bottom: 24px;
+  gap: 8px;
+  padding: 16px;
 }
 
 .mobile-link-item {
   display: block;
   padding: 14px 16px;
-  background: #f8fafc;
+  background: #ffffff;
   border-radius: 10px;
   text-decoration: none;
   color: var(--nav-text-primary);
@@ -538,12 +641,16 @@
   font-weight: 500;
   font-size: 1rem;
   transition: all var(--transition-fast);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .mobile-link-item:hover {
   background: #eff6ff;
   color: var(--nav-accent);
   padding-left: 20px;
+  border-color: rgba(37, 99, 235, 0.1);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.08);
 }
 
 .mobile-cta-container {

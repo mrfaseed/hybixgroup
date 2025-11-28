@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Navbar.css';
-import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt, FaCode, FaMobileAlt, FaPaintBrush, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaServer, FaShieldAlt, FaUserTie } from 'react-icons/fa';
+import { BiSearchAlt } from 'react-icons/bi';
 
 const navItems = [
     {
@@ -9,18 +10,18 @@ const navItems = [
         type: 'mega',
         description: 'Comprehensive digital solutions tailored for your business growth.',
         links: [
-            { name: 'Web Development' },
-            { name: 'App Development' },
-            { name: 'UI/UX Design' },
-            { name: 'SEO Optimization' },
-            { name: 'Digital Marketing' },
-            { name: 'Cloud Solutions' },
-            { name: 'E-commerce' },
-            { name: 'Blockchain' },
-            { name: 'AI & ML' },
-            { name: 'DevOps' },
-            { name: 'Cyber Security' },
-            { name: 'IT Consulting' }
+            { name: 'Web Development', icon: <FaCode /> },
+            { name: 'App Development', icon: <FaMobileAlt /> },
+            { name: 'UI/UX Design', icon: <FaPaintBrush /> },
+            { name: 'SEO Optimization', icon: <BiSearchAlt /> },
+            { name: 'Digital Marketing', icon: <FaBullhorn /> },
+            { name: 'Cloud Solutions', icon: <FaCloud /> },
+            { name: 'E-commerce', icon: <FaShoppingCart /> },
+            { name: 'Blockchain', icon: <FaLink /> },
+            { name: 'AI & ML', icon: <FaBrain /> },
+            { name: 'DevOps', icon: <FaServer /> },
+            { name: 'Cyber Security', icon: <FaShieldAlt /> },
+            { name: 'IT Consulting', icon: <FaUserTie /> }
         ]
     },
     {
@@ -89,12 +90,22 @@ const Navbar = () => {
         setIsSearchOpen(false);
     };
 
-    const toggleDropdown = (id) => {
-        if (activeDropdown === id) {
-            setActiveDropdown(null);
-        } else {
+    // Desktop Hover Handlers
+    const handleMouseEnter = (id) => {
+        if (window.innerWidth > 1024) {
             setActiveDropdown(id);
         }
+    };
+
+    const handleMouseLeave = () => {
+        if (window.innerWidth > 1024) {
+            setActiveDropdown(null);
+        }
+    };
+
+    // Mobile Click Handler
+    const handleMobileDropdownToggle = (id) => {
+        setActiveDropdown(prev => (prev === id ? null : id));
     };
 
     return (
@@ -111,11 +122,13 @@ const Navbar = () => {
                     {/* Desktop Menu */}
                     <div className="navbar-menu-desktop">
                         {navItems.map((item) => (
-                            <div key={item.id} className="nav-item-wrapper">
-                                <div
-                                    className={`nav-item ${activeDropdown === item.id ? 'active' : ''}`}
-                                    onClick={() => toggleDropdown(item.id)}
-                                >
+                            <div
+                                key={item.id}
+                                className="nav-item-wrapper"
+                                onMouseEnter={() => handleMouseEnter(item.id)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <div className={`nav-item ${activeDropdown === item.id ? 'active' : ''}`}>
                                     <span className="nav-link">
                                         {item.title} <FaChevronDown className={`chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
                                     </span>
@@ -176,10 +189,8 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Book a Call Button */}
-                        <a href="#book-call" className="btn-book-call">
-                            <span>Book a Call</span>
-                        </a>
+
+
 
                         {/* Mobile Menu Toggle */}
                         <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
@@ -192,17 +203,22 @@ const Navbar = () => {
             {/* Mobile Menu Overlay */}
             <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
                 <div className="mobile-menu-content">
-                    {/* Mobile Search */}
-                    <div className="mobile-search-container">
-                        <FaSearch className="mobile-search-icon" />
-                        <input type="text" placeholder="Search..." className="mobile-search-input" />
+                    {/* Mobile Search & Contact */}
+                    <div className="mobile-top-actions">
+                        <div className="mobile-search-container">
+                            <FaSearch className="mobile-search-icon" />
+                            <input type="text" placeholder="Search..." className="mobile-search-input" />
+                        </div>
+                        <a href="/contact" className="mobile-contact-btn">
+                            <FaPhoneAlt />
+                        </a>
                     </div>
 
                     {navItems.map((item) => (
                         <div key={item.id} className="mobile-nav-group">
                             <div
                                 className={`mobile-nav-header ${activeDropdown === item.id ? 'active' : ''}`}
-                                onClick={() => toggleDropdown(item.id)}
+                                onClick={() => handleMobileDropdownToggle(item.id)}
                             >
                                 <span>{item.title}</span>
                                 <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
@@ -229,7 +245,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     ))}
-                  
+
                 </div>
             </div>
         </>
