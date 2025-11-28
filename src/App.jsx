@@ -9,7 +9,7 @@ function App() {
     <div className="app-container">
       <Navbar />
       {/* Main content placeholder */}
-      <div style={{ minHeight: '100vh', padding: '100px 20px 20px', backgroundColor: '#f8fafc' }}>
+      <div style={{ minHeight: '100vh', padding: '100px 20px 20px', backgroundColor: '#ffffff' }}>
         <h1 style={{ textAlign: 'center', fontFamily: 'Outfit, sans-serif', color: '#1e293b' }}>Welcome to Hybix Group</h1>
         <p style={{ textAlign: 'center', fontFamily: 'Outfit, sans-serif', color: '#64748b' }}>Scroll down to see the contact section.</p>
         <div style={{ height: '400px' }}></div> {/* Spacer to test scrolling */}
