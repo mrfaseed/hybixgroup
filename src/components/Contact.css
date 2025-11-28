@@ -200,201 +200,6 @@
 
 .section-subtitle {
     font-size: 20px;
-    --contact-accent: #667eea;
-    --contact-accent-glow: rgba(102, 126, 234, 0.5);
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
-
-.contact-section {
-    position: relative;
-    min-height: 100vh;
-    padding: 120px 20px 80px;
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    overflow: hidden;
-    font-family: 'Outfit', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Animated Background (Aurora Effect) */
-.contact-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.gradient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
-    animation: float 20s ease-in-out infinite;
-}
-
-.orb-1 {
-    width: 500px;
-    height: 500px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    top: -10%;
-    left: -10%;
-    animation-delay: 0s;
-}
-
-.orb-2 {
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    top: 50%;
-    right: -10%;
-    animation-delay: 5s;
-}
-
-.orb-3 {
-    width: 450px;
-    height: 450px;
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    bottom: -10%;
-    left: 30%;
-    animation-delay: 10s;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-
-    33% {
-        transform: translate(50px, -50px) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-30px, 30px) scale(0.9);
-    }
-}
-
-/* Floating Particles */
-.floating-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    animation: rise linear infinite;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-@keyframes rise {
-    0% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-100px) scale(1);
-        opacity: 0;
-    }
-}
-
-.contact-container {
-    max-width: 1200px;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-}
-
-/* Header Section */
-.contact-header {
-    text-align: center;
-    margin-bottom: 80px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.contact-header.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    margin-bottom: 24px;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.badge-icon {
-    font-size: 20px;
-}
-
-.badge-text {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.section-title {
-    font-size: 64px;
-    font-weight: 800;
-    color: #fff;
-    margin: 0 0 20px;
-    line-height: 1.2;
-    font-family: 'Poppins', sans-serif;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 3s ease infinite;
-    background-size: 200% 200%;
-}
-
-@keyframes gradient-shift {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-.section-subtitle {
-    font-size: 20px;
     color: var(--text-secondary);
     margin: 0;
     font-weight: 300;
@@ -434,10 +239,9 @@
 }
 
 .rotating-favicon {
-    width: 500px;
+    width: 600px;
     height: auto;
     filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.5));
-    transition: transform 0.1s linear;
 }
 
 /* Right Side - Form */
@@ -609,7 +413,7 @@
     }
 
     .rotating-favicon {
-        width: 150px;
+        width: 250px;
     }
 }
 
