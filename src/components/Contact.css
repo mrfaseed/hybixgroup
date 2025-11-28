@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* Contact Section Variables */
 :root {
-    --contact-bg-dark: #0f172a;
+    --contact-bg-dark: #ffffff;
     --contact-bg-light: #1e293b;
-    --contact-accent: #3b82f6;
-    --contact-accent-glow: rgba(59, 130, 246, 0.5);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --glass-bg: rgba(30, 41, 59, 0.7);
+    --contact-accent: #3c414b;
+    --contact-accent-glow: rgba(255, 255, 255, 0.5);
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --glass-bg: rgb(255, 255, 255);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
@@ -14,7 +15,7 @@
     position: relative;
     min-height: 100vh;
     padding: 80px 20px;
-    background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+    background: #ffffff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -35,7 +36,7 @@
 
 .tech-icon {
     position: absolute;
-    color: rgba(59, 130, 246, 0.2);
+    color: rgba(255, 255, 255, 0.2);
     font-size: 3rem;
     animation: float-icon 10s infinite ease-in-out;
 }
@@ -122,7 +123,7 @@
     50% {
         transform: translateY(-30px) rotate(10deg);
         opacity: 0.6;
-        color: rgba(59, 130, 246, 0.4);
+        color: rgba(93, 97, 103, 0.4);
     }
 }
 
@@ -139,22 +140,13 @@
 }
 
 .section-title h2 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 3rem;
+    font-family: 'Changa one', sans-serif;
+    font-size: 5rem;
     color: var(--text-primary);
     margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 20px var(--contact-accent-glow);
-}
-
-.title-underline {
-    width: 100px;
-    height: 4px;
-    background: var(--contact-accent);
-    margin: 0 auto;
-    border-radius: 2px;
-    box-shadow: 0 0 10px var(--contact-accent);
 }
 
 .contact-content {
@@ -182,7 +174,7 @@
 .info-box {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgb(218, 212, 212);
     padding: 30px;
     border-radius: 16px;
     display: flex;
@@ -205,11 +197,6 @@
     transition: opacity 0.3s ease;
 }
 
-.info-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background: rgba(30, 41, 59, 0.9);
-}
 
 .info-box:hover::before {
     opacity: 1;
@@ -229,11 +216,6 @@
     border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
-.info-box:hover .icon-circle {
-    background: var(--contact-accent);
-    color: white;
-    box-shadow: 0 0 20px var(--contact-accent-glow);
-}
 
 .info-text h3 {
     font-family: 'Outfit', sans-serif;
@@ -285,7 +267,7 @@
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    background: rgba(15, 23, 42, 0.6);
+    background: rgb(215, 218, 223);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 15px 20px;
@@ -301,7 +283,7 @@
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--contact-accent);
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(189, 192, 198, 0.8);
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
@@ -313,7 +295,7 @@
 .submit-btn {
     width: 100%;
     padding: 18px;
-    background: linear-gradient(135deg, var(--contact-accent) 0%, #2563eb 100%);
+    background: linear-gradient(135deg, var(--contact-accent) 0%, #000000 100%);
     border: none;
     border-radius: 12px;
     color: white;
@@ -332,7 +314,7 @@
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 10px 25px rgba(6, 6, 6, 0.4);
 }
 
 .plane-icon {
