@@ -137,10 +137,12 @@ const navItems = [
     }
 ];
 
+const NavbarMobile = React.lazy(() => import('./NavbarMobile'));
+const NavbarDropdown = React.lazy(() => import('./NavbarDropdown'));
+
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
-    const [activeSolution, setActiveSolution] = useState(0);
     const [scrolled, setScrolled] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const searchInputRef = useRef(null);
@@ -182,36 +184,31 @@ const Navbar = () => {
         }
     }, [isSearchOpen]);
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
+    const toggleMobileMenu = React.useCallback(() => {
+        setIsMobileMenuOpen(prev => !prev);
         setActiveDropdown(null);
         setIsSearchOpen(false);
-    };
+    }, []);
 
     // Desktop Hover Handlers
-    const handleMouseEnter = (id) => {
+    const handleMouseEnter = React.useCallback((id) => {
         if (window.innerWidth > 1024) {
             setActiveDropdown(id);
         }
-    };
+    }, []);
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = React.useCallback(() => {
         if (window.innerWidth > 1024) {
             setActiveDropdown(null);
         }
-    };
+    }, []);
 
-    // Reset active solution when dropdown opens
-    useEffect(() => {
-        if (activeDropdown === 2 || activeDropdown === 3 || activeDropdown === 4) {
-            setActiveSolution(0);
-        }
-    }, [activeDropdown]);
+
 
     // Mobile Click Handler
-    const handleMobileDropdownToggle = (id) => {
+    const handleMobileDropdownToggle = React.useCallback((id) => {
         setActiveDropdown(prev => (prev === id ? null : id));
-    };
+    }, []);
 
     // Scroll locking for mobile menu
     useEffect(() => {
@@ -254,79 +251,77 @@ const Navbar = () => {
                                             </span>
                                         </div>
 
-                                        {/* Mega Menu / Dropdown Content */}
-                                        <div className={`dropdown-container ${item.type === 'mega' ? 'mega-menu' : 'standard-dropdown'} ${activeDropdown === item.id ? 'visible' : ''}`}>
-                                            <div className="dropdown-wrapper">
-                                                {item.type === 'mega' ? (
-                                                    <div className="mega-menu-content">
-                                                        <div className="mega-menu-header">
-                                                            <h3>Explore Our {item.title}</h3>
-                                                            <p>{item.description}</p>
-                                                        </div>
-                                                        <div className="mega-menu-grid">
-                                                            {item.links.map((link, index) => (
-                                                                <a key={index} href={link.path || "#"} className="mega-link-item">
-                                                                    <span className="mega-icon">{link.icon}</span>
-                                                                    <span className="mega-text">{link.name}</span>
-                                                                </a>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                ) : item.type === 'mega-solutions' ? (
-                                                    <div className="mega-solutions-wrapper">
-                                                        <div className="solutions-list">
-                                                            {item.links.map((link, index) => (
-                                                                <div
-                                                                    key={index}
-                                                                    className={`solution-item ${activeSolution === index ? 'active' : ''}`}
-                                                                    onMouseEnter={() => setActiveSolution(index)}
-                                                                >
-                                                                    <span>{link.name}</span>
-                                                                    <FaChevronRight className={`solution-arrow ${activeSolution === index ? 'visible' : ''}`} />
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                        <div className="solutions-content-panel">
-                                                            <div className="solution-detail fade-in" key={activeSolution}>
-                                                                <div className="solution-header">
-                                                                    <span className="solution-big-icon">{item.links[activeSolution].icon}</span>
-                                                                    <h3>{item.links[activeSolution].name}</h3>
-                                                                </div>
-                                                                <p className="solution-desc">{item.links[activeSolution].description}</p>
-                                                                <div className="solution-features-list">
-                                                                    {item.links[activeSolution].features.map((feature, i) => (
-                                                                        <div key={i} className="feature-item">
-                                                                            <FaCheckCircle className="feature-icon" />
-                                                                            <span>{feature}</span>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                                <div className="solution-action">
-                                                                    <a href="#" className="solution-btn">
-                                                                        {item.links[activeSolution].buttonText || 'Learn More'} <FaArrowRight className="btn-arrow" />
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ) : (
-                                                    <div className="standard-dropdown-content">
-                                                        <div className="dropdown-header">
-                                                            <h3>{item.title}</h3>
-                                                        </div>
-                                                        <ul className="dropdown-list">
-                                                            {item.links.map((link, index) => (
-                                                                <li key={index}>
-                                                                    <a href="#">{link} <FaArrowRight className="link-arrow" /></a>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                )}
+                                {/* Mega Menu / Dropdown Content */}
+                                <div className={`dropdown-container ${item.type === 'mega' ? 'mega-menu' : 'standard-dropdown'} ${activeDropdown === item.id ? 'visible' : ''}`}>
+                                    <div className="dropdown-wrapper">
+                                        {item.type === 'mega' ? (
+                                            <div className="mega-menu-content">
+                                                <div className="mega-menu-header">
+                                                    <h3>Explore Our {item.title}</h3>
+                                                    <p>{item.description}</p>
+                                                </div>
+                                                <div className="mega-menu-grid">
+                                                    {item.links.map((link, index) => (
+                                                        <a key={index} href="#" className="mega-link-item">
+                                                            <span className="mega-icon">{link.icon}</span>
+                                                            <span className="mega-text">{link.name}</span>
+                                                        </a>
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </>
-                                )}
+                                        ) : item.type === 'mega-solutions' ? (
+                                            <div className="mega-solutions-wrapper">
+                                                <div className="solutions-list">
+                                                    {item.links.map((link, index) => (
+                                                        <div
+                                                            key={index}
+                                                            className={`solution-item ${activeSolution === index ? 'active' : ''}`}
+                                                            onMouseEnter={() => setActiveSolution(index)}
+                                                        >
+                                                            <span>{link.name}</span>
+                                                            <FaChevronRight className={`solution-arrow ${activeSolution === index ? 'visible' : ''}`} />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                                <div className="solutions-content-panel">
+                                                    <div className="solution-detail fade-in" key={activeSolution}>
+                                                        <div className="solution-header">
+                                                            <span className="solution-big-icon">{item.links[activeSolution].icon}</span>
+                                                            <h3>{item.links[activeSolution].name}</h3>
+                                                        </div>
+                                                        <p className="solution-desc">{item.links[activeSolution].description}</p>
+                                                        <div className="solution-features-list">
+                                                            {item.links[activeSolution].features.map((feature, i) => (
+                                                                <div key={i} className="feature-item">
+                                                                    <FaCheckCircle className="feature-icon" />
+                                                                    <span>{feature}</span>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                        <div className="solution-action">
+                                                            <a href="#" className="solution-btn">
+                                                                {item.links[activeSolution].buttonText || 'Learn More'} <FaArrowRight className="btn-arrow" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="standard-dropdown-content">
+                                                <div className="dropdown-header">
+                                                    <h3>{item.title}</h3>
+                                                </div>
+                                                <ul className="dropdown-list">
+                                                    {item.links.map((link, index) => (
+                                                        <li key={index}>
+                                                            <a href="#">{link} <FaArrowRight className="link-arrow" /></a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -372,44 +367,32 @@ const Navbar = () => {
 
                     {navItems.map((item) => (
                         <div key={item.id} className="mobile-nav-group">
-                            {item.type === 'link' ? (
-                                <Link
-                                    to={item.path}
-                                    className="mobile-nav-header"
-                                    onClick={toggleMobileMenu}
-                                >
-                                    <span className="mobile-nav-title">{item.title}</span>
-                                </Link>
-                            ) : (
-                                <>
-                                    <div
-                                        className={`mobile-nav-header ${activeDropdown === item.id ? 'active' : ''}`}
-                                        onClick={() => handleMobileDropdownToggle(item.id)}
-                                    >
-                                        <span className="mobile-nav-title">{item.title}</span>
-                                        <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
-                                    </div>
-                                    <div
-                                        className={`mobile-nav-body ${activeDropdown === item.id ? 'open' : ''}`}
-                                    >
-                                        <div className="mobile-links-grid">
-                                            {item.type === 'mega' || item.type === 'mega-solutions' ? (
-                                                item.links.map((link, index) => (
-                                                    <a key={index} href={link.path || "#"} className="mobile-link-item">
-                                                        {link.name}
-                                                    </a>
-                                                ))
-                                            ) : (
-                                                item.links.map((link, index) => (
-                                                    <a key={index} href="#" className="mobile-link-item">
-                                                        {link}
-                                                    </a>
-                                                ))
-                                            )}
-                                        </div>
-                                    </div>
-                                </>
-                            )}
+                            <div
+                                className={`mobile-nav-header ${activeDropdown === item.id ? 'active' : ''}`}
+                                onClick={() => handleMobileDropdownToggle(item.id)}
+                            >
+                                <span className="mobile-nav-title">{item.title}</span>
+                                <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
+                            </div>
+                            <div
+                                className={`mobile-nav-body ${activeDropdown === item.id ? 'open' : ''}`}
+                            >
+                                <div className="mobile-links-grid">
+                                    {item.type === 'mega' || item.type === 'mega-solutions' ? (
+                                        item.links.map((link, index) => (
+                                            <a key={index} href="#" className="mobile-link-item">
+                                                {link.name}
+                                            </a>
+                                        ))
+                                    ) : (
+                                        item.links.map((link, index) => (
+                                            <a key={index} href="#" className="mobile-link-item">
+                                                {link}
+                                            </a>
+                                        ))
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -418,6 +401,6 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default React.memo(Navbar);
 
 

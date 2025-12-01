@@ -16,13 +16,14 @@
     padding: 120px 20px 80px;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 30px, 0);
     transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
 }
 
 .solution-hero.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .hero-content {
@@ -37,17 +38,18 @@
     font-size: 120px;
     margin-bottom: 30px;
     animation: float 3s ease-in-out infinite;
+    will-change: transform;
 }
 
 @keyframes float {
 
     0%,
     100% {
-        transform: translateY(0px);
+        transform: translate3d(0, 0, 0);
     }
 
     50% {
-        transform: translateY(-20px);
+        transform: translate3d(0, -20px, 0);
     }
 }
 
@@ -105,7 +107,7 @@
 }
 
 .cta-primary:hover {
-    transform: translateY(-3px);
+    transform: translate3d(0, -3px, 0);
     box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
 }
 
@@ -166,11 +168,11 @@
 
     0%,
     100% {
-        transform: translate(0, 0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
     }
 
     50% {
-        transform: translate(30px, -30px) scale(1.1);
+        transform: translate3d(30px, -30px, 0) scale(1.1);
     }
 }
 
@@ -219,16 +221,17 @@
     padding: 40px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 30px, 0);
+    will-change: transform, opacity;
 }
 
 .feature-card.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
@@ -278,18 +281,19 @@
     color: #fff;
     transition: all 0.3s ease;
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale3d(0.8, 0.8, 1);
+    will-change: transform, opacity;
 }
 
 .tech-tag.visible {
     opacity: 1;
-    transform: scale(1);
+    transform: scale3d(1, 1, 1);
 }
 
 .tech-tag:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
+    transform: scale3d(1.05, 1.05, 1);
 }
 
 /* Benefits Section */
@@ -313,18 +317,19 @@
     border-left: 4px solid #667eea;
     border-radius: 12px;
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translate3d(-30px, 0, 0);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
 }
 
 .benefit-item.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .benefit-item:hover {
     background: rgba(255, 255, 255, 0.05);
-    transform: translateX(10px);
+    transform: translate3d(10px, 0, 0);
 }
 
 .benefit-icon {
@@ -395,7 +400,7 @@
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
+    transform: translate3d(0, -3px, 0);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 

@@ -1,47 +1,64 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
 import './AboutUs.css';
 import teamImage from '../assets/about_team.png';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
     const sectionRef = useRef(null);
     const contentRef = useRef(null);
     const imageRef = useRef(null);
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            // Animate Content from Left
-            gsap.from(contentRef.current, {
-                x: -100,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 60%",
-                    toggleActions: "play none none reverse"
-                }
-            });
+    useEffect(() => {
+        let ctx;
 
-            // Animate Image from Right
-            gsap.from(imageRef.current, {
-                x: 100,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: 0.2,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 60%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        }, sectionRef);
+        const initAnimation = async () => {
+            try {
+                const gsapModule = await import('gsap');
+                const ScrollTriggerModule = await import('gsap/ScrollTrigger');
+                const gsap = gsapModule.default || gsapModule;
+                const ScrollTrigger = ScrollTriggerModule.ScrollTrigger || ScrollTriggerModule.default;
 
-        return () => ctx.revert();
+                gsap.registerPlugin(ScrollTrigger);
+
+                ctx = gsap.context(() => {
+                    // Animate Content from Left
+                    gsap.from(contentRef.current, {
+                        x: -100,
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: "top 60%",
+                            toggleActions: "play none none reverse"
+                        }
+                    });
+
+                    // Animate Image from Right
+                    gsap.from(imageRef.current, {
+                        x: 100,
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                        delay: 0.2,
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: "top 60%",
+                            toggleActions: "play none none reverse"
+                        }
+                    });
+                }, sectionRef);
+            } catch (error) {
+                console.error("Failed to load GSAP:", error);
+            }
+        };
+
+        if (sectionRef.current) {
+            initAnimation();
+        }
+
+        return () => {
+            if (ctx) ctx.revert();
+        };
     }, []);
 
     return (
@@ -75,11 +92,11 @@ const AboutUs = () => {
 
                 <div className="about-image-wrapper" ref={imageRef}>
                     <div className="image-backdrop"></div>
-                    <img src={teamImage} alt="Hybix Team" className="about-hero-image" />
+                    <img src={teamImage} alt="Hybix Team" className="about-hero-image" loading="lazy" />
                 </div>
             </div>
         </section>
     );
 };
 
-export default AboutUs;
+export default React.memo(AboutUs);
