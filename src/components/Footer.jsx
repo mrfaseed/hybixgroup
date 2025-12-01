@@ -41,8 +41,9 @@ const Footer = () => {
                     <ul className="footer-links">
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Our Team</a></li>
+                        <li><Link to="/reviews">Customer Reviews</Link></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">News & Media</a></li>
+                        <li><a href="#">News &amp; Media</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
@@ -54,7 +55,7 @@ const Footer = () => {
                         <li><Link to="/solutions/web-development">Web Development</Link></li>
                         <li><Link to="/solutions/mobile-apps">Mobile Apps</Link></li>
                         <li><Link to="/solutions/enterprise-software">Enterprise Software</Link></li>
-                        <li><Link to="/solutions/ai-machine-learning">AI & Machine Learning</Link></li>
+                        <li><Link to="/solutions/ai-machine-learning">AI &amp; Machine Learning</Link></li>
                         <li><Link to="/solutions/cloud-infrastructure">Cloud Infrastructure</Link></li>
                     </ul>
                 </div>
