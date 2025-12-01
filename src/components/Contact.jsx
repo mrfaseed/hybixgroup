@@ -82,6 +82,7 @@ const Contact = () => {
         <section className="contact-section" ref={sectionRef} id="contact">
             {/* Animated Background */}
             <div className="contact-background">
+                <div className="grid-overlay"></div>
                 <div className="gradient-orb orb-1"></div>
                 <div className="gradient-orb orb-2"></div>
                 <div className="gradient-orb orb-3"></div>
