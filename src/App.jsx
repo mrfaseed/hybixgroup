@@ -5,7 +5,13 @@ import CustomerReviews from './components/CustomerReviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import SolutionPage from './components/SolutionPage'
+
 import Login from './components/Login'
+import AboutUs from './components/AboutUs'
+import OurTeam from './components/OurTeam'
+import Careers from './components/Careers'
+import NewsMedia from './components/NewsMedia'
+
 
 // Home Page Component
 function HomePage() {
@@ -47,8 +53,12 @@ function App() {
         {/* Home Route */}
         <Route path="/" element={<HomePage />} />
 
-        {/* Customer Reviews Route */}
+        {/* Company Routes */}
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/our-team" element={<OurTeam />} />
         <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/news-media" element={<NewsMedia />} />
 
         {/* Solution Pages Routes */}
         <Route path="/solutions/:solutionType" element={<SolutionPage />} />
