@@ -328,9 +328,9 @@ const Navbar = () => {
                     </div>
 
                     {/* Actions */}
-                    <div className="navbar-actions">
+                    < div className="navbar-actions" >
                         {/* Search Bar */}
-                        <div className={`search-wrapper ${isSearchOpen ? 'active' : ''}`}>
+                        < div className={`search-wrapper ${isSearchOpen ? 'active' : ''}`}>
                             <div className="search-icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
                                 <FaSearch />
                             </div>
@@ -350,10 +350,11 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav >
 
             {/* Mobile Menu Overlay */}
-            <div ref={mobileMenuRef} className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+            < div ref={mobileMenuRef} className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`
+            }>
                 <div className="mobile-menu-content">
                     {/* Mobile Search & Contact */}
                     <div className="mobile-top-actions">
@@ -414,7 +415,7 @@ const Navbar = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div >
         </>
     );
 };

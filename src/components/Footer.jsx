@@ -39,11 +39,11 @@ const Footer = () => {
                 <div className="footer-col">
                     <h3 className="footer-title">Company</h3>
                     <ul className="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Team</a></li>
+                        <li><Link to="/about-us">About Us</Link></li>
+                        <li><Link to="/our-team">Our Team</Link></li>
                         <li><Link to="/reviews">Customer Reviews</Link></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">News &amp; Media</a></li>
+                        <li><Link to="/careers">Careers</Link></li>
+                        <li><Link to="/news-media">News &amp; Media</Link></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>

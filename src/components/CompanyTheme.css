@@ -1,0 +1,143 @@
+:root {
+    /* Main Background */
+    --bg-deep-slate: #020617;
+
+    /* Grid Lines */
+    --grid-line-color: rgba(255, 255, 255, 0.03);
+
+    /* Orb Colors (Gradients) */
+    --orb-blue-start: #3B82F6;
+    --orb-blue-end: #1D4ED8;
+
+    --orb-purple-start: #8B5CF6;
+    --orb-purple-end: #6D28D9;
+
+    --orb-cyan-start: #06B6D4;
+    --orb-cyan-end: #0891B2;
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-accent: #38bdf8;
+}
+
+.company-page-container {
+    background-color: var(--bg-deep-slate);
+    min-height: 100vh;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Outfit', sans-serif;
+    padding-top: 80px;
+    /* Space for navbar */
+}
+
+/* Grid Background Effect */
+.company-page-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Orb Animations */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: 0;
+    animation: floatOrb 10s infinite ease-in-out;
+}
+
+.orb-blue {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--orb-blue-start), var(--orb-blue-end));
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-purple {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--orb-purple-start), var(--orb-purple-end));
+    bottom: 10%;
+    right: 5%;
+    animation-delay: -2s;
+}
+
+.orb-cyan {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, var(--orb-cyan-start), var(--orb-cyan-end));
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -4s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -30px);
+    }
+}
+
+/* Common Content Styles */
+.page-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    line-height: 1.6;
+}
+
+/* Card Styles */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}

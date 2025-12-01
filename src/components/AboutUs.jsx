@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './CompanyTheme.css';
 import './AboutUs.css';
 import teamImage from '../assets/about_team.png';
 
@@ -62,8 +63,11 @@ const AboutUs = () => {
     }, []);
 
     return (
-        <section className="about-hero-section" id="about" ref={sectionRef}>
-            <div className="about-container">
+        <div className="company-page-container" ref={sectionRef}>
+            <div className="orb orb-blue"></div>
+            <div className="orb orb-purple"></div>
+
+            <div className="page-content about-container">
                 <div className="about-content" ref={contentRef}>
                     <h2 className="about-label">Who We Are</h2>
                     <h1 className="about-headline">
@@ -75,15 +79,15 @@ const AboutUs = () => {
                     </p>
 
                     <div className="about-stats">
-                        <div className="stat-item">
+                        <div className="stat-item glass-card">
                             <span className="stat-number">5+</span>
                             <span className="stat-label">Years Exp.</span>
                         </div>
-                        <div className="stat-item">
+                        <div className="stat-item glass-card">
                             <span className="stat-number">50+</span>
                             <span className="stat-label">Projects</span>
                         </div>
-                        <div className="stat-item">
+                        <div className="stat-item glass-card">
                             <span className="stat-number">100%</span>
                             <span className="stat-label">Commitment</span>
                         </div>
@@ -95,7 +99,7 @@ const AboutUs = () => {
                     <img src={teamImage} alt="Hybix Team" className="about-hero-image" loading="lazy" />
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 
