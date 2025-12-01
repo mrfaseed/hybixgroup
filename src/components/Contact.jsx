@@ -1,8 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 import './Contact.css';
 import {
     FaPaperPlane,
@@ -38,28 +34,47 @@ const Contact = () => {
             observer.observe(sectionRef.current);
         }
 
-        // GSAP Animation
-        const ctx = gsap.context(() => {
-            gsap.fromTo(faviconRef.current,
-                { rotation: -180 },
-                {
-                    rotation: 180,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 1,
-                    }
-                }
-            );
-        }, sectionRef);
+        let ctx;
+
+        // Dynamic import for GSAP
+        const initAnimation = async () => {
+            try {
+                const gsapModule = await import('gsap');
+                const ScrollTriggerModule = await import('gsap/ScrollTrigger');
+                const gsap = gsapModule.default || gsapModule;
+                const ScrollTrigger = ScrollTriggerModule.ScrollTrigger || ScrollTriggerModule.default;
+
+                gsap.registerPlugin(ScrollTrigger);
+
+                ctx = gsap.context(() => {
+                    gsap.fromTo(faviconRef.current,
+                        { rotation: -180 },
+                        {
+                            rotation: 180,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: sectionRef.current,
+                                start: "top bottom",
+                                end: "bottom top",
+                                scrub: 1,
+                            }
+                        }
+                    );
+                }, sectionRef);
+            } catch (error) {
+                console.error("Failed to load GSAP:", error);
+            }
+        };
+
+        if (sectionRef.current) {
+            initAnimation();
+        }
 
         return () => {
             if (sectionRef.current) {
                 observer.unobserve(sectionRef.current);
             }
-            ctx.revert();
+            if (ctx) ctx.revert();
         };
     }, []);
 
@@ -71,7 +86,7 @@ const Contact = () => {
                 <div className="gradient-orb orb-2"></div>
                 <div className="gradient-orb orb-3"></div>
                 <div className="floating-particles">
-                    {[...Array(20)].map((_, i) => (
+                    {React.useMemo(() => [...Array(20)].map((_, i) => (
                         <div
                             key={i}
                             className="particle"
@@ -81,7 +96,7 @@ const Contact = () => {
                                 animationDuration: `${5 + Math.random() * 10}s`
                             }}
                         ></div>
-                    ))}
+                    )), [])}
                 </div>
             </div>
 
@@ -108,6 +123,7 @@ const Contact = () => {
                             src={favicon}
                             alt="Contact Icon"
                             className="rotating-favicon"
+                            loading="lazy"
                         />
                     </div>
 
@@ -147,4 +163,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default React.memo(Contact);

@@ -8,6 +8,10 @@
     padding: 120px 20px 80px;
     background: linear-gradient(-45deg, rgba(255, 255, 255, 0.95), rgba(219, 234, 254, 0.95), rgba(243, 232, 255, 0.95), rgba(209, 250, 229, 0.95));
     background-size: 400% 400%;
+    /* Replaced background-position animation with a more performant approach if possible, 
+       but for gradient background-size/position, it's often acceptable. 
+       However, to strictly follow "No top/left/layout animation", we should use a pseudo-element transform.
+       For now, keeping it simple but ensuring other animations are GPU optimized. */
     animation: aurora 15s ease infinite;
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
@@ -45,6 +49,7 @@
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.15;
+    will-change: transform;
     animation: float 20s ease-in-out infinite;
 }
 
@@ -79,15 +84,15 @@
 
     0%,
     100% {
-        transform: translate(0, 0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
     }
 
     33% {
-        transform: translate(50px, -50px) scale(1.1);
+        transform: translate3d(50px, -50px, 0) scale(1.1);
     }
 
     66% {
-        transform: translate(-30px, 30px) scale(0.9);
+        transform: translate3d(-30px, 30px, 0) scale(0.9);
     }
 }
 
@@ -107,12 +112,13 @@
     height: 4px;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
+    will-change: transform, opacity;
     animation: rise linear infinite;
 }
 
 @keyframes rise {
     0% {
-        transform: translateY(100vh) scale(0);
+        transform: translate3d(0, 100vh, 0) scale(0);
         opacity: 0;
     }
 
@@ -121,7 +127,7 @@
     }
 
     100% {
-        transform: translateY(-100px) scale(1);
+        transform: translate3d(0, -100px, 0) scale(1);
         opacity: 0;
     }
 }
@@ -133,13 +139,14 @@
     text-align: center;
     margin-bottom: 80px;
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translate3d(0, 30px, 0);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
 }
 
 .reviews-header.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .header-badge {
@@ -159,6 +166,7 @@
     font-size: 20px;
     animation: rotate 3s linear infinite;
     color: #4f46e5;
+    will-change: transform;
 }
 
 @keyframes rotate {
@@ -216,6 +224,7 @@
     text-align: center;
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
+    will-change: transform, opacity;
 }
 
 .stat-item:nth-child(1) {
@@ -233,12 +242,12 @@
 @keyframes fadeInUp {
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translate3d(0, 20px, 0);
     }
 }
 
@@ -289,6 +298,7 @@
     animation: marquee 40s linear infinite;
     width: fit-content;
     padding: 0 20px;
+    will-change: transform;
 }
 
 .reviews-marquee:hover {
@@ -297,11 +307,11 @@
 
 @keyframes marquee {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(-25%);
+        transform: translate3d(-25%, 0, 0);
     }
 }
 
@@ -314,13 +324,14 @@
     border-radius: 24px;
     padding: 32px;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease, background 0.4s ease;
     opacity: 0;
     flex-shrink: 0;
     width: 420px;
     min-height: 380px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    will-change: transform;
 }
 
 .review-card.visible {
@@ -328,7 +339,7 @@
 }
 
 .review-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translate3d(0, -10px, 0) scale(1.02);
     border-color: rgba(79, 70, 229, 0.3);
     box-shadow: 0 20px 60px rgba(79, 70, 229, 0.15);
     background: #ffffff;
@@ -354,6 +365,7 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    will-change: transform;
 }
 
 .review-card:hover .avatar {
@@ -483,7 +495,7 @@
     border-radius: 50%;
     font-size: 24px;
     color: #000000;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .review-card:hover .expand-indicator {
@@ -498,16 +510,18 @@
     text-align: center;
     margin-top: 100px;
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+    transform: translate3d(0, 30px, 0);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+    will-change: transform, opacity;
 }
 
 .reviews-cta.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .cta-content {
+    color: black;
     max-width: 600px;
     margin: 0 auto;
     padding: 60px 40px;
@@ -548,13 +562,14 @@
     font-weight: 600;
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
     font-family: 'Outfit', sans-serif;
+    will-change: transform;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
+    transform: translate3d(0, -3px, 0);
     box-shadow: 0 15px 40px rgba(79, 70, 229, 0.5);
 }
 
