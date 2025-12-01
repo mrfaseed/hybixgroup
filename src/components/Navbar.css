@@ -144,6 +144,7 @@
   border-radius: 8px;
   transition: background var(--transition-fast);
   user-select: none;
+  text-decoration: none;
 }
 
 .nav-item:hover,

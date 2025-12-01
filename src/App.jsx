@@ -34,6 +34,17 @@ function ReviewsPage() {
   )
 }
 
+// Solution Page Wrapper Component
+function SolutionPageWrapper() {
+  return (
+    <>
+      <SolutionPage />
+      <CustomerReviews />
+      <Contact />
+    </>
+  )
+}
+
 function App() {
   return (
     <div className="app-container">
@@ -47,7 +58,7 @@ function App() {
         <Route path="/reviews" element={<ReviewsPage />} />
 
         {/* Solution Pages Routes */}
-        <Route path="/solutions/:solutionType" element={<SolutionPage />} />
+        <Route path="/solutions/:solutionType" element={<SolutionPageWrapper />} />
       </Routes>
 
       <Footer />
