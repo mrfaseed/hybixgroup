@@ -520,12 +520,12 @@
     transform: translate3d(0, 0, 0);
 }
 
-.cta-content {
-    color: black;
+.cta-content {  
     max-width: 600px;
     margin: 0 auto;
     padding: 60px 40px;
-    background: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(-45deg, rgba(101, 63, 63, 0.95), rgba(68, 133, 219, 0.95), rgba(136, 51, 226, 0.95), rgba(16, 48, 32, 0.95));
+    color: #ffffff;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 32px;
@@ -535,16 +535,17 @@
 }
 
 .cta-title {
+
     font-size: 36px;
     font-weight: 700;
-    color: #000000;
+    color: #ffffff;
     margin: 0 0 16px;
     font-family: 'Poppins', sans-serif;
 }
 
 .cta-subtitle {
     font-size: 18px;
-    color: #4b5563;
+    color: #ffffff;
     margin: 0 0 32px;
 }
 
