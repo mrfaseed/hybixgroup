@@ -6,7 +6,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 // Home Page Component
-function HomePage() {
+function App() {
   return (
     <div className="app-container">
       <Navbar />
