@@ -344,6 +344,14 @@ const Navbar = () => {
                             </div>
                         </div>
 
+                        {/* Login Button */}
+                        <button
+                            className="btn-login-desktop"
+                            onClick={() => window.open('/login', 'Login', 'width=1000,height=700,scrollbars=yes,resizable=yes')}
+                        >
+                            Login
+                        </button>
+
                         {/* Mobile Menu Toggle */}
                         <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
                             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
@@ -364,6 +372,18 @@ const Navbar = () => {
                         <a href="/contact" className="mobile-contact-btn">
                             <FaPhoneAlt />
                         </a>
+                        <a href="/contact" className="mobile-contact-btn">
+                            <FaPhoneAlt />
+                        </a>
+                        <button
+                            className="mobile-login-btn"
+                            onClick={() => {
+                                toggleMobileMenu();
+                                window.open('/login', 'Login', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+                            }}
+                        >
+                            <FaUserTie />
+                        </button>
                     </div>
 
                     {navItems.map((item) => (

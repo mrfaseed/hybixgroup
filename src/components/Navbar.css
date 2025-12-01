@@ -850,9 +850,6 @@
   margin-top: 40px;
 }
 
-/* =========================================
-   Responsive Breakpoints
-   ========================================= */
 @media (max-width: 1024px) {
   .navbar-menu-desktop {
     display: none;
@@ -879,4 +876,42 @@
   .mega-menu-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Login Button Desktop */
+.btn-login-desktop {
+  padding: 10px 24px;
+  background: var(--nav-text-primary);
+  color: #ffffff;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+
+/* Mobile Login Button */
+.mobile-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: var(--nav-text-primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  text-decoration: none;
+}
+
+
+@media (max-width: 1024px) {
+    .btn-login-desktop {
+        display: none;
+    }
 }

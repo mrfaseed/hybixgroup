@@ -1,10 +1,11 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import CustomerReviews from './components/CustomerReviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import SolutionPage from './components/SolutionPage'
+import Login from './components/Login'
 
 // Home Page Component
 function HomePage() {
@@ -35,9 +36,12 @@ function ReviewsPage() {
 }
 
 function App() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
+
   return (
     <div className="app-container">
-      <Navbar />
+      {!isLoginPage && <Navbar />}
 
       <Routes>
         {/* Home Route */}
@@ -48,9 +52,12 @@ function App() {
 
         {/* Solution Pages Routes */}
         <Route path="/solutions/:solutionType" element={<SolutionPage />} />
+
+        {/* Login Route */}
+        <Route path="/login" element={<Login />} />
       </Routes>
 
-      <Footer />
+      {!isLoginPage && <Footer />}
     </div>
   )
 }
