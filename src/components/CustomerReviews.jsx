@@ -185,7 +185,7 @@ const CustomerReviews = () => {
     )), []);
 
     return (
-        <div className="customer-reviews-section">
+        <section id="customerreview" className="customer-reviews-section">
             {/* Animated Background */}
             <div className="reviews-background">
                 <div className="gradient-orb orb-1"></div>
@@ -265,7 +265,7 @@ const CustomerReviews = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
