@@ -22,7 +22,7 @@ const Footer = () => {
                                 <div className="face bottom"></div>
                             </div>
                         </div>
-                        <h2 className="footer-logo">Hybix Group</h2>
+                        <h2 className="footer-logo">Hybix Groups</h2>
                     </div>
                     <p className="footer-desc">
                         Pioneering the future of digital innovation. We craft immersive web experiences, robust software, and cutting-edge AI solutions.
@@ -74,7 +74,7 @@ const Footer = () => {
                         <li>
                             <div className="icon-box"><MdEmail /></div>
                             <div className="contact-details">
-                                <span>hybixgroup@gmail.com</span>
+                                <span>hybixgroups@gmail.com</span>
                                 <span className="sub-text">Online Support</span>
                             </div>
                         </li>
@@ -91,7 +91,7 @@ const Footer = () => {
 
             <div className="footer-bottom">
                 <div className="footer-bottom-content">
-                    <p>&copy; 2025 Hybix Group. All Rights Reserved.</p>
+                    <p>&copy; 2025 Hybix Groups. All Rights Reserved.</p>
                     <div className="footer-legal">
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms of Service</a>
