@@ -368,32 +368,49 @@ const Navbar = () => {
 
                     {navItems.map((item) => (
                         <div key={item.id} className="mobile-nav-group">
-                            <div
-                                className={`mobile-nav-header ${activeDropdown === item.id ? 'active' : ''}`}
-                                onClick={() => handleMobileDropdownToggle(item.id)}
-                            >
-                                <span className="mobile-nav-title">{item.title}</span>
-                                <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
-                            </div>
-                            <div
-                                className={`mobile-nav-body ${activeDropdown === item.id ? 'open' : ''}`}
-                            >
-                                <div className="mobile-links-grid">
-                                    {item.type === 'mega' || item.type === 'mega-solutions' ? (
-                                        item.links.map((link, index) => (
-                                            <a key={index} href="#" className="mobile-link-item">
-                                                {link.name}
-                                            </a>
-                                        ))
-                                    ) : (
-                                        item.links.map((link, index) => (
-                                            <a key={index} href="#" className="mobile-link-item">
-                                                {link}
-                                            </a>
-                                        ))
-                                    )}
-                                </div>
-                            </div>
+                            {item.type === 'link' ? (
+                                <Link
+                                    to={item.path}
+                                    className={`mobile-nav-header ${location.pathname === item.path ? 'active' : ''}`}
+                                    onClick={toggleMobileMenu}
+                                >
+                                    <span className="mobile-nav-title">{item.title}</span>
+                                </Link>
+                            ) : (
+                                <>
+                                    <div
+                                        className={`mobile-nav-header ${activeDropdown === item.id ? 'active' : ''}`}
+                                        onClick={() => handleMobileDropdownToggle(item.id)}
+                                    >
+                                        <span className="mobile-nav-title">{item.title}</span>
+                                        <FaChevronDown className={`mobile-chevron ${activeDropdown === item.id ? 'rotate' : ''}`} />
+                                    </div>
+                                    <div
+                                        className={`mobile-nav-body ${activeDropdown === item.id ? 'open' : ''}`}
+                                    >
+                                        <div className="mobile-links-grid">
+                                            {(item.type === 'mega' || item.type === 'mega-solutions') ? (
+                                                item.links?.map((link, index) => (
+                                                    <Link
+                                                        key={index}
+                                                        to={link.path || '#'}
+                                                        className="mobile-link-item"
+                                                        onClick={toggleMobileMenu}
+                                                    >
+                                                        {link.name}
+                                                    </Link>
+                                                ))
+                                            ) : (
+                                                item.links?.map((link, index) => (
+                                                    <a key={index} href="#" className="mobile-link-item">
+                                                        {link}
+                                                    </a>
+                                                ))
+                                            )}
+                                        </div>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>

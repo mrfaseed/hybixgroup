@@ -782,6 +782,7 @@
   padding: 20px 0;
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
 }
 
 .mobile-nav-title {
