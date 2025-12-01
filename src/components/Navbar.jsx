@@ -261,10 +261,10 @@ const Navbar = () => {
                                                         </div>
                                                         <div className="mega-menu-grid">
                                                             {item.links.map((link, index) => (
-                                                                <a key={index} href="#" className="mega-link-item">
+                                                                <Link key={index} to={link.path} className="mega-link-item">
                                                                     <span className="mega-icon">{link.icon}</span>
                                                                     <span className="mega-text">{link.name}</span>
-                                                                </a>
+                                                                </Link>
                                                             ))}
                                                         </div>
                                                     </div>
