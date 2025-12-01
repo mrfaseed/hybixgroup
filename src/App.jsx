@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import CustomerReviews from './components/CustomerReviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import SolutionPage from './components/SolutionPage'
 
 // Home Page Component
-function App() {
+function HomePage() {
   return (
-    <div className="app-container">
-      <Navbar />
+    <>
       {/* Main content placeholder */}
       <div style={{ minHeight: '100vh', padding: '100px 20px 20px', backgroundColor: '#ffffff' }}>
         <h1 style={{ textAlign: 'center', fontFamily: 'Outfit, sans-serif', color: '#1e293b' }}>Welcome to Hybix Group</h1>
