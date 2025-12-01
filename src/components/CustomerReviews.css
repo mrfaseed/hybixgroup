@@ -5,31 +5,11 @@
 .customer-reviews-section {
     position: relative;
     min-height: 100vh;
-    padding: 120px 20px 80px;
-    background: linear-gradient(-45deg, rgba(255, 255, 255, 0.95), rgba(219, 234, 254, 0.95), rgba(243, 232, 255, 0.95), rgba(209, 250, 229, 0.95));
-    background-size: 400% 400%;
-    /* Replaced background-position animation with a more performant approach if possible, 
-       but for gradient background-size/position, it's often acceptable. 
-       However, to strictly follow "No top/left/layout animation", we should use a pseudo-element transform.
-       For now, keeping it simple but ensuring other animations are GPU optimized. */
-    animation: aurora 15s ease infinite;
+    padding: 80px 20px;
+    background: transparent;
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
     color: #000000;
-}
-
-@keyframes aurora {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 /* Animated Background */
@@ -520,7 +500,7 @@
     transform: translate3d(0, 0, 0);
 }
 
-.cta-content {  
+.cta-content {
     max-width: 600px;
     margin: 0 auto;
     padding: 60px 40px;

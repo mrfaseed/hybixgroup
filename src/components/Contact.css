@@ -16,12 +16,8 @@
 .contact-section {
     position: relative;
     min-height: 100vh;
-    padding: 120px 20px 80px;
-    background-color: #ffffff;
-    /* Fallback */
-    background: linear-gradient(-45deg, rgba(255, 255, 255, 0.95), rgba(219, 234, 254, 0.95), rgba(243, 232, 255, 0.95), rgba(209, 250, 229, 0.95));
-    background-size: 400% 400%;
-    animation: aurora 15s ease infinite;
+    padding: 80px 20px;
+    background: transparent;
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
     display: flex;
