@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './SolutionPage.css';
+import logo from '../assets/favicon.png';
+import {
+    SiReact, SiNextdotjs, SiVuedotjs, SiNodedotjs, SiTypescript, SiTailwindcss,
+    SiFlutter, SiSwift, SiKotlin, SiFirebase, SiRedux,
+    SiFigma, SiAdobexd, SiSketch, SiInvision,
+    SiGoogleanalytics, SiSemrush, SiYoast,
+    SiFacebook, SiGoogleads, SiMailchimp, SiHubspot, SiCanva, SiHootsuite,
+    SiGooglecloud, SiTerraform, SiKubernetes, SiDocker,
+    SiShopify, SiWoocommerce, SiMagento, SiStripe, SiPaypal, SiBigcommerce,
+    SiEthereum, SiSolidity, SiIpfs,
+    SiPython, SiTensorflow, SiPytorch, SiScikitlearn, SiOpenai, SiKeras,
+    SiJenkins, SiGitlab, SiAnsible, SiPrometheus,
+    SiKalilinux, SiWireshark
+} from 'react-icons/si';
+import { FaGlobe, FaMobileAlt, FaSearch, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaInfinity, FaShieldAlt, FaBriefcase, FaCode, FaTools, FaDatabase, FaServer } from 'react-icons/fa';
 
 const SolutionPage = () => {
     const { solutionType } = useParams();
@@ -24,7 +39,14 @@ const SolutionPage = () => {
                 { title: 'SEO Friendly', description: 'Built with best practices for maximum visibility.', icon: '🔍' },
                 { title: 'Scalable Architecture', description: 'Future-proof solutions that grow with your business.', icon: '📈' }
             ],
-            technologies: ['React', 'Next.js', 'Vue.js', 'Node.js', 'TypeScript', 'Tailwind CSS'],
+            technologies: [
+                { name: 'React', icon: <SiReact /> },
+                { name: 'Next.js', icon: <SiNextdotjs /> },
+                { name: 'Vue.js', icon: <SiVuedotjs /> },
+                { name: 'Node.js', icon: <SiNodedotjs /> },
+                { name: 'TypeScript', icon: <SiTypescript /> },
+                { name: 'Tailwind CSS', icon: <SiTailwindcss /> }
+            ],
             benefits: ['Increased user engagement', 'Reduced bounce rates', 'Better search rankings', 'Lower maintenance costs', 'Seamless integration']
         },
         'app-development': {
@@ -39,7 +61,14 @@ const SolutionPage = () => {
                 { title: 'Offline Capability', description: 'Apps that work seamlessly without internet.', icon: '📡' },
                 { title: 'Push Notifications', description: 'Keep users engaged with timely updates.', icon: '🔔' }
             ],
-            technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Redux'],
+            technologies: [
+                { name: 'React Native', icon: <SiReact /> },
+                { name: 'Flutter', icon: <SiFlutter /> },
+                { name: 'Swift', icon: <SiSwift /> },
+                { name: 'Kotlin', icon: <SiKotlin /> },
+                { name: 'Firebase', icon: <SiFirebase /> },
+                { name: 'Redux', icon: <SiRedux /> }
+            ],
             benefits: ['Reach millions of users', 'Cost-effective development', 'Faster time to market', 'Consistent experience', 'Easy updates']
         },
         'ui-ux-design': {
@@ -54,7 +83,14 @@ const SolutionPage = () => {
                 { title: 'Prototyping', description: 'Interactive mockups to visualize the final product.', icon: '🖥️' },
                 { title: 'Visual Design', description: 'Creating beautiful interfaces that delight users.', icon: '✨' }
             ],
-            technologies: ['Figma', 'Adobe XD', 'Sketch', 'InVision', 'Zeplin', 'Principle'],
+            technologies: [
+                { name: 'Figma', icon: <SiFigma /> },
+                { name: 'Adobe XD', icon: <SiAdobexd /> },
+                { name: 'Sketch', icon: <SiSketch /> },
+                { name: 'InVision', icon: <SiInvision /> },
+                { name: 'Zeplin', icon: <FaTools /> },
+                { name: 'Principle', icon: <FaTools /> }
+            ],
             benefits: ['Higher conversion rates', 'Increased customer satisfaction', 'Reduced development costs', 'Brand loyalty', 'Competitive advantage']
         },
         'seo-optimization': {
@@ -69,7 +105,14 @@ const SolutionPage = () => {
                 { title: 'Technical SEO', description: 'Improving site speed, mobile-friendliness, and indexing.', icon: '⚙️' },
                 { title: 'Link Building', description: 'Building authority through high-quality backlinks.', icon: '🔗' }
             ],
-            technologies: ['Google Analytics', 'SEMrush', 'Ahrefs', 'Moz', 'Screaming Frog', 'Yoast'],
+            technologies: [
+                { name: 'Google Analytics', icon: <SiGoogleanalytics /> },
+                { name: 'SEMrush', icon: <SiSemrush /> },
+                { name: 'Ahrefs', icon: <FaSearch /> },
+                { name: 'Moz', icon: <FaSearch /> },
+                { name: 'Screaming Frog', icon: <FaSearch /> },
+                { name: 'Yoast', icon: <SiYoast /> }
+            ],
             benefits: ['Increased organic traffic', 'Better brand visibility', 'Higher credibility', 'Long-term results', 'Cost-effective marketing']
         },
         'digital-marketing': {
@@ -84,7 +127,14 @@ const SolutionPage = () => {
                 { title: 'Email Marketing', description: 'Nurturing leads and building customer relationships.', icon: '📧' },
                 { title: 'PPC Advertising', description: 'Driving targeted traffic with paid search campaigns.', icon: '💰' }
             ],
-            technologies: ['Facebook Ads', 'Google Ads', 'Mailchimp', 'HubSpot', 'Canva', 'Hootsuite'],
+            technologies: [
+                { name: 'Facebook Ads', icon: <SiFacebook /> },
+                { name: 'Google Ads', icon: <SiGoogleads /> },
+                { name: 'Mailchimp', icon: <SiMailchimp /> },
+                { name: 'HubSpot', icon: <SiHubspot /> },
+                { name: 'Canva', icon: <SiCanva /> },
+                { name: 'Hootsuite', icon: <SiHootsuite /> }
+            ],
             benefits: ['Measurable results', 'Targeted reach', 'Improved brand awareness', 'Higher ROI', 'Customer loyalty']
         },
         'cloud-solutions': {
@@ -99,7 +149,14 @@ const SolutionPage = () => {
                 { title: 'Disaster Recovery', description: 'Robust backup and recovery solutions.', icon: '🛡️' },
                 { title: 'Cost Optimization', description: 'Optimize cloud spending with smart management.', icon: '💰' }
             ],
-            technologies: ['AWS', 'Azure', 'Google Cloud', 'Terraform', 'Kubernetes', 'Docker'],
+            technologies: [
+                { name: 'AWS', icon: <FaCloud /> },
+                { name: 'Azure', icon: <FaCloud /> },
+                { name: 'Google Cloud', icon: <SiGooglecloud /> },
+                { name: 'Terraform', icon: <SiTerraform /> },
+                { name: 'Kubernetes', icon: <SiKubernetes /> },
+                { name: 'Docker', icon: <SiDocker /> }
+            ],
             benefits: ['Reduced infrastructure costs', 'Improved reliability', 'Global scalability', 'Enhanced security', 'Faster deployment']
         },
         'e-commerce': {
@@ -114,7 +171,14 @@ const SolutionPage = () => {
                 { title: 'Inventory Management', description: 'Efficiently track and manage your stock.', icon: '📦' },
                 { title: 'Mobile Commerce', description: 'Optimized shopping experience for mobile users.', icon: '📱' }
             ],
-            technologies: ['Shopify', 'WooCommerce', 'Magento', 'Stripe', 'PayPal', 'BigCommerce'],
+            technologies: [
+                { name: 'Shopify', icon: <SiShopify /> },
+                { name: 'WooCommerce', icon: <SiWoocommerce /> },
+                { name: 'Magento', icon: <SiMagento /> },
+                { name: 'Stripe', icon: <SiStripe /> },
+                { name: 'PayPal', icon: <SiPaypal /> },
+                { name: 'BigCommerce', icon: <SiBigcommerce /> }
+            ],
             benefits: ['Global reach', '24/7 availability', 'Lower operational costs', 'Personalized shopping', 'Data-driven insights']
         },
         'blockchain': {
@@ -129,7 +193,14 @@ const SolutionPage = () => {
                 { title: 'DeFi Solutions', description: 'Financial services built on blockchain technology.', icon: '💰' },
                 { title: 'NFT Marketplaces', description: 'Platforms for buying, selling, and trading NFTs.', icon: '🖼️' }
             ],
-            technologies: ['Ethereum', 'Solidity', 'Web3.js', 'Hyperledger', 'IPFS', 'Truffle'],
+            technologies: [
+                { name: 'Ethereum', icon: <SiEthereum /> },
+                { name: 'Solidity', icon: <SiSolidity /> },
+                { name: 'Web3.js', icon: <FaCode /> },
+                { name: 'Hyperledger', icon: <FaLink /> },
+                { name: 'IPFS', icon: <SiIpfs /> },
+                { name: 'Truffle', icon: <FaTools /> }
+            ],
             benefits: ['Enhanced security', 'Transparency & trust', 'Reduced intermediaries', 'Immutability', 'Efficiency']
         },
         'ai-ml': {
@@ -144,7 +215,14 @@ const SolutionPage = () => {
                 { title: 'Computer Vision', description: 'Image recognition and visual data processing.', icon: '👁️' },
                 { title: 'Recommendation Engines', description: 'Personalized user experiences.', icon: '🎯' }
             ],
-            technologies: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenAI', 'Keras'],
+            technologies: [
+                { name: 'Python', icon: <SiPython /> },
+                { name: 'TensorFlow', icon: <SiTensorflow /> },
+                { name: 'PyTorch', icon: <SiPytorch /> },
+                { name: 'Scikit-learn', icon: <SiScikitlearn /> },
+                { name: 'OpenAI', icon: <SiOpenai /> },
+                { name: 'Keras', icon: <SiKeras /> }
+            ],
             benefits: ['Automated decision-making', 'Enhanced personalization', 'Improved efficiency', 'Innovation', 'Data insights']
         },
         'devops': {
@@ -159,7 +237,14 @@ const SolutionPage = () => {
                 { title: 'Monitoring & Logging', description: 'Real-time visibility into system performance.', icon: '📊' },
                 { title: 'Containerization', description: 'Efficient application packaging and deployment.', icon: '📦' }
             ],
-            technologies: ['Jenkins', 'GitLab CI', 'Docker', 'Kubernetes', 'Ansible', 'Prometheus'],
+            technologies: [
+                { name: 'Jenkins', icon: <SiJenkins /> },
+                { name: 'GitLab CI', icon: <SiGitlab /> },
+                { name: 'Docker', icon: <SiDocker /> },
+                { name: 'Kubernetes', icon: <SiKubernetes /> },
+                { name: 'Ansible', icon: <SiAnsible /> },
+                { name: 'Prometheus', icon: <SiPrometheus /> }
+            ],
             benefits: ['Faster time to market', 'Higher quality releases', 'Improved collaboration', 'Stable environments', 'Efficiency']
         },
         'cyber-security': {
@@ -174,7 +259,14 @@ const SolutionPage = () => {
                 { title: 'Security Audits', description: 'Comprehensive review of security policies and controls.', icon: '📋' },
                 { title: 'Incident Response', description: 'Rapid reaction to security breaches.', icon: '🚨' }
             ],
-            technologies: ['Kali Linux', 'Metasploit', 'Wireshark', 'Burp Suite', 'Snort', 'Nmap'],
+            technologies: [
+                { name: 'Kali Linux', icon: <SiKalilinux /> },
+                { name: 'Metasploit', icon: <FaShieldAlt /> },
+                { name: 'Wireshark', icon: <SiWireshark /> },
+                { name: 'Burp Suite', icon: <FaTools /> },
+                { name: 'Snort', icon: <FaShieldAlt /> },
+                { name: 'Nmap', icon: <FaSearch /> }
+            ],
             benefits: ['Data protection', 'Regulatory compliance', 'Business continuity', 'Brand reputation', 'Peace of mind']
         },
         'it-consulting': {
@@ -189,7 +281,13 @@ const SolutionPage = () => {
                 { title: 'System Integration', description: 'Connecting disparate systems for seamless flow.', icon: '🔗' },
                 { title: 'Tech Assessment', description: 'Evaluating your current technology stack.', icon: '📊' }
             ],
-            technologies: ['Enterprise Architecture', 'Cloud Strategy', 'Agile Methodology', 'Data Governance', 'Risk Management'],
+            technologies: [
+                { name: 'Enterprise Arch.', icon: <FaBriefcase /> },
+                { name: 'Cloud Strategy', icon: <FaCloud /> },
+                { name: 'Agile', icon: <FaInfinity /> },
+                { name: 'Data Governance', icon: <FaDatabase /> },
+                { name: 'Risk Management', icon: <FaShieldAlt /> }
+            ],
             benefits: ['Strategic alignment', 'Operational efficiency', 'Cost reduction', 'Innovation', 'Risk mitigation']
         }
     };
@@ -199,21 +297,57 @@ const SolutionPage = () => {
     return (
         <div className="solution-page">
             {/* Hero Section */}
-            <section className={`solution-hero ${isVisible ? 'visible' : ''}`} style={{ background: solution.gradient }}>
-                <div className="hero-content">
-                    <div className="hero-icon">{solution.icon}</div>
-                    <h1 className="hero-title">{solution.title}</h1>
-                    <p className="hero-subtitle">{solution.subtitle}</p>
-                    <p className="hero-description">{solution.description}</p>
-                    <div className="hero-cta">
-                        <button className="cta-primary">Get Started</button>
-                        <button className="cta-secondary">Learn More</button>
-                    </div>
+            {/* Hero Section */}
+            <section className={`solution-hero ${isVisible ? 'visible' : ''}`}>
+                <div className="hero-background-shapes">
+                    <div className="shape shape-1"></div>
+                    <div className="shape shape-2"></div>
+                    <div className="shape shape-3"></div>
                 </div>
-                <div className="hero-decoration">
-                    <div className="floating-element element-1"></div>
-                    <div className="floating-element element-2"></div>
-                    <div className="floating-element element-3"></div>
+
+                <div className="hero-container">
+                    <div className="hero-content">
+                        <div className="hero-badge">
+                            <span className="badge-icon">{solution.icon}</span>
+                            <span className="badge-text">Premium Solutions</span>
+                        </div>
+                        <h1 className="hero-title">
+                            {solution.title.split(' ').map((word, i) => (
+                                <span key={i} className="title-word">{word} </span>
+                            ))}
+                        </h1>
+                        <p className="hero-subtitle">{solution.subtitle}</p>
+                        <p className="hero-description">{solution.description}</p>
+                        <div className="hero-cta">
+                            <button className="cta-primary">Get Started</button>
+                            <button className="cta-secondary">Learn More</button>
+                        </div>
+                    </div>
+
+                    <div className="hero-visuals">
+                        <div className="visual-container">
+                            <div className="arc-wrapper">
+                                <div className="rotating-arc arc-1"></div>
+                                <div className="rotating-arc arc-2"></div>
+                                <div className="rotating-arc arc-3"></div>
+                                <div className="logo-container">
+                                    <img src={logo} alt="Hybix Logo" className="hero-logo" />
+                                </div>
+                            </div>
+                            <div className="floating-card card-1">
+                                <span className="card-icon">🚀</span>
+                                <span className="card-text">High Performance</span>
+                            </div>
+                            <div className="floating-card card-2">
+                                <span className="card-icon">🛡️</span>
+                                <span className="card-text">Secure</span>
+                            </div>
+                            <div className="floating-card card-3">
+                                <span className="card-icon">💡</span>
+                                <span className="card-text">Innovative</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -243,7 +377,8 @@ const SolutionPage = () => {
                 <div className="tech-tags">
                     {solution.technologies.map((tech, index) => (
                         <span key={index} className={`tech-tag ${isVisible ? 'visible' : ''}`} style={{ animationDelay: `${index * 0.05}s` }}>
-                            {tech}
+                            <span className="tech-icon">{tech.icon}</span>
+                            <span className="tech-name">{tech.name}</span>
                         </span>
                     ))}
                 </div>
