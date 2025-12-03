@@ -55,6 +55,7 @@ function App() {
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/news-media" element={<NewsMedia />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* Solution Pages Routes */}
         <Route path="/solutions/:solutionType" element={<SolutionPage />} />
