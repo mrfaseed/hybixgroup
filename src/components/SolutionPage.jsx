@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './SolutionPage.css';
-import logo from '../assets/favicon.png';
+
 import {
     SiReact, SiNextdotjs, SiVuedotjs, SiNodedotjs, SiTypescript, SiTailwindcss,
     SiFlutter, SiSwift, SiKotlin, SiFirebase, SiRedux,
@@ -331,7 +331,7 @@ const SolutionPage = () => {
                                 <div className="rotating-arc arc-2"></div>
                                 <div className="rotating-arc arc-3"></div>
                                 <div className="logo-container">
-                                    <img src={logo} alt="Hybix Logo" className="hero-logo" />
+                                    <img src="/favicon1.png" alt="Hybix Logo" className="hero-logo" />
                                 </div>
                             </div>
                             <div className="floating-card card-1">

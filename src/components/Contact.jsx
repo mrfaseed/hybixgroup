@@ -13,7 +13,7 @@ import {
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript } from 'react-icons/si';
 
-import favicon from '../assets/favicon.png';
+
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -121,7 +121,7 @@ const Contact = () => {
                         <div className="image-glow"></div>
                         <img
                             ref={faviconRef}
-                            src={favicon}
+                            src="/favicon1.png"
                             alt="Contact Icon"
                             className="rotating-favicon"
                             loading="lazy"
