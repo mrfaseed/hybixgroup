@@ -16,6 +16,7 @@ import {
     SiKalilinux, SiWireshark
 } from 'react-icons/si';
 import { FaGlobe, FaMobileAlt, FaSearch, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaInfinity, FaShieldAlt, FaBriefcase, FaCode, FaTools, FaDatabase, FaServer } from 'react-icons/fa';
+import favicon from '../assets/favicon.png';
 
 const SolutionPage = () => {
     const { solutionType } = useParams();
@@ -331,7 +332,7 @@ const SolutionPage = () => {
                                 <div className="rotating-arc arc-2"></div>
                                 <div className="rotating-arc arc-3"></div>
                                 <div className="logo-container">
-                                    <img src="/favicon1.png" alt="Hybix Logo" className="hero-logo" />
+                                    <img src={favicon} alt="Hybix Logo" className="hero-logo" />
                                 </div>
                             </div>
                             <div className="floating-card card-1">

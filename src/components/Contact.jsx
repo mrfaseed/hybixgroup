@@ -90,6 +90,7 @@ const Contact = () => {
     }, []);
 
     return (
+
         <section className="contact-section" ref={sectionRef} id="contact">
             {/* Animated Background */}
             <div className="contact-background">
@@ -202,6 +203,7 @@ const Contact = () => {
             </div>
         </section>
     );
+
 };
 
 export default React.memo(Contact);
