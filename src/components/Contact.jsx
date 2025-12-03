@@ -14,8 +14,6 @@ import {
 import { SiJavascript, SiTypescript } from 'react-icons/si';
 
 import favicon from '../assets/favicon.png';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate, useLocation } from 'react-router-dom';
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -170,7 +168,7 @@ const Contact = () => {
                         <div className="image-glow"></div>
                         <img
                             ref={faviconRef}
-                            src={favicon}
+                            src="/favicon1.png"
                             alt="Contact Icon"
                             className="rotating-favicon"
                             loading="lazy"
