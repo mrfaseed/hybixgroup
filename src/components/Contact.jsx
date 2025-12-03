@@ -14,11 +14,60 @@ import {
 import { SiJavascript, SiTypescript } from 'react-icons/si';
 
 import favicon from '../assets/favicon.png';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
     const faviconRef = useRef(null);
+    const { currentUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: location.state?.savedMessage || ''
+    });
+
+    useEffect(() => {
+        if (currentUser) {
+            setFormData(prev => ({
+                ...prev,
+                name: currentUser.displayName || '',
+                email: currentUser.email || ''
+            }));
+        }
+    }, [currentUser]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!currentUser) {
+            // Redirect to login and save current location to return back
+            const fromLocation = {
+                pathname: location.pathname,
+                search: location.search,
+                hash: '#contact',
+                state: { savedMessage: formData.message }
+            };
+            navigate('/login', { state: { from: fromLocation } });
+            return;
+        }
+        // Handle form submission here (e.g., send data to backend)
+        console.log("Form submitted:", formData);
+        alert("Message sent successfully!");
+        setFormData(prev => ({ ...prev, message: '' })); // Clear message only
+    };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -130,25 +179,53 @@ const Contact = () => {
 
                     {/* Right Side - Contact Form */}
                     <div className={`contact-form-container ${isVisible ? 'animate-right' : ''}`}>
-                        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+                        <form className="contact-form" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label>Your Name</label>
-                                <input type="text" placeholder="John Doe" />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="John Doe"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    disabled={!!currentUser}
+                                    style={currentUser ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Your Email</label>
-                                <input type="email" placeholder="john@example.com" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="john@example.com"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    disabled={!!currentUser}
+                                    style={currentUser ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Your Phone</label>
-                                <input type="tel" placeholder="+1 234 567 8900" />
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="+1 234 567 8900"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Your Message</label>
-                                <textarea placeholder="Tell us about your project..."></textarea>
+                                <textarea
+                                    name="message"
+                                    placeholder="Tell us about your project..."
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
                             </div>
 
                             <button type="submit" className="submit-btn">

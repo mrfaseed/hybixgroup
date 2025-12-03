@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt, FaCode, FaMobileAlt, FaPaintBrush, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaServer, FaShieldAlt, FaUserTie, FaBuilding, FaChartLine, FaLightbulb, FaRobot, FaChevronRight, FaCheckCircle, FaInfoCircle, FaBriefcase, FaBlog, FaFileAlt, FaBook, FaUsers, FaHeadset } from 'react-icons/fa';
 import { BiSearchAlt } from 'react-icons/bi';
+import { useAuth } from '../context/AuthContext';
 
 const navItems = [
     {
@@ -148,6 +149,10 @@ const Navbar = () => {
     const navRef = useRef(null);
     const mobileMenuRef = useRef(null);
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const { currentUser, logout } = useAuth();
+    const [showProfileMenu, setShowProfileMenu] = useState(false);
 
     // Handle scroll effect
     useEffect(() => {
@@ -169,6 +174,7 @@ const Navbar = () => {
             if (navRef.current && !navRef.current.contains(event.target)) {
                 setActiveDropdown(null);
                 setIsSearchOpen(false);
+                setShowProfileMenu(false);
             }
         };
 
@@ -187,6 +193,7 @@ const Navbar = () => {
         setIsMobileMenuOpen(prev => !prev);
         setActiveDropdown(null);
         setIsSearchOpen(false);
+        setShowProfileMenu(false);
     }, []);
 
     // Desktop Hover Handlers
@@ -202,8 +209,6 @@ const Navbar = () => {
         }
     }, []);
 
-
-
     // Mobile Click Handler
     const handleMobileDropdownToggle = React.useCallback((id) => {
         setActiveDropdown(prev => (prev === id ? null : id));
@@ -217,6 +222,20 @@ const Navbar = () => {
             document.body.style.overflow = 'unset';
         }
     }, [isMobileMenuOpen]);
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            setShowProfileMenu(false);
+            navigate('/');
+        } catch (error) {
+            console.error("Failed to log out", error);
+        }
+    };
+
+    const getUserInitials = (name) => {
+        return name ? name.charAt(0).toUpperCase() : 'U';
+    };
 
     return (
         <>
@@ -328,9 +347,9 @@ const Navbar = () => {
                     </div>
 
                     {/* Actions */}
-                    < div className="navbar-actions" >
+                    <div className="navbar-actions">
                         {/* Search Bar */}
-                        < div className={`search-wrapper ${isSearchOpen ? 'active' : ''}`}>
+                        <div className={`search-wrapper ${isSearchOpen ? 'active' : ''}`}>
                             <div className="search-icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>
                                 <FaSearch />
                             </div>
@@ -344,13 +363,75 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Login Button */}
-                        <button
-                            className="btn-login-desktop"
-                            onClick={() => window.open('/login', 'Login', 'width=1000,height=700,scrollbars=yes,resizable=yes')}
-                        >
-                            Login
-                        </button>
+                        {/* Login Button / User Profile */}
+                        {currentUser ? (
+                            <div className="user-profile-container" style={{ position: 'relative' }}>
+                                <div
+                                    className="user-avatar"
+                                    onClick={() => setShowProfileMenu(!showProfileMenu)}
+                                    style={{
+                                        width: '40px',
+                                        height: '40px',
+                                        borderRadius: '50%',
+                                        backgroundColor: '#333',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        cursor: 'pointer',
+                                        overflow: 'hidden',
+                                        border: '2px solid var(--primary-color)'
+                                    }}
+                                >
+                                    {currentUser.photoURL ? (
+                                        <img src={currentUser.photoURL} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    ) : (
+                                        <span style={{ color: '#fff', fontWeight: 'bold' }}>{getUserInitials(currentUser.displayName || currentUser.email)}</span>
+                                    )}
+                                </div>
+                                {showProfileMenu && (
+                                    <div className="profile-dropdown" style={{
+                                        position: 'absolute',
+                                        top: '50px',
+                                        right: '0',
+                                        backgroundColor: '#fff',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                                        borderRadius: '8px',
+                                        padding: '10px',
+                                        zIndex: 1000,
+                                        minWidth: '150px'
+                                    }}>
+                                        <div style={{ padding: '5px 10px', borderBottom: '1px solid #eee', marginBottom: '5px' }}>
+                                            <p style={{ margin: 0, fontWeight: 'bold', fontSize: '0.9rem' }}>{currentUser.displayName || 'User'}</p>
+                                            <p style={{ margin: 0, fontSize: '0.8rem', color: '#666' }}>{currentUser.email}</p>
+                                        </div>
+                                        <button
+                                            onClick={handleLogout}
+                                            style={{
+                                                width: '100%',
+                                                padding: '8px',
+                                                border: 'none',
+                                                background: 'transparent',
+                                                textAlign: 'left',
+                                                cursor: 'pointer',
+                                                color: '#d9534f',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '8px'
+                                            }}
+                                        >
+                                            Sign Out
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <button
+                                className="btn-login-desktop"
+                                onClick={() => navigate('/login')}
+                            >
+                                Login
+                            </button>
+                        )}
 
                         {/* Mobile Menu Toggle */}
                         <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
@@ -358,11 +439,10 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-            </nav >
+            </nav>
 
             {/* Mobile Menu Overlay */}
-            < div ref={mobileMenuRef} className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`
-            }>
+            <div ref={mobileMenuRef} className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
                 <div className="mobile-menu-content">
                     {/* Mobile Search & Contact */}
                     <div className="mobile-top-actions">
@@ -376,16 +456,64 @@ const Navbar = () => {
                         <a href="/contact" className="mobile-contact-btn">
                             <FaPhoneAlt />
                         </a>
-                        <button
-                            className="mobile-login-btn"
-                            onClick={() => {
-                                toggleMobileMenu();
-                                window.open('/login', 'Login', 'width=1000,height=700,scrollbars=yes,resizable=yes');
-                            }}
-                        >
-                            <FaUserTie />
-                        </button>
+
+                        {currentUser ? (
+                            <div
+                                className="mobile-user-profile"
+                                onClick={() => setShowProfileMenu(!showProfileMenu)}
+                                style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
+                            >
+                                <div style={{
+                                    width: '35px',
+                                    height: '35px',
+                                    borderRadius: '50%',
+                                    backgroundColor: '#333',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    overflow: 'hidden',
+                                    border: '1px solid var(--primary-color)'
+                                }}>
+                                    {currentUser.photoURL ? (
+                                        <img src={currentUser.photoURL} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    ) : (
+                                        <span style={{ color: '#fff', fontWeight: 'bold', fontSize: '0.8rem' }}>{getUserInitials(currentUser.displayName || currentUser.email)}</span>
+                                    )}
+                                </div>
+                            </div>
+                        ) : (
+                            <button
+                                className="mobile-login-btn"
+                                onClick={() => {
+                                    toggleMobileMenu();
+                                    navigate('/login');
+                                }}
+                            >
+                                <FaUserTie />
+                            </button>
+                        )}
                     </div>
+
+                    {currentUser && showProfileMenu && (
+                        <div className="mobile-profile-menu" style={{ padding: '15px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                            <p style={{ margin: 0, fontWeight: 'bold', color: '#fff' }}>{currentUser.displayName || 'User'}</p>
+                            <p style={{ margin: '0 0 10px 0', fontSize: '0.8rem', color: '#aaa' }}>{currentUser.email}</p>
+                            <button
+                                onClick={handleLogout}
+                                style={{
+                                    padding: '8px 15px',
+                                    border: '1px solid #d9534f',
+                                    background: 'transparent',
+                                    color: '#d9534f',
+                                    borderRadius: '4px',
+                                    cursor: 'pointer',
+                                    fontSize: '0.9rem'
+                                }}
+                            >
+                                Sign Out
+                            </button>
+                        </div>
+                    )}
 
                     {navItems.map((item) => (
                         <div key={item.id} className="mobile-nav-group">
@@ -435,7 +563,7 @@ const Navbar = () => {
                         </div>
                     ))}
                 </div>
-            </div >
+            </div>
         </>
     );
 };
