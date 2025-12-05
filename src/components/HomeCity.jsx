@@ -6,13 +6,9 @@ import { FaArrowRight, FaInfoCircle } from 'react-icons/fa';
 export default function HomeCity() {
     return (
         <section className="hero-section">
-            {/* X-Shaped Glow Background */}
             <div className="hero-background">
-                <div className="intro-flash"></div>
-                <div className="x-glow-container">
-                    <div className="x-bar bar-1"></div>
-                    <div className="x-bar bar-2"></div>
-                </div>
+                <div className="intro-flash-overlay"></div>
+                <img src="/fav-logo.svg" alt="" className="static-bg-light" />
             </div>
 
             {/* Content Area */}
