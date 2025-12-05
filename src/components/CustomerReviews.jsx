@@ -187,13 +187,9 @@ const CustomerReviews = () => {
     return (
         <section id="customerreview" className="customer-reviews-section">
             {/* Animated Background */}
+            {/* Animated Background - Removed Aurora Effect */}
             <div className="reviews-background">
-                <div className="gradient-orb orb-1"></div>
-                <div className="gradient-orb orb-2"></div>
-                <div className="gradient-orb orb-3"></div>
-                <div className="floating-particles">
-                    {particles}
-                </div>
+                {/* Pure white background now */}
             </div>
 
             {/* Header Section */}
@@ -226,29 +222,17 @@ const CustomerReviews = () => {
                 </div>
             </div>
 
-            {/* Reviews Marquee with Manual Scroll */}
-            <div
-                className="reviews-marquee-container"
-                ref={marqueeContainerRef}
-                onMouseDown={handleMouseDown}
-                onMouseLeave={handleMouseLeave}
-                onMouseUp={handleMouseUp}
-                onMouseMove={handleMouseMove}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-            >
-                <div className="reviews-marquee">
-                    {['set1', 'set2', 'set3', 'set4'].map((setKey) => (
-                        reviews.map(review => (
-                            <ReviewCard
-                                key={`${setKey}-${review.id}`}
-                                review={review}
-                                isVisible={isVisible}
-                                isActive={activeCard === review.id}
-                                onToggle={() => handleCardToggle(review.id)}
-                            />
-                        ))
+            {/* Reviews Grid */}
+            <div className="reviews-grid-container">
+                <div className="reviews-grid">
+                    {reviews.map(review => (
+                        <ReviewCard
+                            key={review.id}
+                            review={review}
+                            isVisible={isVisible}
+                            isActive={activeCard === review.id}
+                            onToggle={() => handleCardToggle(review.id)}
+                        />
                     ))}
                 </div>
             </div>

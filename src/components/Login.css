@@ -1,6 +1,7 @@
-body{
+body {
     overflow: hidden;
 }
+
 .login-wrapper {
     overflow: hidden;
     min-height: 100vh;
@@ -8,8 +9,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #020617;
-    /* Deep Slate/Black */
+    background-color: #ffffff;
+    /* White Background */
     position: relative;
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
@@ -36,8 +37,8 @@ body{
     width: 100%;
     height: 100%;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
     opacity: 0.5;
 }
@@ -106,13 +107,13 @@ body{
     width: 100%;
     max-width: 75%;
     max-height: 93vh;
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
     animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -131,7 +132,7 @@ body{
 /* Left Side - Visual */
 .auth-visual {
     flex: 0.4;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.9), rgba(226, 232, 240, 0.9));
     position: relative;
     display: flex;
     flex-direction: column;
@@ -139,7 +140,7 @@ body{
     align-items: center;
     /* Center content horizontally */
     padding: 30px;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
     /* Border between sections */
     overflow: hidden;
 }
@@ -151,7 +152,7 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 60%);
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.4), transparent 60%);
 }
 
 .visual-content {
@@ -168,18 +169,18 @@ body{
 .visual-content h2 {
     font-size: 3rem;
     font-weight: 800;
-    color: #ffffff;
+    color: #0f172a;
     margin: 0;
     line-height: 1;
 }
 
 .visual-content h2 span {
-    color: #3b82f6;
+    color: #2563eb;
 }
 
 .visual-content p {
     font-size: 1.1rem;
-    color: #94a3b8;
+    color: #475569;
     line-height: 1.6;
     max-width: 400px;
     margin: 0;
@@ -201,7 +202,7 @@ body{
     flex-direction: column;
     justify-content: center;
     /* Vertically center form */
-    background: rgba(15, 23, 42, 0.4);
+    background: rgba(255, 255, 255, 0.4);
 }
 
 /* =========================================
@@ -216,11 +217,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    color: #94a3b8;
+    color: #64748b;
     font-size: 1.2rem;
     z-index: 100;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -234,13 +235,13 @@ body{
 
 
 .home-icon-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+    border-color: rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(15, 23, 42, 0.4);
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .form-header {
@@ -250,12 +251,12 @@ body{
 .form-header h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #0f172a;
     margin-bottom: 8px;
 }
 
 .sub-text {
-    color: #64748b;
+    color: #475569;
     font-size: 0.95rem;
 }
 
@@ -275,7 +276,7 @@ body{
 .input-group label {
     font-size: 0.9rem;
     font-weight: 500;
-    color: #cbd5e1;
+    color: #334155;
     margin-left: 4px;
 }
 
@@ -297,10 +298,10 @@ body{
 .input-wrapper input {
     width: 100%;
     padding: 12px 16px 12px 44px;
-    background: rgba(2, 6, 23, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    color: #ffffff;
+    color: #0f172a;
     font-size: 0.95rem;
     font-family: 'Outfit', sans-serif;
     outline: none;
@@ -308,7 +309,7 @@ body{
 }
 
 .input-wrapper input:focus {
-    background: rgba(2, 6, 23, 0.8);
+    background: #ffffff;
     border-color: #3b82f6;
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
@@ -329,7 +330,7 @@ body{
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #94a3b8;
+    color: #475569;
     cursor: pointer;
     user-select: none;
 }
@@ -426,7 +427,7 @@ body{
 .divider::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .divider span {
@@ -446,10 +447,10 @@ body{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    color: #ffffff;
+    color: #334155;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
@@ -457,9 +458,9 @@ body{
 }
 
 .social-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: #f1f5f9;
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 .social-btn.google:hover {
@@ -475,7 +476,7 @@ body{
 }
 
 .auth-footer p {
-    color: #94a3b8;
+    color: #475569;
     font-size: 0.95rem;
 }
 

@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --hero-bg-dark: #000000;
-    /* Pitch Black */
+    --hero-bg-dark: #ffffff;
+    /* Pure White */
     --hero-accent: #3b82f6;
-    --hero-text: #ffffff;
+    --hero-text: #000000;
 }
 
 .hero-section {
@@ -156,15 +156,15 @@
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    color: #000000;
+    border: 2px solid #000000;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
     transform: translateY(-4px);
 }
 
