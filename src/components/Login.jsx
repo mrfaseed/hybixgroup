@@ -310,7 +310,7 @@ const Login = () => {
                                             <input type="checkbox" />
                                             <span>Remember me</span>
                                         </label>
-                                        <button type="button" className="forgot-link" onClick={() => { setIsResetPassword(true); setError(''); setSuccessMessage(''); }}>Forgot password?</button>
+                                        <span className="forgot-link" onClick={() => { setIsResetPassword(true); setError(''); setSuccessMessage(''); }}>Forgot password?</span>
                                     </div>
 
                                     <button type="submit" className="primary-btn" disabled={loading}>

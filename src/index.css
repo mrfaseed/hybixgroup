@@ -3,8 +3,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   user-select: none;
-  background: linear-gradient(to bottom, #ffffff, #eef2ff);
-  background-attachment: fixed;
+  background-color: #020617;
+  color: #ffffff;
 }
 
 h1 {

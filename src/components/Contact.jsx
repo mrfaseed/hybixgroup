@@ -14,13 +14,12 @@ import {
     FaMicrochip
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript } from 'react-icons/si';
-
-
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import contactAnimation from '../assets/contact-page-left.lottie';
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
-    const faviconRef = useRef(null);
     const { currentUser } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -83,51 +82,15 @@ const Contact = () => {
             observer.observe(sectionRef.current);
         }
 
-        let ctx;
-
-        // Dynamic import for GSAP
-        const initAnimation = async () => {
-            try {
-                const gsapModule = await import('gsap');
-                const ScrollTriggerModule = await import('gsap/ScrollTrigger');
-                const gsap = gsapModule.default || gsapModule;
-                const ScrollTrigger = ScrollTriggerModule.ScrollTrigger || ScrollTriggerModule.default;
-
-                gsap.registerPlugin(ScrollTrigger);
-
-                ctx = gsap.context(() => {
-                    gsap.fromTo(faviconRef.current,
-                        { rotation: -180 },
-                        {
-                            rotation: 180,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: sectionRef.current,
-                                start: "top bottom",
-                                end: "bottom top",
-                                scrub: 1,
-                            }
-                        }
-                    );
-                }, sectionRef);
-            } catch (error) {
-                console.error("Failed to load GSAP:", error);
-            }
-        };
-
-        if (sectionRef.current) {
-            initAnimation();
-        }
-
         return () => {
             if (sectionRef.current) {
                 observer.unobserve(sectionRef.current);
             }
-            if (ctx) ctx.revert();
         };
     }, []);
 
     return (
+
         <section className="contact-section" ref={sectionRef} id="contact">
             {/* Animated Background */}
             <div className="contact-background">
@@ -165,16 +128,17 @@ const Contact = () => {
                 </div>
 
                 <div className="contact-content">
-                    {/* Left Side - Favicon with Rotation */}
+                    {/* Left Side - Lottie Animation */}
                     <div className={`contact-image-wrapper ${isVisible ? 'animate-left' : ''}`}>
                         <div className="image-glow"></div>
-                        <img
-                            ref={faviconRef}
-                            src="/favicon1.png"
-                            alt="Contact Icon"
-                            className="rotating-favicon"
-                            loading="lazy"
-                        />
+                        <div className="lottie-container" style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <DotLottieReact
+                                src={contactAnimation}
+                                loop
+                                autoplay
+                                style={{ width: '100%', height: '100%', maxWidth: '600px' }}
+                            />
+                        </div>
                     </div>
 
                     {/* Right Side - Contact Form */}
@@ -239,6 +203,7 @@ const Contact = () => {
             </div>
         </section>
     );
+
 };
 
 export default React.memo(Contact);

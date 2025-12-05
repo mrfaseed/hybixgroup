@@ -450,70 +450,7 @@ const Navbar = () => {
                             <FaSearch className="mobile-search-icon" />
                             <input type="text" placeholder="Search..." className="mobile-search-input" />
                         </div>
-                        <a href="/contact" className="mobile-contact-btn">
-                            <FaPhoneAlt />
-                        </a>
-                        <a href="/contact" className="mobile-contact-btn">
-                            <FaPhoneAlt />
-                        </a>
-
-                        {currentUser ? (
-                            <div
-                                className="mobile-user-profile"
-                                onClick={() => setShowProfileMenu(!showProfileMenu)}
-                                style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
-                            >
-                                <div style={{
-                                    width: '35px',
-                                    height: '35px',
-                                    borderRadius: '50%',
-                                    backgroundColor: '#333',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    overflow: 'hidden',
-                                    border: '1px solid var(--primary-color)'
-                                }}>
-                                    {currentUser.photoURL ? (
-                                        <img src={currentUser.photoURL} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                    ) : (
-                                        <span style={{ color: '#fff', fontWeight: 'bold', fontSize: '0.8rem' }}>{getUserInitials(currentUser.displayName || currentUser.email)}</span>
-                                    )}
-                                </div>
-                            </div>
-                        ) : (
-                            <button
-                                className="mobile-login-btn"
-                                onClick={() => {
-                                    toggleMobileMenu();
-                                    navigate('/login');
-                                }}
-                            >
-                                <FaUserTie />
-                            </button>
-                        )}
                     </div>
-
-                    {currentUser && showProfileMenu && (
-                        <div className="mobile-profile-menu" style={{ padding: '15px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                            <p style={{ margin: 0, fontWeight: 'bold', color: '#fff' }}>{currentUser.displayName || 'User'}</p>
-                            <p style={{ margin: '0 0 10px 0', fontSize: '0.8rem', color: '#aaa' }}>{currentUser.email}</p>
-                            <button
-                                onClick={handleLogout}
-                                style={{
-                                    padding: '8px 15px',
-                                    border: '1px solid #d9534f',
-                                    background: 'transparent',
-                                    color: '#d9534f',
-                                    borderRadius: '4px',
-                                    cursor: 'pointer',
-                                    fontSize: '0.9rem'
-                                }}
-                            >
-                                Sign Out
-                            </button>
-                        </div>
-                    )}
 
                     {navItems.map((item) => (
                         <div key={item.id} className="mobile-nav-group">
@@ -562,6 +499,21 @@ const Navbar = () => {
                             )}
                         </div>
                     ))}
+
+                    {/* Mobile Login Button (Only visible on mobile) */}
+                    {!currentUser && (
+                        <div className="mobile-cta-container">
+                            <button
+                                className="mobile-login-full-btn"
+                                onClick={() => {
+                                    toggleMobileMenu();
+                                    navigate('/login');
+                                }}
+                            >
+                                Login
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </>

@@ -911,7 +911,29 @@
 
 
 @media (max-width: 1024px) {
-    .btn-login-desktop {
-        display: none;
-    }
+  .btn-login-desktop {
+    display: none;
+  }
+}
+
+/* Mobile Full Width Login Button */
+.mobile-login-full-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--nav-accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.mobile-login-full-btn:hover {
+  background: var(--nav-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
 }
