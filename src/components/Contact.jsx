@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Contact.css';
 import {
     FaPaperPlane,
@@ -13,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript } from 'react-icons/si';
 
-import favicon from '../assets/favicon.png';
+
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);
