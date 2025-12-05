@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript } from 'react-icons/si';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import contactAnimation from '../assets/contact-page-left.lottie';
+import contactAnimation from '../assets/contact.lottie';
 
 const Contact = () => {
     const [isVisible, setIsVisible] = useState(false);

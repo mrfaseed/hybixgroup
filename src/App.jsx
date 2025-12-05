@@ -15,6 +15,7 @@ import NewsMedia from './components/NewsMedia'
 
 
 import HomeCity from './components/HomeCity'
+import ScrollToTop from './components/ScrollToTop'
 
 // Home Page Component
 function HomePage() {
@@ -45,6 +46,7 @@ function App() {
   return (
     <div className="app-container">
       {!isLoginPage && <Navbar />}
+      <ScrollToTop />
 
       <Routes>
         {/* Home Route */}

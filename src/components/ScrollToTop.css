@@ -1,0 +1,81 @@
+.scroll-to-top-container {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(20px);
+    border-radius: 50%;
+    /* Ensure it's above other elements */
+}
+
+.scroll-to-top-container.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-ring__circle-track {
+    transition: stroke-dashoffset 0.35s;
+    transform-origin: 50% 50%;
+    /* Optional: Add a shadow or background color if needed */
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.1s;
+    /* Smoother update for scroll */
+    transform-origin: 50% 50%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.arrow-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* Let clicks pass through to container */
+}
+
+/* Hover effect */
+.scroll-to-top-container:hover {
+    transform: translateY(-5px);
+}
+
+.scroll-to-top-container:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .scroll-to-top-container {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .arrow-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
