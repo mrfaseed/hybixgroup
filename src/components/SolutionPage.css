@@ -294,10 +294,6 @@
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 40px;
-    /* Slight offset */
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .hero-badge {
@@ -336,13 +332,11 @@
 }
 
 .title-word {
-    display: inline-block;
-    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    /* Standard property */
     -webkit-text-fill-color: transparent;
-    padding-right: 12px;
 }
 
 .hero-subtitle {
@@ -889,7 +883,7 @@
     justify-content: center;
 }
 
-.cta-buttons .btn-secondary{
+.cta-buttons .btn-secondary {
     color: #fff;
     border-color: #fff;
 }

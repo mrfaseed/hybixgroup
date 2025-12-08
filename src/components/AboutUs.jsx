@@ -34,34 +34,14 @@ const AboutUs = () => {
     };
 
     const StatItem = ({ stat }) => {
-        const [isHovered, setIsHovered] = useState(false);
-        // Clean numeric value for counting
         const numValue = parseInt(stat.value.replace(/\D/g, ''));
         const suffix = stat.value.replace(/[0-9]/g, '');
 
-        const count = useCountUp(numValue, 1500, isHovered || statsVisible); // Auto-start on visible, restart on hover? 
-        // User asked for "hover number animations". Let's make it trigger on hover.
-        // Actually, usually these auto-play on scroll. I'll make them play on scroll, AND re-play on hover.
-
         return (
-            <div
-                className={`stat-item ${statsVisible ? 'visible' : ''}`}
-                onMouseEnter={() => setIsHovered(false)} // Reset to 0 briefly
-                onMouseLeave={() => setIsHovered(false)}
-                onMouseOver={() => setIsHovered(true)} // Trigger count
-            >
+            <div className={`stat-item ${statsVisible ? 'visible' : ''}`}>
                 <div className="stat-icon">{stat.icon}</div>
                 <h3 className="stat-number">
-                    {/* If hovering, use dynamic count. If just visible but not hovered, stick to static or initial count? 
-                       Let's make a dedicated hover-counter. 
-                    */}
-                    <div
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                        style={{ display: 'inline-block' }}
-                    >
-                        <Counter end={numValue} suffix={suffix} />
-                    </div>
+                    <Counter end={numValue} suffix={suffix} trigger={statsVisible} />
                 </h3>
                 <p className="stat-label">{stat.label}</p>
             </div>
@@ -69,14 +49,14 @@ const AboutUs = () => {
     };
 
     // Simple Re-usable Counter Component
-    const Counter = ({ end, suffix }) => {
+    const Counter = ({ end, suffix, trigger }) => {
         const [count, setCount] = useState(0);
-        const [isHovering, setIsHovering] = useState(false);
-        const elementRef = useRef(null);
+        const hasAnimated = useRef(false);
 
-        // Initial Count Up on Mount/Scroll
         useEffect(() => {
-            let start = 0;
+            if (!trigger || hasAnimated.current) return;
+
+            hasAnimated.current = true;
             const duration = 2000;
             const startTime = performance.now();
 
@@ -90,33 +70,15 @@ const AboutUs = () => {
 
                 if (progress < 1) {
                     requestAnimationFrame(animate);
+                } else {
+                    setCount(end);
                 }
             };
             requestAnimationFrame(animate);
-        }, [end]);
-
-        // Re-run on hover
-        const handleHover = () => {
-            let start = 0;
-            const duration = 1000; // Faster on hover
-            const startTime = performance.now();
-
-            const animate = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const ease = 1 - Math.pow(1 - progress, 4);
-
-                setCount(Math.floor(ease * end));
-
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                }
-            };
-            requestAnimationFrame(animate);
-        }
+        }, [trigger, end]);
 
         return (
-            <span onMouseEnter={handleHover} style={{ cursor: 'pointer', display: 'inline-block', minWidth: '100px' }}>
+            <span style={{ display: 'inline-block', minWidth: '100px' }}>
                 {count}{suffix}
             </span>
         );
@@ -160,7 +122,7 @@ const AboutUs = () => {
     const stats = [
         { label: 'Years Experience', value: '2+', icon: <FaCogs /> },
         { label: 'Projects Completed', value: '15+', icon: <FaRocket /> },
-      
+
         { label: 'Global Partners', value: '5+', icon: <FaGlobe /> },
     ];
 

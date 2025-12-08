@@ -111,22 +111,24 @@ const Masonry = ({
         preloadImages(items.map(i => i.img)).then(() => setImagesReady(true));
     }, [items]);
 
-    const grid = useMemo(() => {
-        if (!width) return [];
+    const { gridItems, containerHeight } = useMemo(() => {
+        if (!width) return { gridItems: [], containerHeight: 0 };
 
         const colHeights = new Array(columns).fill(0);
         const columnWidth = width / columns;
 
-        return items.map(child => {
+        const itemsWithPos = items.map(child => {
             const col = colHeights.indexOf(Math.min(...colHeights));
             const x = columnWidth * col;
-            const height = child.height / 2; // Scaling height for display or just arbitrary? User code had /2
+            const height = child.height / 2;
             const y = colHeights[col];
 
             colHeights[col] += height;
 
             return { ...child, x, y, w: columnWidth, h: height };
         });
+
+        return { gridItems: itemsWithPos, containerHeight: Math.max(...colHeights) };
     }, [columns, items, width]);
 
     const hasMounted = useRef(false);
@@ -134,7 +136,7 @@ const Masonry = ({
     useLayoutEffect(() => {
         if (!imagesReady) return;
 
-        grid.forEach((item, index) => {
+        gridItems.forEach((item, index) => {
             const selector = `[data-key="${item.id}"]`;
             const animationProps = {
                 x: item.x,
@@ -174,7 +176,7 @@ const Masonry = ({
 
         hasMounted.current = true;
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+    }, [gridItems, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
 
     const handleMouseEnter = (e, item) => {
         const element = e.currentTarget;
@@ -225,8 +227,8 @@ const Masonry = ({
     };
 
     return (
-        <div ref={containerRef} className="list">
-            {grid.map(item => {
+        <div ref={containerRef} className="list" style={{ height: containerHeight }}>
+            {gridItems.map(item => {
                 return (
                     <div
                         key={item.id}

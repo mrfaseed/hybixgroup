@@ -1,10 +1,9 @@
 .our-works-page {
-    padding-top: 100px;
+    padding-top: 150px;
     /* Space for fixed navbar */
-    min-height: 100vh;
-    background-color: var(--bg-color);
+    min-height: 50vh;
+    background-color: #ffffff;
     /* Assuming variable exists or default to light */
-    background: linear-gradient(to bottom right, #f8f9fa, #eef2f6);
 }
 
 .works-header {
@@ -14,22 +13,27 @@
 }
 
 .works-header h1 {
-    font-size: 3.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 7rem;
     font-weight: 800;
-    color: var(--text-main, #333);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
 }
 
 .works-header .highlight {
-    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--secondary-color, #7c3aed));
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .works-header p {
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
-    color: var(--text-secondary, #666);
+    color: #000;
     max-width: 600px;
     margin: 0 auto;
 }

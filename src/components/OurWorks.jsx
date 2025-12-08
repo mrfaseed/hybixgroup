@@ -57,7 +57,7 @@ const OurWorks = () => {
     return (
         <div className="our-works-page">
             <div className="works-header">
-                <h1>Our <span className="highlight">Masterpieces</span></h1>
+                <h1>Our <span className="highlight">Works</span></h1>
                 <p>Exploring the intersection of creativity and technology.</p>
             </div>
 
