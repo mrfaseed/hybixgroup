@@ -107,7 +107,7 @@ body {
     width: 100%;
     max-width: 75%;
     max-height: 93vh;
-    background: rgba(255, 255, 255, 0.7);
+    background: linear-gradient(135deg, #437dc3, #0a0c86);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -132,7 +132,7 @@ body {
 /* Left Side - Visual */
 .auth-visual {
     flex: 0.4;
-    background: linear-gradient(135deg, rgba(241, 245, 249, 0.9), rgba(226, 232, 240, 0.9));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(197, 192, 234, 0.9));
     position: relative;
     display: flex;
     flex-direction: column;
@@ -180,7 +180,7 @@ body {
 
 .visual-content p {
     font-size: 1.1rem;
-    color: #475569;
+    color: #000000;
     line-height: 1.6;
     max-width: 400px;
     margin: 0;
@@ -201,8 +201,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #ffffff;
     /* Vertically center form */
-    background: rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
 }
 
 /* =========================================
@@ -221,7 +222,7 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    color: #64748b;
+    color: #7293c1;
     font-size: 1.2rem;
     z-index: 100;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -241,7 +242,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(79, 108, 222, 0.4);
 }
 
 .form-header {
@@ -251,12 +252,12 @@ body {
 .form-header h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #ffffff;
     margin-bottom: 8px;
 }
 
 .sub-text {
-    color: #475569;
+    color: #ffffff;
     font-size: 0.95rem;
 }
 
@@ -276,7 +277,7 @@ body {
 .input-group label {
     font-size: 0.9rem;
     font-weight: 500;
-    color: #334155;
+    color: #ffffff;
     margin-left: 4px;
 }
 
@@ -330,13 +331,13 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #475569;
+    color: #ffffff;
     cursor: pointer;
     user-select: none;
 }
 
 .remember-me input {
-    accent-color: #3b82f6;
+    accent-color: #aec5e9;
     width: 16px;
     height: 16px;
 }
@@ -419,7 +420,7 @@ body {
     align-items: center;
     text-align: center;
     margin: 20px 0;
-    color: #64748b;
+    color: #ffffff;
     font-size: 0.85rem;
 }
 
@@ -476,7 +477,7 @@ body {
 }
 
 .auth-footer p {
-    color: #475569;
+    color: #ffffff;
     font-size: 0.95rem;
 }
 
