@@ -1,15 +1,24 @@
 .careers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem 0;
+}
+
+.page-content .page-title{
+    font-size: 4rem;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .job-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 80%;
 }
 
 .job-header {
@@ -51,12 +60,13 @@
 .job-desc {
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    font-weight: 580;
     line-height: 1.6;
     flex-grow: 1;
 }
 
 .apply-btn {
-    background: linear-gradient(135deg, var(--orb-blue-start), var(--orb-blue-end));
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;

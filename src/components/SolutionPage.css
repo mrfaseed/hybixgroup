@@ -337,7 +337,7 @@
 
 .title-word {
     display: inline-block;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
     -webkit-background-clip: text;
     background-clip: text;
     /* Standard property */
@@ -368,7 +368,7 @@
 
 .cta-primary {
     padding: 18px 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -398,8 +398,9 @@
 }
 
 .cta-secondary:hover {
-    background: #f8fafc;
-    border-color: #cbd5e1;
+    background: #909193;
+    border-color: #ffffff;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -676,14 +677,17 @@
 
 .section-header h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: 48px;
-    color: var(--text-main);
+    font-size: 90px;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     margin-bottom: 24px;
     font-weight: 800;
 }
 
 .section-header p {
-    color: var(--text-secondary);
+    color: #000000;
     font-size: 20px;
     line-height: 1.6;
 }
@@ -720,15 +724,15 @@
 }
 
 .feature-card h3 {
-    color: var(--text-main);
-    font-size: 24px;
+    color: #000000;
+    font-size: 28px;
     margin-bottom: 16px;
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .feature-card p {
-    color: var(--text-secondary);
+    color: #000000;
     line-height: 1.7;
     font-size: 16px;
 }
@@ -748,7 +752,7 @@
     align-items: center;
     gap: 12px;
     background: #fff;
-    color: var(--text-main);
+    color: #000000;
     border: 1px solid #e2e8f0;
     padding: 16px 32px;
     border-radius: 50px;
@@ -767,7 +771,7 @@
 }
 
 .tech-name {
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .tech-tag:hover {
@@ -784,7 +788,7 @@
 
 /* Benefits Section */
 .solution-benefits {
-    background: #f8fafc;
+    background: #ffffff;
     /* Subtle grey background for separation */
 }
 
@@ -845,7 +849,7 @@
 .cta-content {
     max-width: 900px;
     margin: 0 auto;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     padding: 80px 40px;
     border-radius: 32px;
     color: white;
@@ -881,7 +885,13 @@
 .cta-buttons {
     display: flex;
     gap: 24px;
+    align-items: center;
     justify-content: center;
+}
+
+.cta-buttons .btn-secondary{
+    color: #fff;
+    border-color: #fff;
 }
 
 .btn-primary {
@@ -901,11 +911,13 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+
+
 .btn-secondary {
     padding: 20px 48px;
     background: transparent;
     color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 12px;
     font-weight: 700;
     font-size: 18px;

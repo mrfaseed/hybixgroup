@@ -92,26 +92,7 @@ const Contact = () => {
     return (
 
         <section className="contact-section" ref={sectionRef} id="contact">
-            {/* Animated Background */}
-            <div className="contact-background">
-                <div className="grid-overlay"></div>
-                <div className="gradient-orb orb-1"></div>
-                <div className="gradient-orb orb-2"></div>
-                <div className="gradient-orb orb-3"></div>
-                <div className="floating-particles">
-                    {React.useMemo(() => [...Array(20)].map((_, i) => (
-                        <div
-                            key={i}
-                            className="particle"
-                            style={{
-                                left: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 5}s`,
-                                animationDuration: `${5 + Math.random() * 10}s`
-                            }}
-                        ></div>
-                    )), [])}
-                </div>
-            </div>
+
 
             <div className="contact-container">
                 <div className={`contact-header ${isVisible ? 'visible' : ''}`}>
