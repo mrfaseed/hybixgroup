@@ -75,7 +75,16 @@ const navItems = [
                 description: 'Learn about our mission, vision, values, and the story behind Hybix Group.',
                 features: ['Our Mission', 'Our Team', 'Our Journey', 'Our Values'],
                 icon: <FaInfoCircle />,
-                buttonText: 'Learn More'
+                buttonText: 'Learn More',
+                path: '/about-us'
+            },
+            {
+                name: 'Our Works',
+                description: 'Explore our portfolio of successful projects and digital masterpieces.',
+                features: ['Web Applications', 'Mobile Apps', 'Enterprise Solutions', 'Creative Designs'],
+                icon: <FaCode />,
+                buttonText: 'View Portfolio',
+                path: '/our-works'
             },
             {
                 name: 'Careers',

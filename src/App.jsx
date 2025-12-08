@@ -9,6 +9,7 @@ import SolutionPage from './components/SolutionPage'
 
 const Login = React.lazy(() => import('./components/Login'));
 import AboutUs from './components/AboutUs'
+import OurWorks from './components/OurWorks'
 import OurTeam from './components/OurTeam'
 import Careers from './components/Careers'
 import NewsMedia from './components/NewsMedia'
@@ -22,6 +23,8 @@ function HomePage() {
   return (
     <>
       <HomeCity />
+      <AboutUs />
+      <OurWorks />
       <CustomerReviews />
       <Contact />
     </>
@@ -56,6 +59,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/our-works" element={<OurWorks />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/news-media" element={<NewsMedia />} />
         <Route path="/contact" element={<Contact />} />

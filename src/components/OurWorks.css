@@ -1,0 +1,56 @@
+.our-works-page {
+    padding-top: 100px;
+    /* Space for fixed navbar */
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    /* Assuming variable exists or default to light */
+    background: linear-gradient(to bottom right, #f8f9fa, #eef2f6);
+}
+
+.works-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.works-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-main, #333);
+    margin-bottom: 10px;
+}
+
+.works-header .highlight {
+    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--secondary-color, #7c3aed));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.works-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary, #666);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.masonry-container {
+    padding: 0 40px 100px 40px;
+    /* Padding bottom for scroll space */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    /* Important for Masonry absolute positioning calculation */
+    min-height: 1000px;
+}
+
+@media (max-width: 768px) {
+    .works-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .masonry-container {
+        padding: 0 20px 50px 20px;
+    }
+}
