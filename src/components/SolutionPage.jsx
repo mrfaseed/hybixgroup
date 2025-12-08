@@ -304,6 +304,30 @@ const SolutionPage = () => {
                     <div className="shape shape-1"></div>
                     <div className="shape shape-2"></div>
                     <div className="shape shape-3"></div>
+
+                    {/* Floating Tech Stack Background */}
+                    <div className="hero-floating-icons">
+                        <SiReact className="float-icon icon-1" />
+                        <SiNextdotjs className="float-icon icon-2" />
+                        <SiTypescript className="float-icon icon-3" />
+                        <SiNodedotjs className="float-icon icon-4" />
+                        <SiPython className="float-icon icon-5" />
+                        <SiFlutter className="float-icon icon-6" />
+                        <SiDocker className="float-icon icon-7" />
+                        <SiKubernetes className="float-icon icon-8" />
+                        <SiGooglecloud className="float-icon icon-9" />
+                        <SiFirebase className="float-icon icon-10" />
+                        <SiFigma className="float-icon icon-11" />
+                        <SiTailwindcss className="float-icon icon-12" />
+                        <SiRedux className="float-icon icon-13" />
+                        <SiEthereum className="float-icon icon-14" />
+                        <SiOpenai className="float-icon icon-15" />
+                        <SiJenkins className="float-icon icon-16" />
+                        <SiVuedotjs className="float-icon icon-17" />
+                        <SiSwift className="float-icon icon-18" />
+                        <SiKotlin className="float-icon icon-19" />
+                        <SiTerraform className="float-icon icon-20" />
+                    </div>
                 </div>
 
                 <div className="hero-container">

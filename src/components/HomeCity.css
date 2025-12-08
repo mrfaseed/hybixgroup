@@ -11,13 +11,16 @@
 .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    /* Use min-height to allow content to grow */
     background: var(--hero-bg-dark);
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 80px;
+    /* Prevent navbar overlap */
 }
 
 /* --- Background --- */

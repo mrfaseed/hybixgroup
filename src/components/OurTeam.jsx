@@ -1,6 +1,6 @@
 import React from 'react';
-import './CompanyTheme.css';
 import './OurTeam.css';
+import { FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const teamMembers = [
     {
@@ -50,27 +50,23 @@ const teamMembers = [
 const OurTeam = () => {
     return (
         <div className="company-page-container">
-            <div className="orb orb-blue"></div>
-            <div className="orb orb-purple"></div>
-            <div className="orb orb-cyan"></div>
 
             <div className="page-content">
-                <h1 className="page-title">Meet Our Team</h1>
+                <h1 className="page-title">Meet <span className="page-title-span">Our Team</span></h1>
                 <p className="page-subtitle">
                     The brilliant minds behind Hybix Group. We are a diverse team of innovators, creators, and problem solvers.
                 </p>
 
                 <div className="team-grid">
                     {teamMembers.map((member) => (
-                        <div key={member.id} className="glass-card team-card">
-                            <div className="member-image-wrapper">
-                                <img src={member.image} alt={member.name} className="member-image" />
-                                <div className="member-overlay">
-                                    <div className="social-icons">
-                                        {/* Placeholder icons */}
-                                        <span>in</span>
-                                        <span>tw</span>
-                                    </div>
+                        <div key={member.id} className="team-row">
+                            <div className="member-visual">
+                                <div className="member-image-container">
+                                    <img src={member.image} alt={member.name} className="member-image" />
+                                </div>
+                                <div className="member-socials">
+                                    <a href="#" className="social-link"><FaInstagram /></a>
+                                    <a href="#" className="social-link"><FaTwitter /></a>
                                 </div>
                             </div>
                             <div className="member-info">

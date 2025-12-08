@@ -881,7 +881,7 @@
 /* Login Button Desktop */
 .btn-login-desktop {
   padding: 10px 24px;
-  background: var(--nav-text-primary);
+  background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
   color: #ffffff;
   border-radius: 50px;
   font-family: 'Outfit', sans-serif;
@@ -890,6 +890,12 @@
   text-decoration: none;
   transition: all 0.3s ease;
   border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-login-desktop:hover {
+  background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
+  border-color: #ffffff;
 }
 
 
@@ -900,7 +906,7 @@
   justify-content: center;
   width: 52px;
   height: 52px;
-  background: var(--nav-text-primary);
+  background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
   color: white;
   border-radius: 12px;
   font-size: 1.2rem;

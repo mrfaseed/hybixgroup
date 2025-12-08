@@ -40,8 +40,7 @@ const jobs = [
 const Careers = () => {
     return (
         <div className="company-page-container">
-            <div className="orb orb-blue"></div>
-            <div className="orb orb-purple"></div>
+
 
             <div className="page-content">
                 <h1 className="page-title">Join Our Mission</h1>

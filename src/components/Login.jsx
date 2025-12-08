@@ -162,12 +162,7 @@ const Login = () => {
     return (
         <div className="login-wrapper">
             {/* Animated Background */}
-            <div className="login-bg">
-                <div className="bg-orb orb-1"></div>
-                <div className="bg-orb orb-2"></div>
-                <div className="bg-orb orb-3"></div>
-                <div className="grid-overlay"></div>
-            </div>
+
 
             {/* Home Button */}
             <button
@@ -231,7 +226,7 @@ const Login = () => {
                             <p style={{ color: '#cbd5e1', marginBottom: '20px' }}>
                                 Click the link sent to <strong>{email || (currentUser && currentUser.email)}</strong> to verify your account.
                             </p>
-                            <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>
+                            <p style={{ color: '#ffffffff', fontSize: '0.9rem' }}>
                                 Once verified, you will be automatically redirected.
                             </p>
                             <button

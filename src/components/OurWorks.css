@@ -1,0 +1,60 @@
+.our-works-page {
+    padding-top: 150px;
+    /* Space for fixed navbar */
+    min-height: 50vh;
+    background-color: #ffffff;
+    /* Assuming variable exists or default to light */
+}
+
+.works-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.works-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 7rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.works-header .highlight {
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.works-header p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #000;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.masonry-container {
+    padding: 0 40px 100px 40px;
+    /* Padding bottom for scroll space */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    /* Important for Masonry absolute positioning calculation */
+    min-height: 1000px;
+}
+
+@media (max-width: 768px) {
+    .works-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .masonry-container {
+        padding: 0 20px 50px 20px;
+    }
+}

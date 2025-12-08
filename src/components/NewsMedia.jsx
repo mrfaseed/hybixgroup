@@ -32,8 +32,7 @@ const newsItems = [
 const NewsMedia = () => {
     return (
         <div className="company-page-container">
-            <div className="orb orb-cyan"></div>
-            <div className="orb orb-purple"></div>
+
 
             <div className="page-content">
                 <h1 className="page-title">News & Media</h1>
