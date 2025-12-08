@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './CompanyTheme.css';
 import './CustomerReviews.css';
 
@@ -123,6 +123,73 @@ const ReviewCard = ({ review, isExpanded, onToggle }) => {
     );
 };
 
+// Custom Hook for Number Counter Animation
+const useCountUp = (end, duration = 2000, decimals = 0, shouldStart = false) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        if (!shouldStart) return;
+
+        let startTime = null;
+        let animationFrame;
+
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const percentage = Math.min(progress / duration, 1);
+
+            // Easing function for smooth animation (easeOutQuart)
+            const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
+
+            const currentCount = easeOutQuart * end;
+            setCount(currentCount);
+
+            if (progress < duration) {
+                animationFrame = requestAnimationFrame(animate);
+            }
+        };
+
+        animationFrame = requestAnimationFrame(animate);
+
+        return () => cancelAnimationFrame(animationFrame);
+    }, [end, duration, shouldStart]);
+
+    return count.toFixed(decimals);
+};
+
+// Hook for Intersection Observer (Scroll Trigger)
+const useOnScreen = (options) => {
+    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observer.disconnect(); // Trigger once
+            }
+        }, options);
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) observer.unobserve(ref.current);
+        };
+    }, [ref, options]);
+
+    return [ref, isVisible];
+};
+
+// Counter Component to simplify usage
+const Counter = ({ end, duration, decimals = 0, suffix = '', prefix = '' }) => {
+    const [ref, isVisible] = useOnScreen({ threshold: 0.1 }); // Start when 10% visible
+    const value = useCountUp(end, duration, decimals, isVisible);
+
+    return <span ref={ref}>{prefix}{value}{suffix}</span>;
+};
+
 const CustomerReviews = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [expandedId, setExpandedId] = useState(null);
@@ -168,17 +235,23 @@ const CustomerReviews = () => {
 
                 <div className="stats-container">
                     <div className="stat-item">
-                        <div className="stat-number">500+</div>
+                        <div className="stat-number">
+                            <Counter end={15} duration={2500} suffix="+" />
+                        </div>
                         <div className="stat-label">Happy Clients</div>
                     </div>
                     <div className="stat-divider"></div>
                     <div className="stat-item">
-                        <div className="stat-number">4.9/5</div>
+                        <div className="stat-number">
+                            <Counter end={4.9} duration={2000} decimals={1} suffix="/5" />
+                        </div>
                         <div className="stat-label">Average Rating</div>
                     </div>
                     <div className="stat-divider"></div>
                     <div className="stat-item">
-                        <div className="stat-number">98%</div>
+                        <div className="stat-number">
+                            <Counter end={98} duration={2200} suffix="%" />
+                        </div>
                         <div className="stat-label">Satisfaction Rate</div>
                     </div>
                 </div>
