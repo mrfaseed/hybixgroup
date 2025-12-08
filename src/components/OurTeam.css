@@ -1,61 +1,192 @@
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
+/* =========================================
+   Our Team Page Styles (Transparent Clean Theme)
+   ========================================= */
+:root {
+    --team-bg: #ffffff;
+    --team-text-primary: #0f172a;
+    --team-text-secondary: #475569;
+    --team-accent: #2563eb;
+    --social-color: #64748b;
+    --social-hover: #0f172a;
 }
 
-.team-card {
+.company-page-container {
+    background-color: var(--team-bg);
+    min-height: 100vh;
+    color: var(--team-text-primary);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Outfit', sans-serif;
+    padding-top: 80px;
+}
+
+.page-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.page-title {
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.company-page-container .page-content .page-title{
+    color: #000000!important;
+}
+
+.page-title-span {
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #000000;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 5rem;
+    line-height: 1.6;
+}
+
+/* Flex Column Layout for Team */
+.team-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Row Styling (No Card effect) */
+.team-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+}
+
+/* Alternating Layout */
+.team-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.team-row:nth-child(even) .member-info {
+    text-align: right;
+}
+
+/* Visual Column (Image + Socials) */
+.member-visual {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    overflow: hidden;
+    gap: 1.5rem;
+    flex-shrink: 0;
 }
 
-.member-image-wrapper {
-    width: 150px;
-    height: 150px;
+.member-image-container {
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    margin-bottom: 1.5rem;
-    position: relative;
     overflow: hidden;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    transition: border-color 0.3s ease;
+    /* Subtle shadow for depth since card is gone */
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease;
 }
 
-.team-card:hover .member-image-wrapper {
-    border-color: var(--text-accent);
+.team-row:hover .member-image-container {
+    transform: scale(1.02);
 }
 
 .member-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
 }
 
-.team-card:hover .member-image {
-    transform: scale(1.1);
+.member-socials {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-link {
+    font-size: 1.5rem;
+    color: var(--social-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1f5f9;
+}
+
+.social-link:hover {
+    color: white;
+    background: var(--team-accent);
+    transform: translateY(-3px);
+}
+
+/* Info Column */
+.member-info {
+    flex: 1;
 }
 
 .member-name {
-    font-size: 1.5rem;
-    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--team-text-primary);
     margin-bottom: 0.5rem;
+    line-height: 1.1;
 }
 
 .member-role {
-    color: var(--text-accent);
+    color: var(--team-accent);
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    display: inline-block;
 }
 
 .member-bio {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    color: var(--team-text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .team-row {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 2rem;
+    }
+
+    .team-row:nth-child(even) .member-info {
+        text-align: center;
+    }
+
+    .member-image-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .member-name {
+        font-size: 2rem;
+    }
+
+    .team-grid {
+        gap: 4rem;
+    }
 }
