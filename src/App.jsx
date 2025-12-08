@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import CustomerReviews from './components/CustomerReviews'
-import Contact from './components/Contact'
+
 import Footer from './components/Footer'
 import SolutionPage from './components/SolutionPage'
 
@@ -23,7 +23,7 @@ function HomePage() {
     <>
       <HomeCity />
       <CustomerReviews />
-      <Contact />
+
     </>
   )
 }
@@ -34,7 +34,7 @@ function ReviewsPage() {
     <>
       <div style={{ paddingTop: '80px' }}></div>
       <CustomerReviews />
-      <Contact />
+
     </>
   )
 }
@@ -57,8 +57,9 @@ function App() {
         <Route path="/our-team" element={<OurTeam />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/careers" element={<Careers />} />
+        
         <Route path="/news-media" element={<NewsMedia />} />
-        <Route path="/contact" element={<Contact />} />
+
 
         {/* Solution Pages Routes */}
         <Route path="/solutions/:solutionType" element={<SolutionPage />} />
