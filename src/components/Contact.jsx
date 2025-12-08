@@ -136,7 +136,7 @@ const Contact = () => {
                                 src={contactAnimation}
                                 loop
                                 autoplay
-                                style={{ width: '100%', height: '100%', maxWidth: '600px' }}
+                                style={{ width: '140%', height: 'auto', maxWidth: 'none' }}
                             />
                         </div>
                     </div>
