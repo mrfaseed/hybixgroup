@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './AboutUs.css';
 import { FaRocket, FaLightbulb, FaUsers, FaHandshake, FaGlobe, FaAward, FaCogs } from 'react-icons/fa';
-import aboutTeamImg from '../assets/about_team.png';
-import aboutMissionImg from '../assets/about_mission.png';
+import aboutTeamImg from '../assets/about_team_v2.jpg';
+import aboutMissionImg from '../assets/about_mission_v2.jpg';
 
 const AboutUs = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -90,7 +90,7 @@ const AboutUs = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    
+
     const useScrollReveal = (threshold = 0.1) => {
         const ref = useRef(null);
         const [isRevealed, setIsRevealed] = useState(false);
