@@ -2,8 +2,6 @@
     padding-top: 150px;
     /* Space for fixed navbar */
     min-height: 50vh;
-    background-color: #ffffff;
-    /* Assuming variable exists or default to light */
 }
 
 .works-header {

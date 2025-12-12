@@ -163,6 +163,46 @@ const Navbar = () => {
     const { currentUser, logout } = useAuth();
     const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    useEffect(() => {
+        if (searchQuery.trim() === '') {
+            setSearchResults([]);
+            return;
+        }
+
+        const allItems = [];
+        // Manual items
+        allItems.push({ title: 'Contact Us', path: '/contact', category: 'Page' });
+        allItems.push({ title: 'Login', path: '/login', category: 'Auth' });
+
+        navItems.forEach(item => {
+            if (item.type === 'link') {
+                allItems.push({ title: item.title, path: item.path, category: 'Page' });
+            } else if (item.links) {
+                item.links.forEach(link => {
+                    if (link.path) {
+                        allItems.push({ title: link.name, path: link.path, category: item.title });
+                    }
+                });
+            }
+        });
+
+        const filtered = allItems.filter(item =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setSearchResults(filtered);
+    }, [searchQuery]);
+
+    const handleSearchNavigation = (path) => {
+        navigate(path);
+        setSearchQuery('');
+        setSearchResults([]);
+        setIsSearchOpen(false);
+        setIsMobileMenuOpen(false);
+    };
+
     // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
@@ -368,8 +408,24 @@ const Navbar = () => {
                                     type="text"
                                     placeholder="Search..."
                                     className="search-input"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
                                 />
                             </div>
+                            {isSearchOpen && searchResults.length > 0 && (
+                                <div className="search-results-dropdown">
+                                    {searchResults.map((result, index) => (
+                                        <div
+                                            key={index}
+                                            className="search-result-item"
+                                            onClick={() => handleSearchNavigation(result.path)}
+                                        >
+                                            <span className="result-title">{result.title}</span>
+                                            <span className="result-category">{result.category}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Login Button / User Profile */}
@@ -455,9 +511,31 @@ const Navbar = () => {
                 <div className="mobile-menu-content">
                     {/* Mobile Search & Contact */}
                     <div className="mobile-top-actions">
-                        <div className="mobile-search-container">
-                            <FaSearch className="mobile-search-icon" />
-                            <input type="text" placeholder="Search..." className="mobile-search-input" />
+                        <div className="mobile-search-container" style={{ position: 'relative', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+                                <FaSearch className="mobile-search-icon" />
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    className="mobile-search-input"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                            </div>
+                            {searchResults.length > 0 && (
+                                <div className="mobile-search-results">
+                                    {searchResults.map((result, index) => (
+                                        <div
+                                            key={index}
+                                            className="mobile-search-result-item"
+                                            onClick={() => handleSearchNavigation(result.path)}
+                                        >
+                                            <span className="result-title">{result.title}</span>
+                                            <span className="result-category">{result.category}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
 

@@ -7,7 +7,10 @@ import {
     signInWithPopup,
     updateProfile,
     sendPasswordResetEmail,
-    sendEmailVerification
+    sendEmailVerification,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence
 } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
 
@@ -25,8 +28,11 @@ export const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
-    const login = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password);
+    const login = (email, password, rememberMe = false) => {
+        const persistence = rememberMe ? browserLocalPersistence : browserSessionPersistence;
+        return setPersistence(auth, persistence).then(() => {
+            return signInWithEmailAndPassword(auth, email, password);
+        });
     };
 
     const googleLogin = () => {
