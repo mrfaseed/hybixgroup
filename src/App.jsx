@@ -5,7 +5,9 @@ import Loading from './components/Loading';
 
 import { useAuth } from './context/AuthContext';
 
-const Navbar = React.lazy(() => import('./components/Navbar'));
+import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
+
 const Footer = React.lazy(() => import('./components/Footer'));
 const SolutionPage = React.lazy(() => import('./components/SolutionPage'));
 const Contact = React.lazy(() => import('./components/Contact'));
@@ -18,19 +20,34 @@ const OurTeam = React.lazy(() => import('./components/OurTeam'));
 const Careers = React.lazy(() => import('./components/Careers'));
 const NewsMedia = React.lazy(() => import('./components/NewsMedia'));
 const HomeCity = React.lazy(() => import('./components/HomeCity'));
-const ScrollToTop = React.lazy(() => import('./components/ScrollToTop'));
 const CustomerReviews = React.lazy(() => import('./components/CustomerReviews'));
 
+// Home Page Component
 // Home Page Component
 function HomePage() {
   return (
     <div className="home-content-wrapper">
-      <HomeCity />
+      {/* Hero Section - Loads first */}
+      <Suspense fallback={<Loading />}>
+        <HomeCity />
+      </Suspense>
 
-      <OurWorks />
-      <AboutUs />
-      <CustomerReviews />
-      <Contact />
+      {/* Subsequent sections load independently to speed up initial paint */}
+      <Suspense fallback={<div className="section-loader">Loading content...</div>}>
+        <OurWorks />
+      </Suspense>
+
+      <Suspense fallback={<div className="section-loader">Loading info...</div>}>
+        <AboutUs />
+      </Suspense>
+
+      <Suspense fallback={<div className="section-loader">Loading reviews...</div>}>
+        <CustomerReviews />
+      </Suspense>
+
+      <Suspense fallback={<div className="section-loader">Loading contact...</div>}>
+        <Contact />
+      </Suspense>
     </div>
   )
 }
@@ -75,9 +92,9 @@ function App() {
 
   return (
     <div className="app-container">
+      {!isLoginPage && <Navbar />}
+      <ScrollToTop />
       <Suspense fallback={<Loading />}>
-        {!isLoginPage && <Navbar />}
-        <ScrollToTop />
         <Routes>
           {/* Home Route */}
           <Route path="/" element={<HomePage />} />
@@ -107,8 +124,12 @@ function App() {
             }
           />
         </Routes>
-        {!isLoginPage && location.pathname !== '/admin-dashboard' && <Footer />}
       </Suspense>
+      {!isLoginPage && location.pathname !== '/admin-dashboard' && (
+        <Suspense fallback={<div className="h-20" />}>
+          <Footer />
+        </Suspense>
+      )}
     </div>
   )
 }

@@ -24,3 +24,32 @@
     background-position: 50px 50px;
   }
 }
+
+/* Section Loader for Lazy Loading */
+.section-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  animation: pulseLoader 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseLoader {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}

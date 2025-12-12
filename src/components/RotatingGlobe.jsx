@@ -123,4 +123,4 @@ const RotatingGlobe = ({ style, className }) => {
     );
 };
 
-export default RotatingGlobe;
+export default React.memo(RotatingGlobe);

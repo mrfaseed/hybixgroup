@@ -1,104 +1,127 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaShieldAlt, FaLock, FaUserSecret, FaKey } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext';
+import { FaShieldAlt, FaLock, FaEnvelope, FaKey, FaArrowRight, FaHome } from 'react-icons/fa';
 import './AdminLogin.css';
+import { useAuth } from '../context/AuthContext';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const AdminLogin = () => {
+    const { login } = useAuth();
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [secretKey, setSecretKey] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
-    const navigate = useNavigate();
 
     const handleAdminLogin = async (e) => {
         e.preventDefault();
         setError('');
         setLoading(true);
 
-        // Security Check (Hardcoded for demonstration of "Highly Secured" request)
-        // In a real app, this should be validated on the backend via Custom Claims
-        const ADMIN_SECRET = "HYBIX-ADMIN-2025";
+        
 
-        if (secretKey !== ADMIN_SECRET) {
-            setError('Invalid Security Clearance Code');
-            setLoading(false);
-            return;
-        }
+
 
         try {
+            // 2️⃣ Firebase login
             await login(email, password);
-            // If successful and key is correct, redirect to dashboard
-            // We store a session flag to verify "Admin" access level in the protected route
-            sessionStorage.setItem('isAdminAuthenticated', 'true');
-            navigate('/admin-dashboard');
+
+            // 3️⃣ Firestore admin check
+            const adminRef = doc(db, "admins", email);
+            const snap = await getDoc(adminRef);
+
+            if (!snap.exists()) {
+                setError("Unauthorized: You are NOT an admin.");
+                setLoading(false);
+                return;
+            }
+
+            // 4️⃣ Set admin session flag
+            sessionStorage.setItem("isAdminAuthenticated", "true");
+
+            // 5️⃣ Redirect
+            navigate("/admin-dashboard");
+
         } catch (err) {
-            setError('Authentication Failed: ' + err.message);
+            setError("Failed to log in: " + err.message);
         }
+
         setLoading(false);
     };
 
     return (
-        <div className="admin-login-container">
-            <div className="security-overlay"></div>
+        <div className="admin-login-wrapper">
 
-            <div className="admin-login-box">
+            {/* Home Icon */}
+            <button
+                className="admin-home-btn"
+                onClick={() => navigate('/')}
+                title="Back to Home"
+            >
+                <FaHome size={48} />
+            </button>
+
+            <div className="admin-card">
+
+                {/* Header */}
                 <div className="admin-header">
-                    <div className="shield-icon-wrapper">
-                        <FaShieldAlt className="shield-icon" />
-                    </div>
-                    <h2>Admin <span className="highlight-red">Portal</span></h2>
-                    <p>Restricted Access Only</p>
+                    <FaShieldAlt className="admin-shield" />
+                    <h2>Admin <span className="highlight">Access</span></h2>
+                    <p>Restricted Area — Authorized Personnel Only</p>
                 </div>
 
-                <form onSubmit={handleAdminLogin} className="admin-form">
-                    {error && <div className="security-alert">{error}</div>}
+                {/* Form */}
+                <form className="admin-form" onSubmit={handleAdminLogin}>
+                    {error && (
+                        <div className="admin-error">
+                            {error}
+                        </div>
+                    )}
 
-                    <div className="input-field-group">
-                        <FaUserSecret className="input-icon" />
-                        <input
-                            type="email"
-                            placeholder="Admin Identifier"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
+                    <div className="admin-input-group">
+                        <label>Email Address</label>
+                        <div className="admin-input-wrapper">
+                            <FaEnvelope className="admin-field-icon" />
+                            <input
+                                type="email"
+                                placeholder="admin@example.com"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
                     </div>
 
-                    <div className="input-field-group">
-                        <FaLock className="input-icon" />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                    <div className="admin-input-group">
+                        <label>Password</label>
+                        <div className="admin-input-wrapper">
+                            <FaLock className="admin-field-icon" />
+                            <input
+                                type="password"
+                                placeholder="••••••••"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
                     </div>
 
-                    <div className="input-field-group key-field">
-                        <FaKey className="input-icon" />
-                        <input
-                            type="password"
-                            placeholder="Security Clearance Code"
-                            value={secretKey}
-                            onChange={(e) => setSecretKey(e.target.value)}
-                            required
-                        />
-                    </div>
+                
 
                     <button type="submit" className="admin-submit-btn" disabled={loading}>
-                        {loading ? 'Authenticating...' : 'Access Dashboard'}
+                        {loading ? "Authenticating..." : "Access Admin Panel"}
+                        {!loading && <FaArrowRight className="admin-arrow" />}
                     </button>
 
                     <button
                         type="button"
-                        className="back-to-home-btn"
+                        className="admin-back-btn"
                         onClick={() => navigate('/login')}
                     >
-                        Return to Public Login
+                        Return to User Login
                     </button>
                 </form>
             </div>

@@ -10,7 +10,7 @@ const icons = [
     FaAndroid, FaApple
 ];
 
-export default function FloatingTechBackground() {
+const FloatingTechBackground = () => {
     const [elements, setElements] = useState([]);
 
     useEffect(() => {
@@ -95,3 +95,5 @@ export default function FloatingTechBackground() {
         </div>
     );
 }
+
+export default React.memo(FloatingTechBackground);

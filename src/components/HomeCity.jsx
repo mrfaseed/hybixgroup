@@ -1,7 +1,7 @@
-import React from 'react';
-import HybixLogoAnimated from './HybixLogoAnimated';
-import FloatingTechBackground from './FloatingTechBackground';
-import RotatingGlobe from './RotatingGlobe';
+import React, { Suspense } from 'react';
+const HybixLogoAnimated = React.lazy(() => import('./HybixLogoAnimated'));
+const FloatingTechBackground = React.lazy(() => import('./FloatingTechBackground'));
+const RotatingGlobe = React.lazy(() => import('./RotatingGlobe'));
 import './HomeCity.css';
 import { FaArrowRight, FaPlay, FaCode, FaMobileAlt, FaBrain, FaCloud } from 'react-icons/fa';
 
@@ -10,10 +10,14 @@ export default function HomeCity() {
         <section className="hero-root">
             <div className="hero-glow"></div>
             <div className="hero-globes-container">
-                <RotatingGlobe className="hero-globe1 globe-left" />
-                <RotatingGlobe className="hero-globe2 globe-right" />
+                <Suspense fallback={null}>
+                    <RotatingGlobe className="hero-globe1 globe-left" />
+                    <RotatingGlobe className="hero-globe2 globe-right" />
+                </Suspense>
             </div>
-            <FloatingTechBackground />
+            <Suspense fallback={null}>
+                <FloatingTechBackground />
+            </Suspense>
 
             <div className="hero-container">
                 {/* 1. Headline */}
@@ -24,7 +28,9 @@ export default function HomeCity() {
 
                 {/* 2. Logo in the middle */}
                 <div className="hero-logo-center">
-                    <HybixLogoAnimated />
+                    <Suspense fallback={<div style={{ width: '100%', height: '100%' }} />}>
+                        <HybixLogoAnimated />
+                    </Suspense>
                 </div>
 
                 {/* 3. Subtext */}
