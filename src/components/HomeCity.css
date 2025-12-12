@@ -206,6 +206,7 @@
 .hero-globe2 {
     position: absolute;
     top: 50%;
+    opacity: 0.8;
     transform: translateY(-50%);
     width: 60vh;
     height: 60vh;

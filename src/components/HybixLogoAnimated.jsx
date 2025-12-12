@@ -29,6 +29,21 @@ export default function HybixLogoAnimated() {
         })
     };
 
+    const bigZoom = {
+        hidden: { scale: 50, opacity: 0 },
+        visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+                delay: 1.2,
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                mass: 1
+            }
+        }
+    };
+
     return (
         <motion.svg
             width="100%"
@@ -67,7 +82,7 @@ export default function HybixLogoAnimated() {
                 <motion.path
                     d="M742.3,56.4h51.8l66.6,67.2l63.6-67.2h55.7l-91.6,93.8l94.4,97.9h-54.5c-22.4-23-44.9-46-67.3-68.9l-67.1,68.9 h-54.2l94.1-97.4L742.3,56.4z"
                     fill="#000000"
-                    variants={snap}
+                    variants={bigZoom}
                     custom={3}
                 />
 
