@@ -14,12 +14,7 @@ const Contact = () => {
             <form className="form-box">
               <div className="container-block form-wrapper">
                 <div className="head-text-box">
-                  <p className="text-blk contactus-head">Contact us</p>
-                  <p className="text-blk contactus-subhead">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna al
-                    iqua. Ut enim
-                  </p>
+                  <p className="text-blk-contactus-head">Contact us</p>
                 </div>
 
                 <div className="responsive-container-block">

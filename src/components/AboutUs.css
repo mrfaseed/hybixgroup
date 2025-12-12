@@ -489,12 +489,12 @@
     }
 
     .about-hero-content h1 {
-        font-size: 3rem;
+        font-size: 2rem;
         /* Adjusted for mobile */
     }
 
     .about-hero-content .highlight {
-        font-size: 3rem;
+        font-size: 2rem;
         /* aligned with title */
     }
 
@@ -503,9 +503,19 @@
         /* adjusted for mobile */
     }
 
+    .about-hero-content p {
+        font-size: 1.1em;
+        margin-bottom: -100px;
+    }
+
+
     .story-visual {
         height: 300px;
         margin-top: 40px;
+    }
+
+    .story-text p{
+        font-size: 1rem;
     }
 
     .visual-card {
@@ -526,5 +536,9 @@
     .card-3 {
         bottom: 20px;
         left: 20%;
+    }
+
+    .about-values .values-header p{
+        font-size: 1rem;
     }
 }
