@@ -2,54 +2,87 @@ import React from 'react';
 import Masonry from './Masonry';
 import './OurWorks.css';
 
+import work1 from '../assets/work_healthbot_1.png';
+import work2 from '../assets/work_healthbot_2.png';
+import work3 from '../assets/work_hybix_pro.png';
+import work4 from '../assets/work_riya_1.png';
+import work5 from '../assets/work_riya_2.png';
+import work6 from '../assets/work_robotics.jpg';
+import work7 from '../assets/work_electronics.jpg';
+import work8 from '../assets/work_plant_disease.jpg';
+import work9 from '../assets/work_bus_tracking.jpg';
+import work10 from '../assets/work_iot_dashboard.jpg';
+
 const items = [
     {
         id: "1",
-        img: "https://picsum.photos/id/1015/600/900?grayscale",
-        url: "https://example.com/one",
+        img: work1,
+        url: "#",
         height: 600,
+        title: "HealthBot Dashboard"
     },
     {
         id: "2",
-        img: "https://picsum.photos/id/1011/600/750?grayscale",
-        url: "https://example.com/two",
+        img: work2,
+        url: "#",
         height: 500,
+        title: "Health Chat Assistant"
     },
     {
         id: "3",
-        img: "https://picsum.photos/id/1020/600/800?grayscale",
-        url: "https://example.com/three",
+        img: work3,
+        url: "#",
         height: 550,
+        title: "HYBIX Pro 3D"
     },
     {
         id: "4",
-        img: "https://picsum.photos/id/103/600/500?grayscale",
-        url: "https://example.com/four",
+        img: work4,
+        url: "#",
         height: 350,
+        title: "Riya Makeover Services"
     },
     {
         id: "5",
-        img: "https://picsum.photos/id/1043/600/600?grayscale",
-        url: "https://example.com/five",
+        img: work5,
+        url: "#",
         height: 400,
+        title: "Riya Makeover Hero"
     },
     {
         id: "6",
-        img: "https://picsum.photos/id/119/600/700?grayscale",
-        url: "https://example.com/six",
-        height: 500,
+        img: work6,
+        url: "#",
+        height: 450,
+        title: "Advanced Robotics"
     },
     {
         id: "7",
-        img: "https://picsum.photos/id/180/600/400?grayscale",
-        url: "https://example.com/seven",
-        height: 300,
+        img: work7,
+        url: "#",
+        height: 500,
+        title: "IoT Circuit Design"
     },
     {
         id: "8",
-        img: "https://picsum.photos/id/20/600/900?grayscale",
-        url: "https://example.com/eight",
-        height: 600,
+        img: work8,
+        url: "#",
+        height: 400,
+        title: "AI Plant Disease Detection"
+    },
+    {
+        id: "9",
+        img: work9,
+        url: "#",
+        height: 800,
+        title: "Smart Bus Tracking App"
+    },
+    {
+        id: "10",
+        img: work10,
+        url: "#",
+        height: 800,
+        title: "IoT Analytics Dashboard"
     }
 ];
 
