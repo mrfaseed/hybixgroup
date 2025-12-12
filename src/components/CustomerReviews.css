@@ -491,7 +491,7 @@
 .cta-title {
     font-size: 36px;
     font-weight: 700;
-    color: #0f172a;
+    color: #ffffff;
     margin: 0 0 16px;
     font-family: 'Poppins', sans-serif;
 }
@@ -574,5 +574,52 @@
 
     .stat-number {
         font-size: 28px;
+    }
+}
+
+/* View More Button for Mobile */
+.view-more-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 30px;
+    /* Space from the last card */
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+.view-more-button {
+    background: transparent;
+    border: 2px solid var(--text-accent);
+    color: var(--text-accent);
+    padding: 12px 32px;
+    font-size: 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.view-more-button:hover,
+.view-more-button:active {
+    background: var(--text-accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

@@ -5,61 +5,93 @@ import './CustomerReviews.css';
 const reviews = [
     {
         id: 1,
-        name: "Sarah Johnson",
-        role: "CEO, TechVision Inc.",
-        rating: 5,
+        name: "Chandra Bhagavan",
+        role: "Riya Beauty Parlour.",
+        rating: 4,
         review: "Hybix Group transformed our digital presence completely. Their innovative solutions and professional approach exceeded all our expectations. The team's dedication to excellence is truly remarkable.",
-        avatar: "SJ",
+        avatar: "CB",
         color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
         date: "2 weeks ago"
     },
     {
         id: 2,
-        name: "Michael Chen",
-        role: "Founder, StartupHub",
-        rating: 5,
+        name: "Russel",
+        rating: 4,
         review: "Working with Hybix Group was an absolute pleasure. They delivered a cutting-edge solution that perfectly aligned with our vision. Their expertise in modern technologies is unmatched.",
-        avatar: "MC",
+        avatar: "R",
         color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
         date: "3 weeks ago"
     },
     {
         id: 3,
-        name: "Emily Rodriguez",
-        role: "Marketing Director, BrandCo",
-        rating: 5,
+        name: "Vignesh  Kumar",
+        rating: 4.5,
         review: "The level of creativity and technical excellence Hybix Group brings to the table is outstanding. They turned our complex requirements into an elegant, user-friendly solution.",
-        avatar: "ER",
+        avatar: "VK",
         color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
         date: "1 month ago"
     },
     {
         id: 4,
-        name: "David Thompson",
-        role: "CTO, InnovateLabs",
+        name: "Siva Balan",
         rating: 5,
         review: "Exceptional service and remarkable results! Hybix Group's team demonstrated deep technical knowledge and creative problem-solving skills throughout our project.",
-        avatar: "DT",
+        avatar: "SB",
         color: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
         date: "1 month ago"
     },
     {
         id: 5,
-        name: "Lisa Anderson",
-        role: "Product Manager, FutureTech",
+        name: "Imran Cuts",
+        role: "Editor, Imran Cuts",
         rating: 5,
         review: "Hybix Group delivered beyond our wildest expectations. Their attention to detail and commitment to quality is evident in every aspect of their work. Highly recommended!",
-        avatar: "LA",
+        avatar: "IC",
         color: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
         date: "2 months ago"
     },
     {
         id: 6,
-        name: "James Wilson",
-        role: "Director, GlobalSolutions",
+        name: "Swathi",
         rating: 5,
         review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
-        avatar: "JW",
+        avatar: "W",
+        color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+        date: "2 months ago"
+    },
+    {
+        id: 7,
+        name: "Vidhya",
+        rating: 5,
+        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        avatar: "V",
+        color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+        date: "2 months ago"
+    },
+    {
+        id: 8,
+        name: "Mohan",
+        rating: 5,
+        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        avatar: "M",
+        color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+        date: "2 months ago"
+    },
+    {
+        id: 9,
+        name: "Riya Tatoo Studios",
+        rating: 5,
+        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        avatar: "RTS",
+        color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
+        date: "2 months ago"
+    },
+    {
+        id: 10,
+        name: "Mohan Kumar",
+        rating: 5,
+        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        avatar: "MK",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
         date: "2 months ago"
     }
@@ -193,9 +225,15 @@ const Counter = ({ end, duration, decimals = 0, suffix = '', prefix = '' }) => {
 const CustomerReviews = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [expandedId, setExpandedId] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const [showAllReviews, setShowAllReviews] = useState(false);
 
     useEffect(() => {
         setIsVisible(true);
+
+        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
 
         // Handle clicking outside to collapse on mobile
         const handleClickOutside = (event) => {
@@ -204,10 +242,16 @@ const CustomerReviews = () => {
             }
         };
 
-        // Only add listener if width is mobile-ish, or always fine
         document.addEventListener('click', handleClickOutside);
-        return () => document.removeEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+            document.removeEventListener('click', handleClickOutside);
+        };
     }, []);
+
+    const visibleReviews = (isMobile && !showAllReviews)
+        ? reviews.slice(0, 2)
+        : reviews;
 
     const handleCardToggle = (e, id) => {
         e.stopPropagation(); // Stop trigger of document click listener
@@ -260,7 +304,7 @@ const CustomerReviews = () => {
             {/* New Responsive Card Layout */}
             <div className="reviews-grid-container">
                 <div className="reviews-row">
-                    {reviews.map(review => (
+                    {visibleReviews.map(review => (
                         <ReviewCard
                             key={review.id}
                             review={review}
@@ -269,6 +313,17 @@ const CustomerReviews = () => {
                         />
                     ))}
                 </div>
+
+                {isMobile && !showAllReviews && (
+                    <div className="view-more-container">
+                        <button
+                            className="view-more-button"
+                            onClick={() => setShowAllReviews(true)}
+                        >
+                            More Reviews
+                        </button>
+                    </div>
+                )}
             </div>
 
             {/* Call to Action */}

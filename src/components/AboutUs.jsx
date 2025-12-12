@@ -209,7 +209,7 @@ const AboutUs = () => {
             <section className="about-values" ref={missionRef}>
                 <div className={`values-header ${missionVisible ? 'visible' : ''}`}>
                     <h2 className="section-title">Our Mission & Values</h2>
-                    <p>The core principles that drive every decision we make.</p>
+                    <p className="section-subtitle">The core principles that drive every decision we make.</p>
                 </div>
                 <div className="values-grid">
                     {values.map((val, index) => (
