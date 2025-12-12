@@ -131,52 +131,72 @@ const Masonry = ({
         return { gridItems: itemsWithPos, containerHeight: Math.max(...colHeights) };
     }, [columns, items, width]);
 
-    const hasMounted = useRef(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
 
+    useEffect(() => {
+        if (!imagesReady || !containerRef.current) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setHasAnimated(true);
+
+                    gridItems.forEach((item, index) => {
+                        const selector = `[data-key="${item.id}"]`;
+                        const animationProps = {
+                            x: item.x,
+                            y: item.y,
+                            width: item.w,
+                            height: item.h
+                        };
+
+                        const initialPos = getInitialPosition(item);
+                        const initialState = {
+                            opacity: 0,
+                            x: initialPos.x,
+                            y: initialPos.y,
+                            width: item.w,
+                            height: item.h,
+                            ...(blurToFocus && { filter: 'blur(10px)' })
+                        };
+
+                        gsap.fromTo(selector, initialState, {
+                            opacity: 1,
+                            ...animationProps,
+                            ...(blurToFocus && { filter: 'blur(0px)' }),
+                            duration: 0.8,
+                            ease: 'power3.out',
+                            delay: index * stagger
+                        });
+                    });
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        observer.observe(containerRef.current);
+
+        return () => {
+            if (containerRef.current) observer.unobserve(containerRef.current);
+        };
+    }, [gridItems, imagesReady, stagger, animateFrom, blurToFocus, duration, ease, hasAnimated]);
+
+    // Handle resizing/repositioning without re-animating entrance
     useLayoutEffect(() => {
-        if (!imagesReady) return;
+        if (!hasAnimated) return; // Wait for initial animation
 
-        gridItems.forEach((item, index) => {
+        gridItems.forEach(item => {
             const selector = `[data-key="${item.id}"]`;
-            const animationProps = {
+            gsap.to(selector, {
                 x: item.x,
                 y: item.y,
                 width: item.w,
-                height: item.h
-            };
-
-            if (!hasMounted.current) {
-                const initialPos = getInitialPosition(item);
-                const initialState = {
-                    opacity: 0,
-                    x: initialPos.x,
-                    y: initialPos.y,
-                    width: item.w,
-                    height: item.h,
-                    ...(blurToFocus && { filter: 'blur(10px)' })
-                };
-
-                gsap.fromTo(selector, initialState, {
-                    opacity: 1,
-                    ...animationProps,
-                    ...(blurToFocus && { filter: 'blur(0px)' }),
-                    duration: 0.8,
-                    ease: 'power3.out',
-                    delay: index * stagger
-                });
-            } else {
-                gsap.to(selector, {
-                    ...animationProps,
-                    duration: duration,
-                    ease: ease,
-                    overwrite: 'auto'
-                });
-            }
+                height: item.h,
+                duration: duration,
+                ease: ease
+            });
         });
-
-        hasMounted.current = true;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [gridItems, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+    }, [gridItems, duration, ease, hasAnimated]);
 
     const handleMouseEnter = (e, item) => {
         const element = e.currentTarget;
