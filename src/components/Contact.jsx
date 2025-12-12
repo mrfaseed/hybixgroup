@@ -1,86 +1,161 @@
-import React from "react";
+import React, { useState } from "react";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { FaPaperPlane } from "react-icons/fa";
 import './Contact.css'
 import emailAnimation from '../assets/Email.lottie';
 
 const Contact = () => {
+  const [isSent, setIsSent] = useState(false);
+  const [formData, setFormData] = useState({
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    PhoneNumber: '',
+    Message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const isFormValid = Object.values(formData).every(value => value.trim() !== '');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isFormValid) return; // double check
+
+    setIsSent(true);
+    // Reset after animation
+    setTimeout(() => {
+      setIsSent(false);
+      setFormData({
+        FirstName: '',
+        LastName: '',
+        Email: '',
+        PhoneNumber: '',
+        Message: ''
+      });
+    }, 3500);
+  };
+
   return (
-    <div className="contact_us_green">
-      <div className="responsive-container-block big-container">
-        <div className="responsive-container-block container">
+    <div className="contact-page-wrapper">
+      <div className="contact-container">
 
-          {/* LEFT SIDE FORM */}
-          <div
-            className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-6 wk-ipadp-10 line"
-            id="i69b-2"
-          >
-            <form className="form-box">
-              <div className="container-block form-wrapper">
-                <div className="head-text-box">
-                  <p className="text-blk contactus-head">Contact us</p>
-                </div>
+        {/* Left Side: Form */}
+        <div className="contact-form-section">
+          <h1 className="contact-title">Contact us</h1>
 
-                <div className="responsive-container-block">
-                  <div
-                    className="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6"
-                    id="i10mt-6"
-                  >
-                    <p className="text-blk input-title">FIRST NAME</p>
-                    <input className="input" id="ijowk-6" name="FirstName" />
-                  </div>
-
-                  <div className="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
-                    <p className="text-blk input-title">LAST NAME</p>
-                    <input className="input" id="indfi-4" name="LastName" />
-                  </div>
-
-                  <div className="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
-                    <p className="text-blk input-title">EMAIL</p>
-                    <input className="input" id="ipmgh-6" name="Email" />
-                  </div>
-
-                  <div className="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
-                    <p className="text-blk input-title">PHONE NUMBER</p>
-                    <input className="input" id="imgis-5" name="PhoneNumber" />
-                  </div>
-
-                  <div
-                    className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12"
-                    id="i634i-6"
-                  >
-                    <p className="text-blk input-title">
-                      WHAT DO YOU HAVE IN MIND
-                    </p>
-                    <textarea
-                      className="textinput"
-                      id="i5vyy-6"
-                      placeholder="Please enter query..."
-                    ></textarea>
-                  </div>
-                </div>
-
-                <div className="btn-wrapper">
-                  <button className="submit-btn">Submit</button>
-                </div>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <div className="form-group">
+                <label>FIRST NAME</label>
+                <input
+                  type="text"
+                  name="FirstName"
+                  value={formData.FirstName}
+                  onChange={handleChange}
+                  className="contact-input"
+                />
               </div>
-            </form>
-          </div>
+              <div className="form-group">
+                <label>LAST NAME</label>
+                <input
+                  type="text"
+                  name="LastName"
+                  value={formData.LastName}
+                  onChange={handleChange}
+                  className="contact-input"
+                />
+              </div>
+            </div>
 
-          {/* RIGHT SIDE INFO */}
-          <div
-            className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-6 wk-ipadp-10"
-            id="ifgi"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <DotLottieReact
-              src={emailAnimation}
-              loop
-              autoplay
-              style={{ width: '100%', height: '100%' }}
-            />
-          </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>EMAIL</label>
+                <input
+                  type="email"
+                  name="Email"
+                  value={formData.Email}
+                  onChange={handleChange}
+                  className="contact-input"
+                />
+              </div>
+              <div className="form-group">
+                <label>PHONE NUMBER</label>
+                <input
+                  type="tel"
+                  name="PhoneNumber"
+                  value={formData.PhoneNumber}
+                  onChange={handleChange}
+                  className="contact-input"
+                />
+              </div>
+            </div>
 
+            <div className="form-group">
+              <label>WHAT DO YOU HAVE IN MIND</label>
+              <textarea
+                name="Message"
+                value={formData.Message}
+                onChange={handleChange}
+                className="contact-textarea"
+                placeholder="Please enter query..."
+              ></textarea>
+            </div>
+
+            <div style={{ position: 'relative', width: 'fit-content' }}>
+              <button
+                type="submit"
+                className="contact-submit-btn"
+                disabled={!isFormValid}
+              >
+                <span>Submit</span>
+              </button>
+
+              <AnimatePresence>
+                {isSent && (
+                  <motion.div
+                    initial={{ opacity: 1, x: 0, y: 0, scale: 0.5, rotate: 0 }}
+                    animate={{
+                      x: 600,
+                      y: -100,
+                      rotate: 45,
+                      scale: [1, 1.5, 0.5],
+                      opacity: 0
+                    }}
+                    transition={{ duration: 3, ease: "easeInOut" }}
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      zIndex: 10,
+                      pointerEvents: 'none',
+                      color: '#437dc3'
+                    }}
+                  >
+                    <FaPaperPlane size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+          </form>
         </div>
+
+        {/* Right Side: Visual/Lottie */}
+        <div className="contact-visual-section">
+          <DotLottieReact
+            src={emailAnimation}
+            loop
+            autoplay
+            className="contact-lottie"
+          />
+        </div>
+
       </div>
     </div>
   );
