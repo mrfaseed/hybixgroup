@@ -16,9 +16,11 @@
     /* Force full screen height */
     min-height: 700px;
     /* Min height for safety */
-    background-color: var(--bg-surface);
+    background-color: #ffffff;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    overflow: hidden;
+    /* Allow blocking horizontal but showing vertical overlap */
+    overflow-x: clip;
+    overflow-y: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,7 +70,7 @@
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -84,9 +86,6 @@
     transition: transform 0.3s ease;
 }
 
-.hero-logo-center:hover {
-    transform: scale(1.02);
-}
 
 .hero-logo-center svg,
 .hero-logo-center img {
@@ -97,9 +96,11 @@
 
 /* 3. Subtext */
 .hero-description {
-    font-size: 1.125rem;
-    color: var(--txt-secondary);
-    line-height: 1.6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #000000;
+    line-height: 1.8;
     max-width: 600px;
     margin: 0;
 }
@@ -114,7 +115,7 @@
 }
 
 .btn-primary {
-    background: var(--txt-primary);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     color: white;
     border: none;
     padding: 14px 32px;
@@ -131,12 +132,12 @@
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    background: #1e293b;
+    background: linear-gradient(135deg, #3374c3 0%, #040683 100%);
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
 }
 
 .btn-secondary {
-    background: white;
+    background: #ffffff;
     color: var(--txt-primary);
     border: 1px solid #e2e8f0;
     padding: 14px 30px;
@@ -157,7 +158,8 @@
 }
 
 .icon-tiny {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
     margin-right: 4px;
 }
 
@@ -166,9 +168,8 @@
     margin-top: 40px;
     display: flex;
     gap: 24px;
-    opacity: 0.6;
-    font-size: 0.9rem;
-    color: var(--txt-secondary);
+    font-size: 1rem;
+    color: #040683;
 }
 
 .hero-trust-row span {
@@ -176,6 +177,63 @@
     align-items: center;
     gap: 6px;
 }
+
+/* Rotating Globes */
+.hero-globes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    /* Allow overlapping sections */
+    overflow: visible;
+}
+
+.hero-globe1 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80vh;
+    height: 80vh;
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 900px;
+    max-height: 900px;
+}
+
+.hero-globe2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60vh;
+    height: 60vh;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+
+
+.globe-left {
+    /* Desktop: Move down to bridge sections and slightly inward */
+    top: auto;
+    bottom: -180px;
+    left: -20vh;
+    transform: none;
+}
+
+.globe-right {
+    /* Desktop: Move down to bridge sections and slightly inward */
+    top: auto;
+    bottom: -320px;
+    right: -20vh;
+    transform: none;
+}
+
+
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
@@ -204,4 +262,38 @@
         width: 100%;
         justify-content: center;
     }
+
+    .hero-globe1 {
+        width: 400px !important;
+        height: 400px !important;
+        min-width: unset !important;
+        min-height: unset !important;
+        max-width: unset !important;
+        max-height: unset !important;
+        /* Reset vertical centering */
+        top: auto !important;
+        transform: none !important;
+    }
+
+    .hero-globe2 {
+        width: 400px !important;
+        height: 400px !important;
+        min-width: unset !important;
+        min-height: unset !important;
+        max-width: unset !important;
+        max-height: unset !important;
+        /* Reset vertical centering */
+        top: auto !important;
+        transform: none !important;
+    }
+
+    .globe-left {
+        top: 80px !important;
+        /* Below navbar */
+        left: -125px !important;
+        /* Show half */
+        right: auto !important;
+        bottom: auto !important;
+    }
+
 }
