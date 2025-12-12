@@ -1,0 +1,54 @@
+/* Container to center the loader on the screen */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#ecf0f1, #fff);
+    z-index: 9999;
+}
+
+/* Animation */
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Variables */
+:root {
+    --loader-size: 100px;
+}
+
+/* Loading Icon */
+.loading {
+    width: var(--loader-size);
+    height: var(--loader-size);
+}
+
+.loading__ring {
+    position: absolute;
+    width: var(--loader-size);
+    height: var(--loader-size);
+}
+
+.loading__ring:first-child {
+    transform: skew(30deg, 20deg);
+}
+
+.loading__ring:last-child {
+    transform: skew(-30deg, -20deg) scale(-1, 1);
+}
+
+.loading__ring:last-child svg {
+    animation-delay: -0.5s;
+}
+
+.loading__ring svg {
+    animation: rotate 1s linear infinite;
+    fill: rgba(0, 98, 255, 0.2);
+}

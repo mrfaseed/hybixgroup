@@ -153,13 +153,11 @@
 }
 
 .contact_us_green .submit-btn {
-  width: 100%;
-  max-width: 250px;
-  height: 50px;
-  /* Reduced height */
-  background-color: #2563eb;
-  font-size: 16px;
-  font-weight: 600;
+  min-width: 290px;
+  height: 60px;
+  background-color: #1c3b28;
+  font-size: 18px;
+  font-weight: 700;
   color: white;
   border: none;
   border-radius: 8px;
