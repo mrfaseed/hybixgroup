@@ -38,7 +38,9 @@ const SolutionPage = () => {
                 { title: 'Responsive Design', description: 'Beautiful, mobile-first designs that work flawlessly across all devices.', icon: '📱' },
                 { title: 'Performance Optimized', description: 'Lightning-fast load times and smooth interactions.', icon: '⚡' },
                 { title: 'SEO Friendly', description: 'Built with best practices for maximum visibility.', icon: '🔍' },
-                { title: 'Scalable Architecture', description: 'Future-proof solutions that grow with your business.', icon: '📈' }
+                { title: 'Scalable Architecture', description: 'Future-proof solutions that grow with your business.', icon: '📈' },
+                { title: 'Secure Infrastructure', description: 'Advanced security measures to protect your data and users.', icon: '🔒' },
+                { title: 'Custom CMS', description: 'Easy-to-use content management systems tailored to your needs.', icon: '🛠️' }
             ],
             technologies: [
                 { name: 'React', icon: <SiReact /> },
@@ -60,7 +62,9 @@ const SolutionPage = () => {
                 { title: 'Cross-Platform', description: 'Build once, deploy everywhere with React Native and Flutter.', icon: '🔄' },
                 { title: 'Native Performance', description: 'Smooth, responsive apps that feel natural.', icon: '🚀' },
                 { title: 'Offline Capability', description: 'Apps that work seamlessly without internet.', icon: '📡' },
-                { title: 'Push Notifications', description: 'Keep users engaged with timely updates.', icon: '🔔' }
+                { title: 'Push Notifications', description: 'Keep users engaged with timely updates.', icon: '🔔' },
+                { title: 'App Store Optimization', description: 'Strategies to rank higher in app stores.', icon: '⭐' },
+                { title: 'Real-time Analytics', description: 'Track user behavior and app performance instantly.', icon: '📊' }
             ],
             technologies: [
                 { name: 'React Native', icon: <SiReact /> },
@@ -82,7 +86,9 @@ const SolutionPage = () => {
                 { title: 'User Research', description: 'Understanding your users to build what they need.', icon: '👥' },
                 { title: 'Wireframing', description: 'Blueprinting the structure of your application.', icon: '📐' },
                 { title: 'Prototyping', description: 'Interactive mockups to visualize the final product.', icon: '🖥️' },
-                { title: 'Visual Design', description: 'Creating beautiful interfaces that delight users.', icon: '✨' }
+                { title: 'Visual Design', description: 'Creating beautiful interfaces that delight users.', icon: '✨' },
+                { title: 'Interaction Design', description: 'Designing meaningful interactions and animations.', icon: '👆' },
+                { title: 'Usability Testing', description: 'Validating designs with real users for best results.', icon: '🧪' }
             ],
             technologies: [
                 { name: 'Figma', icon: <SiFigma /> },
@@ -104,7 +110,9 @@ const SolutionPage = () => {
                 { title: 'Keyword Research', description: 'Targeting the right terms for your business.', icon: '🔑' },
                 { title: 'On-Page SEO', description: 'Optimizing content and structure for search engines.', icon: '📄' },
                 { title: 'Technical SEO', description: 'Improving site speed, mobile-friendliness, and indexing.', icon: '⚙️' },
-                { title: 'Link Building', description: 'Building authority through high-quality backlinks.', icon: '🔗' }
+                { title: 'Link Building', description: 'Building authority through high-quality backlinks.', icon: '🔗' },
+                { title: 'Content Strategy', description: 'Creating content that ranks and engages.', icon: '📝' },
+                { title: 'Local SEO', description: 'Ranking higher in local search results.', icon: '📍' }
             ],
             technologies: [
                 { name: 'Google Analytics', icon: <SiGoogleanalytics /> },
@@ -126,7 +134,9 @@ const SolutionPage = () => {
                 { title: 'Social Media', description: 'Engaging your audience on their favorite platforms.', icon: '📱' },
                 { title: 'Content Marketing', description: 'Creating valuable content that attracts and converts.', icon: '✍️' },
                 { title: 'Email Marketing', description: 'Nurturing leads and building customer relationships.', icon: '📧' },
-                { title: 'PPC Advertising', description: 'Driving targeted traffic with paid search campaigns.', icon: '💰' }
+                { title: 'PPC Advertising', description: 'Driving targeted traffic with paid search campaigns.', icon: '💰' },
+                { title: 'Influencer Marketing', description: 'Leveraging authorities to promote your brand.', icon: '🤝' },
+                { title: 'Video Marketing', description: 'Captivating audiences with visual storytelling.', icon: '🎥' }
             ],
             technologies: [
                 { name: 'Facebook Ads', icon: <SiFacebook /> },
@@ -148,7 +158,9 @@ const SolutionPage = () => {
                 { title: 'Cloud Migration', description: 'Seamless transition of your applications and data.', icon: '🔄' },
                 { title: 'Auto-Scaling', description: 'Automatically scale resources based on demand.', icon: '📈' },
                 { title: 'Disaster Recovery', description: 'Robust backup and recovery solutions.', icon: '🛡️' },
-                { title: 'Cost Optimization', description: 'Optimize cloud spending with smart management.', icon: '💰' }
+                { title: 'Cost Optimization', description: 'Optimize cloud spending with smart management.', icon: '💰' },
+                { title: 'Serverless Computing', description: 'Run code without provisioning or managing servers.', icon: '☁️' },
+                { title: 'Multi-Cloud', description: 'Strategies for using multiple cloud providers.', icon: '🌐' }
             ],
             technologies: [
                 { name: 'AWS', icon: <FaCloud /> },
@@ -170,7 +182,9 @@ const SolutionPage = () => {
                 { title: 'Custom Storefronts', description: 'Unique designs that reflect your brand identity.', icon: '🏪' },
                 { title: 'Payment Integration', description: 'Secure and seamless payment processing.', icon: '💳' },
                 { title: 'Inventory Management', description: 'Efficiently track and manage your stock.', icon: '📦' },
-                { title: 'Mobile Commerce', description: 'Optimized shopping experience for mobile users.', icon: '📱' }
+                { title: 'Mobile Commerce', description: 'Optimized shopping experience for mobile users.', icon: '📱' },
+                { title: 'Abandoned Cart', description: 'Recovery strategies to boost sales.', icon: '🛒' },
+                { title: 'Product Recommendations', description: 'AI-driven suggestions to increase AOV.', icon: '💡' }
             ],
             technologies: [
                 { name: 'Shopify', icon: <SiShopify /> },
@@ -192,7 +206,9 @@ const SolutionPage = () => {
                 { title: 'Smart Contracts', description: 'Automated, self-executing contracts on the blockchain.', icon: '📜' },
                 { title: 'DApps Development', description: 'Building decentralized applications for various use cases.', icon: '📱' },
                 { title: 'DeFi Solutions', description: 'Financial services built on blockchain technology.', icon: '💰' },
-                { title: 'NFT Marketplaces', description: 'Platforms for buying, selling, and trading NFTs.', icon: '🖼️' }
+                { title: 'NFT Marketplaces', description: 'Platforms for buying, selling, and trading NFTs.', icon: '🖼️' },
+                { title: 'Supply Chain', description: 'Transparent tracking and tracing of goods.', icon: '🚚' },
+                { title: 'Tokenization', description: 'Converting assets into digital tokens.', icon: '🪙' }
             ],
             technologies: [
                 { name: 'Ethereum', icon: <SiEthereum /> },
@@ -214,7 +230,9 @@ const SolutionPage = () => {
                 { title: 'Predictive Analytics', description: 'Forecast trends and make proactive decisions.', icon: '🔮' },
                 { title: 'NLP', description: 'Build intelligent chatbots and text analysis systems.', icon: '💬' },
                 { title: 'Computer Vision', description: 'Image recognition and visual data processing.', icon: '👁️' },
-                { title: 'Recommendation Engines', description: 'Personalized user experiences.', icon: '🎯' }
+                { title: 'Recommendation Engines', description: 'Personalized user experiences.', icon: '🎯' },
+                { title: 'Fraud Detection', description: 'Identify and prevent fraudulent activities.', icon: '🛡️' },
+                { title: 'Process Automation', description: 'Automate repetitive tasks intelligently.', icon: '⚙️' }
             ],
             technologies: [
                 { name: 'Python', icon: <SiPython /> },
@@ -236,7 +254,9 @@ const SolutionPage = () => {
                 { title: 'CI/CD Pipelines', description: 'Automated build, test, and deployment workflows.', icon: '🚀' },
                 { title: 'Infrastructure as Code', description: 'Managing infrastructure through code.', icon: '💻' },
                 { title: 'Monitoring & Logging', description: 'Real-time visibility into system performance.', icon: '📊' },
-                { title: 'Containerization', description: 'Efficient application packaging and deployment.', icon: '📦' }
+                { title: 'Containerization', description: 'Efficient application packaging and deployment.', icon: '📦' },
+                { title: 'Configuration Mgmt', description: 'Automated configuration of servers and systems.', icon: '⚙️' },
+                { title: 'Security Ops', description: 'Integrating security into the DevOps pipeline.', icon: '🔒' }
             ],
             technologies: [
                 { name: 'Jenkins', icon: <SiJenkins /> },
@@ -258,7 +278,9 @@ const SolutionPage = () => {
                 { title: 'Vulnerability Assessment', description: 'Identifying and addressing security weaknesses.', icon: '🔍' },
                 { title: 'Penetration Testing', description: 'Simulating attacks to test defenses.', icon: '⚔️' },
                 { title: 'Security Audits', description: 'Comprehensive review of security policies and controls.', icon: '📋' },
-                { title: 'Incident Response', description: 'Rapid reaction to security breaches.', icon: '🚨' }
+                { title: 'Incident Response', description: 'Rapid reaction to security breaches.', icon: '🚨' },
+                { title: 'Cloud Security', description: 'Securing cloud infrastructure and data.', icon: '☁️' },
+                { title: 'Compliance', description: 'Ensuring adherence to industry regulations.', icon: '📜' }
             ],
             technologies: [
                 { name: 'Kali Linux', icon: <SiKalilinux /> },
@@ -280,7 +302,9 @@ const SolutionPage = () => {
                 { title: 'Digital Transformation', description: 'Modernizing your business with technology.', icon: '🚀' },
                 { title: 'IT Strategy', description: 'Aligning technology with business objectives.', icon: '🎯' },
                 { title: 'System Integration', description: 'Connecting disparate systems for seamless flow.', icon: '🔗' },
-                { title: 'Tech Assessment', description: 'Evaluating your current technology stack.', icon: '📊' }
+                { title: 'Tech Assessment', description: 'Evaluating your current technology stack.', icon: '📊' },
+                { title: 'Process Optimization', description: 'Improving efficiency through technology.', icon: '⚡' },
+                { title: 'Cyber Security Strategy', description: 'Developing a roadmap for secure operations.', icon: '🛡️' }
             ],
             technologies: [
                 { name: 'Enterprise Arch.', icon: <FaBriefcase /> },

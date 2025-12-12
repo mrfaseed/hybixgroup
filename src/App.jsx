@@ -93,7 +93,7 @@ function App() {
 
   return (
     <div className="app-container">
-      {!isLoginPage && <Navbar />}
+      {!isLoginPage && location.pathname !== '/admin-dashboard' && <Navbar />}
       <ScrollToTop />
       <Suspense fallback={<Loading />}>
         <Routes>
