@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import {
     FiHome, FiUsers, FiSettings, FiLogOut, FiBarChart2,
-    FiGrid, FiMessageSquare, FiFileText, FiBriefcase, FiBell, FiSearch
+    FiGrid, FiMessageSquare, FiFileText, FiBriefcase, FiBell, FiSearch, FiMenu, FiX
 } from 'react-icons/fi';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('overview');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     const handleLogout = () => {
         // Implement logout logic here
@@ -25,19 +28,36 @@ const AdminDashboard = () => {
 
     return (
         <div className="admin-container">
-            {/* Extended Sidebar */}
-            <aside className="admin-sidebar">
-                <div className="sidebar-brand">
+            {/* Mobile Header */}
+            <header className="mobile-header">
+                <div className="mobile-brand">
                     <div className="brand-logo">H</div>
-                    <h2>Hybix<span>Admin</span></h2>
+                    <h2>Hybix<span>Group</span></h2>
+                </div>
+                <button className="menu-toggle" onClick={toggleMobileMenu}>
+                    {isMobileMenuOpen ? <FiX /> : <FiMenu />}
+                </button>
+            </header>
+
+            {/* Overlay */}
+            {isMobileMenuOpen && (
+                <div className="sidebar-overlay" onClick={() => setIsMobileMenuOpen(false)} />
+            )}
+
+            {/* Extended Sidebar */}
+            <aside className={`admin-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
+                <div className="sidebar-header-mobile">
+                    <button className="close-menu-btn" onClick={() => setIsMobileMenuOpen(false)}>
+                        <FiX />
+                    </button>
+                </div>
+                <div className="sidebar-brand">
                 </div>
 
-                <div className="user-profile-sidebar">
-                    <div className="avatar">A</div>
-                    <div className="user-info">
-                        <span className="user-name">Admin User</span>
-                        <span className="user-role">Super Admin</span>
-                    </div>
+
+                <div className="sidebar-search">
+                    <FiSearch className="sidebar-search-icon" />
+                    <input type="text" placeholder="Search..." />
                 </div>
 
                 <div className="sidebar-section-label">Main Menu</div>
@@ -46,7 +66,10 @@ const AdminDashboard = () => {
                         <button
                             key={item.id}
                             className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                            onClick={() => setActiveTab(item.id)}
+                            onClick={() => {
+                                setActiveTab(item.id);
+                                setIsMobileMenuOpen(false);
+                            }}
                         >
                             <span className="nav-icon">{item.icon}</span>
                             <span className="nav-label">{item.label}</span>
@@ -65,24 +88,12 @@ const AdminDashboard = () => {
 
             {/* Main Content Area */}
             <main className="admin-main">
-                <div className="content-header">
-                    <div className="header-title">
-                        <h1>{navItems.find(i => i.id === activeTab)?.label}</h1>
-                        <p>Welcome back, here's what's happening today.</p>
-                    </div>
-                    <div className="header-actions">
-                        <div className="search-bar">
-                            <FiSearch className="search-icon" />
-                            <input type="text" placeholder="Search..." />
-                        </div>
-                        <button className="icon-btn">
-                            <FiBell />
-                            <span className="notification-dot"></span>
-                        </button>
-                    </div>
-                </div>
-
                 <div className="content-scrollable">
+                    <div className="page-header">
+                        <h1>{navItems.find(i => i.id === activeTab)?.label}</h1>
+                        <p className="page-subtitle">Welcome back, here's what's happening today.</p>
+                    </div>
+
                     {/* Dynamic Content based on active tab */}
                     {activeTab === 'overview' && (
                         <div className="dashboard-grid">

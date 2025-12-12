@@ -10,23 +10,23 @@ import teamMember5 from '../assets/team_member_5.jpg';
 import teamMember6 from '../assets/team_member_6.jpg';
 
 const teamMembers = [
-    {
+     {
         id: 1,
+        name: "MOHAMMED SHABAN",
+        role: "CEO & FOUNDER",
+        image: teamMember2,
+    },
+    {
+        id: 2,
         name: "JEGATHEESH",
         role: "Founder & COO",
         image: teamMember1,
 
     },
     {
-        id: 2,
-        name: "MOHAMMED SHABAN",
-        role: "CEO & CO-FOUNDER",
-        image: teamMember2,
-    },
-    {
         id: 3,
         name: "MOHAMMED FASEED",
-        role: "CTO & CO-FOUNDER",
+        role: "CTO & FOUNDER",
         image: teamMember3,
 
     },
