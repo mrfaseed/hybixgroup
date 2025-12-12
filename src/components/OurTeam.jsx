@@ -2,48 +2,54 @@ import React from 'react';
 import './OurTeam.css';
 import { FaInstagram, FaTwitter } from 'react-icons/fa';
 
+import teamMember1 from '../assets/team_member_1.png';
+import teamMember2 from '../assets/team_member_2.jpg';
+import teamMember3 from '../assets/team_member_3.jpg';
+import teamMember4 from '../assets/team_member_4.jpg';
+import teamMember5 from '../assets/team_member_5.jpg';
+import teamMember6 from '../assets/team_member_6.jpg';
+
 const teamMembers = [
     {
         id: 1,
-        name: "Alex Morgan",
-        role: "CEO & Founder",
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-        bio: "Visionary leader with 15+ years in tech innovation."
+        name: "JEGATHEESH",
+        role: "Founder & COO",
+        image: teamMember1,
+
     },
     {
         id: 2,
-        name: "Sarah Chen",
-        role: "CTO",
-        image: "https://images.unsplash.com/photo-1573496359-136d4755be36?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-        bio: "Expert in AI architecture and scalable systems."
+        name: "MOHAMMED SHABAN",
+        role: "CEO & CO-FOUNDER",
+        image: teamMember2,
     },
     {
         id: 3,
-        name: "James Wilson",
-        role: "Head of Design",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-        bio: "Award-winning designer passionate about user experience."
+        name: "MOHAMMED FASEED",
+        role: "CTO & CO-FOUNDER",
+        image: teamMember3,
+
     },
     {
         id: 4,
-        name: "Elena Rodriguez",
+        name: "VISHNNU",
         role: "Lead Developer",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-        bio: "Full-stack wizard specializing in React and Node.js."
+        image: teamMember4,
+
     },
     {
         id: 5,
-        name: "David Kim",
-        role: "Product Manager",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-        bio: "Bridging the gap between business needs and tech solutions."
+        name: "IKHLASH",
+        role: "Lead Developer",
+        image: teamMember5,
+
     },
     {
         id: 6,
-        name: "Olivia Taylor",
-        role: "Marketing Director",
-        image: "https://images.unsplash.com/photo-1598550874175-4d7112ee7f38?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-        bio: "Creative strategist driving brand growth and engagement."
+        name: "SHOBIKA",
+        role: "Head of Design",
+        image: teamMember6,
+
     }
 ];
 
