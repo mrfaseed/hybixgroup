@@ -5,7 +5,7 @@ import './Login.css?v=force_reload';
 import { useAuth } from '../context/AuthContext';
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import loginAnimation from '../assets/Login.lottie';
+import loginAnimation from '../assets/Login.lottie?url';
 
 const Login = () => {
     const { signup, login, googleLogin, updateUserProfile, currentUser, resetPassword, verifyEmail } = useAuth();

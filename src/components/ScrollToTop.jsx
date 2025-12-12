@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './ScrollToTop.css';
 
 const ScrollToTop = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+    const { pathname } = useLocation();
+
+    // Automatically scroll to top on route change
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [pathname]);
 
     useEffect(() => {
         const handleScroll = () => {

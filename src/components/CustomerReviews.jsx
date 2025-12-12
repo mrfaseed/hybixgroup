@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './CompanyTheme.css';
 import './CustomerReviews.css';
 
@@ -227,6 +229,29 @@ const CustomerReviews = () => {
     const [expandedId, setExpandedId] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [showAllReviews, setShowAllReviews] = useState(false);
+    const navigate = useNavigate();
+    const scrollContainerRef = useRef(null);
+
+    const scroll = (direction) => {
+        if (scrollContainerRef.current) {
+            const { current } = scrollContainerRef;
+            const scrollAmount = 350; // Approx card width + gap
+            if (direction === 'left') {
+                current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    };
+
+    const handleStartProject = () => {
+        const contactSection = document.getElementById('contact-section');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            navigate('/contact');
+        }
+    };
 
     useEffect(() => {
         setIsVisible(true);
@@ -303,7 +328,27 @@ const CustomerReviews = () => {
 
             {/* New Responsive Card Layout */}
             <div className="reviews-grid-container">
-                <div className="reviews-row">
+                {/* Navigation Buttons */}
+                {!isMobile && (
+                    <>
+                        <button
+                            className="nav-btn prev-btn"
+                            onClick={() => scroll('left')}
+                            aria-label="Scroll Left"
+                        >
+                            <FaChevronLeft />
+                        </button>
+                        <button
+                            className="nav-btn next-btn"
+                            onClick={() => scroll('right')}
+                            aria-label="Scroll Right"
+                        >
+                            <FaChevronRight />
+                        </button>
+                    </>
+                )}
+
+                <div className="reviews-row" ref={scrollContainerRef}>
                     {visibleReviews.map(review => (
                         <ReviewCard
                             key={review.id}
@@ -331,7 +376,7 @@ const CustomerReviews = () => {
                 <div className="cta-content">
                     <h2 className="cta-title">Ready to Join Our Success Stories?</h2>
                     <p className="cta-subtitle">Let's create something amazing together</p>
-                    <button className="cta-button">
+                    <button className="cta-button" onClick={handleStartProject}>
                         <span className="button-text">Start Your Project</span>
                         <span className="button-icon">→</span>
                         <div className="button-glow"></div>
