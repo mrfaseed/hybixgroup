@@ -8,17 +8,18 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import loginAnimation from '../assets/Login.lottie';
 
 const Login = () => {
+    const { signup, login, googleLogin, updateUserProfile, currentUser, resetPassword, verifyEmail } = useAuth();
+
     const [isLogin, setIsLogin] = useState(true);
     const [isResetPassword, setIsResetPassword] = useState(false);
-    const [isVerificationPending, setIsVerificationPending] = useState(false);
+    const [isVerificationPending, setIsVerificationPending] = useState(currentUser && !currentUser.emailVerified);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [loading, setLoading] = useState(false);
-
-    const { signup, login, googleLogin, updateUserProfile, currentUser, resetPassword, verifyEmail } = useAuth();
+    const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from || '/';
@@ -124,7 +125,7 @@ const Login = () => {
 
         try {
             if (isLogin) {
-                const userCredential = await login(email, password);
+                const userCredential = await login(email, password, rememberMe);
                 if (!userCredential.user.emailVerified) {
                     setIsVerificationPending(true);
                     setLoading(false);
@@ -302,7 +303,11 @@ const Login = () => {
 
                                     <div className="form-actions">
                                         <label className="remember-me">
-                                            <input type="checkbox" />
+                                            <input
+                                                type="checkbox"
+                                                checked={rememberMe}
+                                                onChange={(e) => setRememberMe(e.target.checked)}
+                                            />
                                             <span>Remember me</span>
                                         </label>
                                         <span className="forgot-link" onClick={() => { setIsResetPassword(true); setError(''); setSuccessMessage(''); }}>Forgot password?</span>

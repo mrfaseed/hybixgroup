@@ -11,7 +11,6 @@
 
 .about-page {
     font-family: 'Outfit', sans-serif;
-    background: var(--bg-white);
     color: #000000;
     overflow-x: hidden;
 }
@@ -61,7 +60,7 @@
 }
 
 .hero-title .highlight {
-    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -318,7 +317,7 @@
 
 /* --- Values Section --- */
 .about-values {
-    background: #ffffff;
+    position: relative;
 }
 
 .values-header {
@@ -330,9 +329,7 @@
     transition: all 0.8s ease-out;
 }
 
-.about-values .values-header h2 {
-    font-size: 3.5rem;
-    font-weight: 800;
+.about-values .values-header h2{
     background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -411,7 +408,7 @@
 
 /* --- Team Section --- */
 .about-team {
-    background: white;
+    position: relative;
 }
 
 .team-header {
