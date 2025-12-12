@@ -1,56 +1,49 @@
 import React from 'react';
 import HybixLogoAnimated from './HybixLogoAnimated';
+import FloatingTechBackground from './FloatingTechBackground';
 import './HomeCity.css';
-import { FaArrowRight, FaInfoCircle, FaCode, FaMobileAlt, FaBrain, FaCloud } from 'react-icons/fa';
+import { FaArrowRight, FaPlay, FaCode, FaMobileAlt, FaBrain, FaCloud } from 'react-icons/fa';
 
 export default function HomeCity() {
     return (
-        <section className="hero-section">
-            <div className="hero-background">
-                <div className="intro-flash-overlay"></div>
-                <img src="/fav-logo.svg" alt="" className="static-bg-light" />
-            </div>
+        <section className="hero-root">
+            <div className="hero-glow"></div>
+            <FloatingTechBackground />
 
-            {/* Content Area */}
-            <div className="hero-content">
-                <div className="logo-wrapper">
+            <div className="hero-container">
+                {/* 1. Headline */}
+                <h1 className="hero-title">
+                    Future of
+                    <span className="text-gradient"> Digital Solutions</span>
+                </h1>
+
+                {/* 2. Logo in the middle */}
+                <div className="hero-logo-center">
                     <HybixLogoAnimated />
                 </div>
 
-                <div className="hero-text">
-                    <h1 className="hero-headline">
-                        Innovating the Future of <br />
-                        <span className="highlight-text">Digital Solutions</span>
-                    </h1>
-                    <p className="hero-subtext">
-                        We build premium web applications, mobile solutions, and AI-driven platforms designed to scale and succeed.
-                    </p>
-                </div>
+                {/* 3. Subtext */}
+                <p className="hero-description">
+                    We engineer premium web applications, scalable mobile solutions,
+                    and intelligent AI platforms that define the next generation of business.
+                </p>
 
-                <div className="hero-buttons">
-                    <button className="btn-hero btn-primary">
-                        <span>Get Started</span>
-                        <FaArrowRight className="btn-icon" />
+                {/* 4. Buttons */}
+                <div className="hero-cta-group">
+                    <button className="btn-primary">
+                        Start Building <FaArrowRight />
                     </button>
-                    <button className="btn-hero btn-secondary">
-                        <span>Learn More</span>
-                        <FaInfoCircle className="btn-icon" />
+                    <button className="btn-secondary">
+                        <FaPlay className="icon-tiny" /> Watch Demo
                     </button>
                 </div>
 
-                <div className="trust-badges">
-                    <div className="trust-item">
-                        <FaCode /> <span>Web Apps</span>
-                    </div>
-                    <div className="trust-item">
-                        <FaMobileAlt /> <span>Mobile</span>
-                    </div>
-                    <div className="trust-item">
-                        <FaBrain /> <span>AI Solutions</span>
-                    </div>
-                    <div className="trust-item">
-                        <FaCloud /> <span>Cloud</span>
-                    </div>
+                {/* Optional: Bottom Trust Icons (Small & Subtle) */}
+                <div className="hero-trust-row">
+                    <span><FaCode /> Web</span>
+                    <span><FaMobileAlt /> Mobile</span>
+                    <span><FaBrain /> AI</span>
+                    <span><FaCloud /> Cloud</span>
                 </div>
             </div>
         </section>
