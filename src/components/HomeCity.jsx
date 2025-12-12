@@ -1,6 +1,7 @@
 import React from 'react';
 import HybixLogoAnimated from './HybixLogoAnimated';
 import FloatingTechBackground from './FloatingTechBackground';
+import RotatingGlobe from './RotatingGlobe';
 import './HomeCity.css';
 import { FaArrowRight, FaPlay, FaCode, FaMobileAlt, FaBrain, FaCloud } from 'react-icons/fa';
 
@@ -8,6 +9,10 @@ export default function HomeCity() {
     return (
         <section className="hero-root">
             <div className="hero-glow"></div>
+            <div className="hero-globes-container">
+                <RotatingGlobe className="hero-globe1 globe-left" />
+                <RotatingGlobe className="hero-globe2 globe-right" />
+            </div>
             <FloatingTechBackground />
 
             <div className="hero-container">
