@@ -372,6 +372,18 @@
         /* Slight adjustment to improve overlap visual on hover */
     }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     .review-card:hover .card-footer,
     .review-card:focus-within .card-footer {
         opacity: 1;
@@ -621,5 +633,62 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Navigation Buttons for Carousel */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    color: #1e293b;
+    font-size: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn:hover {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+    transform: translateY(-50%) scale(1.1);
+    border-color: transparent;
+}
+
+.nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn {
+    left: -70px;
+}
+
+.next-btn {
+    right: -70px;
+}
+
+@media (max-width: 1024px) {
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .prev-btn {
+        left: -20px;
+    }
+
+    .next-btn {
+        right: -20px;
     }
 }

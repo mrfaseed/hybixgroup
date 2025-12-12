@@ -1,11 +1,23 @@
 import React, { Suspense } from 'react';
 const HybixLogoAnimated = React.lazy(() => import('./HybixLogoAnimated'));
+import { useNavigate } from 'react-router-dom';
 const FloatingTechBackground = React.lazy(() => import('./FloatingTechBackground'));
 const RotatingGlobe = React.lazy(() => import('./RotatingGlobe'));
 import './HomeCity.css';
 import { FaArrowRight, FaPlay, FaCode, FaMobileAlt, FaBrain, FaCloud } from 'react-icons/fa';
 
 export default function HomeCity() {
+    const navigate = useNavigate();
+
+    const handleStartBuilding = () => {
+        const contactSection = document.getElementById('contact-section');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            navigate('/contact');
+        }
+    };
+
     return (
         <section className="hero-root">
             <div className="hero-glow"></div>
@@ -41,7 +53,7 @@ export default function HomeCity() {
 
                 {/* 4. Buttons */}
                 <div className="hero-cta-group">
-                    <button className="btn-primary">
+                    <button className="btn-primary" onClick={handleStartBuilding}>
                         Start Building <FaArrowRight />
                     </button>
                     <button className="btn-secondary">

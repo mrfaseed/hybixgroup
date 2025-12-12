@@ -3,7 +3,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPaperPlane } from "react-icons/fa";
 import './Contact.css'
-import emailAnimation from '../assets/Email.lottie';
+import emailAnimation from '../assets/Email.lottie?url';
 
 const Contact = () => {
   const [isSent, setIsSent] = useState(false);
@@ -41,7 +41,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page-wrapper">
+    <div id="contact-section" className="contact-page-wrapper">
       <div className="contact-container">
 
         {/* Left Side: Form */}

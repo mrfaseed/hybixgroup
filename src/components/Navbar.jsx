@@ -366,9 +366,12 @@ const Navbar = () => {
                                                                     ))}
                                                                 </div>
                                                                 <div className="solution-action">
-                                                                    <a href="#" className="solution-btn">
+                                                                    <Link
+                                                                        to={(item.links[activeSolution].buttonText === 'Learn More' || !item.links[activeSolution].buttonText) ? '/learn-more' : (item.links[activeSolution].path || '#')}
+                                                                        className="solution-btn"
+                                                                    >
                                                                         {item.links[activeSolution].buttonText || 'Learn More'} <FaArrowRight className="btn-arrow" />
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                         </div>
