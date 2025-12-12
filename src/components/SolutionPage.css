@@ -18,7 +18,7 @@
 
 .solution-page {
     min-height: 100vh;
-    background-color: var(--bg-light);
+    background-color: #ffffff;
     background-image:
         radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
         radial-gradient(at 100% 0%, rgba(124, 58, 237, 0.05) 0px, transparent 50%);
@@ -142,6 +142,8 @@
 
 .hero-content {
     padding-right: 20px;
+    margin-top: -100px;
+    /* Shift contents upwards */
 }
 
 .hero-badge {
@@ -166,15 +168,14 @@
 
 .hero-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 4.5rem;
+    font-size: 4.6rem;
     font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
 }
 
 .title-word {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #437dc3, #0a0c86);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -187,12 +188,12 @@
     font-size: 1.8rem;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    margin-bottom: 2px;
 }
 
 .hero-description {
     font-size: 1.25rem;
-    line-height: 1.7;
+    line-height: 1.9;
     color: var(--text-secondary);
     margin-bottom: 40px;
     max-width: 600px;
@@ -210,7 +211,7 @@
 .cta-primary,
 .btn-primary {
     padding: 16px 36px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #437dc3, #0a0c86);
     color: white;
     border: none;
     border-radius: 12px;
@@ -392,9 +393,9 @@
 
 .section-header h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: 3.5rem;
+    font-size: 5rem;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, #437dc3, #0a0c86);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -417,75 +418,68 @@
 
 .feature-card {
     position: relative;
-    background: white;
-    padding: 40px;
-    border-radius: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s ease;
-    border: 1px solid transparent;
-    /* Prepare for gradient border */
-    background-clip: padding-box;
-    /* Important for border effect */
+    background: linear-gradient(135deg, #437dc3, #0a0c86);
+    padding: 32px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
     opacity: 0;
     transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .feature-card.visible {
     animation: fadeUp 0.6s ease-out forwards;
 }
 
-/* Unique Gradient Border Effect */
-.feature-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    padding: 2px;
-    /* Border width */
-    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    transition: background 0.4s ease;
-    z-index: -1;
-}
-
+/* Simplified efficient hover effect */
 .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.3);
 }
 
-.feature-card:hover::before {
-    background: var(--gradient-border);
+/* Remove old complex gradient border */
+.feature-card::before {
+    display: none;
 }
 
 .feature-icon {
-    font-size: 3rem;
-    margin-bottom: 24px;
-    display: inline-block;
-    transition: transform 0.4s ease;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #f8fafc;
+    border-radius: 12px;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
 }
 
 .feature-card:hover .feature-icon {
-    transform: scale(1.1) rotate(5deg);
+    background: #ffffff;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
 }
 
 .feature-card h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     margin-bottom: 12px;
-    color: var(--text-main);
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .feature-card p {
-    color: var(--text-secondary);
+    color: #ffffff;
     line-height: 1.6;
+    font-size: 1rem;
 }
 
 /* Technologies */
@@ -571,7 +565,7 @@
 }
 
 .cta-content {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #437dc3, #0a0c86);
     border-radius: 30px;
     padding: 80px 40px;
     text-align: center;
@@ -604,12 +598,22 @@
 
 .cta-buttons .btn-primary {
     background: white;
-    color: var(--primary-color);
+    color: #000000;
 }
 
 .cta-buttons .btn-secondary {
-    border-color: white;
-    color: white;
+    color: #ffffff;
+    background: transparent;
+}
+
+.cta-buttons .btn-primary:hover {
+    border-color: #ffffff;
+    color: #000000;
+}
+
+.cta-buttons .btn-secondary:hover {
+    color: #000000;
+    background: #ffffff;
 }
 
 /* Animations */

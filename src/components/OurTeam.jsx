@@ -3,8 +3,8 @@ import './OurTeam.css';
 import { FaInstagram, FaTwitter } from 'react-icons/fa';
 
 import teamMember1 from '../assets/team_member_1.png';
-import teamMember2 from '../assets/team_member_2.jpg';
-import teamMember3 from '../assets/team_member_3.jpg';
+import teamMember2 from '../assets/Shaban avatar.jpg';
+import teamMember3 from '../assets/Faseed avatar.jpg';
 import teamMember4 from '../assets/team_member_4.jpg';
 import teamMember5 from '../assets/team_member_5.jpg';
 import teamMember6 from '../assets/team_member_6.jpg';
