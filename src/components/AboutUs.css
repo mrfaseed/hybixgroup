@@ -19,7 +19,7 @@
 /* --- Hero Section --- */
 .about-hero {
     position: relative;
-    height: 80vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,20 +36,24 @@
     z-index: 0;
 }
 
-.about-hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 900px;
-}
-
-.hero-title {
-    font-size: 4rem;
+.about-hero-content h1 {
+    font-size: 5rem;
     font-weight: 800;
-    margin-bottom: 24px;
+    margin-bottom: 50px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 1s ease-out;
 }
+
+.about-hero-content .highlight {
+    font-size: 5rem;
+}
+
+.about-hero-content p{
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
 
 .hero-title.visible {
     opacity: 1;
@@ -57,7 +61,7 @@
 }
 
 .hero-title .highlight {
-    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -86,7 +90,7 @@
     font-size: 5rem;
     font-weight: 800;
     margin-bottom: 20px;
-    background:linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -102,6 +106,15 @@
     align-items: center;
 }
 
+.story-container h2{
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .story-content {
     opacity: 0;
     transform: translateX(-50px);
@@ -114,10 +127,10 @@
 }
 
 .story-text p {
-    font-size: 18px;
+    font-size: 1.3rem;
     line-height: 1.8;
     color: #000000;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* --- Image Collage Layout --- */
@@ -160,7 +173,7 @@
 
 /* Main Image - Team */
 .main-img {
-    width: 70%;
+    width: 90%;
     height: 75%;
     top: 0;
     left: 0;
@@ -169,9 +182,9 @@
 
 /* Secondary Image - Mission */
 .secondary-img {
-    width: 50%;
+    width: 70%;
     height: 50%;
-    bottom: 40px;
+    bottom: 10px;
     right: 20px;
     z-index: 2;
     border: 5px solid #fff;
@@ -184,13 +197,13 @@
     position: absolute;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 15px 20px;
+    padding: 15px 20px 25px;
     border-radius: 16px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 5;
+    z-index: 7;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.5);
     min-width: 180px;
@@ -236,13 +249,13 @@
 /* Card Positioning */
 .card-1 {
     top: 10%;
-    right: -20px;
+    right: -70px;
     animation: float 6s ease-in-out infinite;
 }
 
 .card-2 {
     bottom: 25%;
-    left: -30px;
+    left: -10px;
     animation: float 7s ease-in-out infinite 1s;
     z-index: 6;
 }
@@ -317,11 +330,19 @@
     transition: all 0.8s ease-out;
 }
 
-.about-values .values-header h2{
+.about-values .values-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
     background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.about-values .values-header p{
+    font-size: 1.3rem;
+    color: #000000;
+    margin-bottom: 10px;
 }
 
 .values-header.visible {
@@ -342,7 +363,7 @@
     padding: 40px;
     border-radius: 24px;
     transition: all 0.4s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 5px solid rgba(0, 0, 0, 0.05);
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -386,58 +407,7 @@
     line-height: 1.6;
 }
 
-/* --- Stats Section --- */
-.about-stats {
-    position: relative;
-    color: white;
-    padding: 80px 20px;
-}
 
-.stats-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.stat-item {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.6s ease-out;
-}
-
-.stat-item.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.stat-icon {
-    font-size: 36px;
-    color: var(--primary-color);
-    margin-bottom: 16px;
-}
-
-.stat-number {
-    font-size: 48px;
-    font-weight: 800;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-label {
-    font-size: 18px;
-    color: #000000;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
 
 /* --- Team Section --- */
 .about-team {
@@ -521,8 +491,19 @@
         grid-template-columns: 1fr;
     }
 
-    .hero-title {
-        font-size: 42px;
+    .about-hero-content h1 {
+        font-size: 3rem;
+        /* Adjusted for mobile */
+    }
+
+    .about-hero-content .highlight {
+        font-size: 3rem;
+        /* aligned with title */
+    }
+
+    .section-title {
+        font-size: 3rem;
+        /* adjusted for mobile */
     }
 
     .story-visual {

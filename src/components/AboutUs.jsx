@@ -232,16 +232,6 @@ const AboutUs = () => {
             </section>
 
             {/* Statistics Parallax Strip */}
-            <section className="about-stats" ref={statsRef}>
-                <div className="stats-overlay"></div>
-                <div className="stats-container">
-                    {stats.map((stat, index) => (
-                        <div style={{ transitionDelay: `${index * 150}ms` }} key={index}>
-                            <StatItem stat={stat} />
-                        </div>
-                    ))}
-                </div>
-            </section>
         </div>
     );
 };
