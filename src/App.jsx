@@ -21,6 +21,8 @@ const Careers = React.lazy(() => import('./components/Careers'));
 const NewsMedia = React.lazy(() => import('./components/NewsMedia'));
 const HomeCity = React.lazy(() => import('./components/HomeCity'));
 const CustomerReviews = React.lazy(() => import('./components/CustomerReviews'));
+const ConsultationPage = React.lazy(() => import('./components/ConsultationPage'));
+
 
 // Home Page Component
 // Home Page Component
@@ -109,6 +111,9 @@ function App() {
 
           {/* Solution Pages Routes */}
           <Route path="/solutions/:solutionType" element={<SolutionPage />} />
+
+          {/* Consultation Route */}
+          <Route path="/consultation" element={<ConsultationPage />} />
 
           {/* Login Routes */}
           <Route path="/login" element={<Login />} />
