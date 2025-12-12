@@ -1,190 +1,160 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import './Contact.css';
-import {
-    FaPaperPlane,
-    FaReact,
-    FaNodeJs,
-    FaPython,
-    FaDatabase,
-    FaCode,
-    FaLaptopCode,
-    FaServer,
-    FaMicrochip
-} from 'react-icons/fa';
-import { SiJavascript, SiTypescript } from 'react-icons/si';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import contactAnimation from '../assets/contact.lottie';
-
+import React from "react";
+import './Contact.css'
 const Contact = () => {
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
-    const { currentUser } = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
+  return (
+    <div className="contact_us_green">
+      <div className="responsive-container-block big-container">
+        <div className="responsive-container-block container">
+          
+          {/* LEFT SIDE FORM */}
+          <div
+            className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-7 wk-ipadp-10 line"
+            id="i69b-2"
+          >
+            <form className="form-box">
+              <div className="container-block form-wrapper">
+                <div className="head-text-box">
+                  <p className="text-blk contactus-head">Contact us</p>
+                  <p className="text-blk contactus-subhead">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna al
+                    iqua. Ut enim
+                  </p>
+                </div>
 
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        message: location.state?.savedMessage || ''
-    });
+                <div className="responsive-container-block">
+                  <div
+                    className="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6"
+                    id="i10mt-6"
+                  >
+                    <p className="text-blk input-title">FIRST NAME</p>
+                    <input className="input" id="ijowk-6" name="FirstName" />
+                  </div>
 
-    useEffect(() => {
-        if (currentUser) {
-            setFormData(prev => ({
-                ...prev,
-                name: currentUser.displayName || '',
-                email: currentUser.email || ''
-            }));
-        }
-    }, [currentUser]);
+                  <div className="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                    <p className="text-blk input-title">LAST NAME</p>
+                    <input className="input" id="indfi-4" name="LastName" />
+                  </div>
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+                  <div className="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                    <p className="text-blk input-title">EMAIL</p>
+                    <input className="input" id="ipmgh-6" name="Email" />
+                  </div>
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!currentUser) {
-            // Redirect to login and save current location to return back
-            const fromLocation = {
-                pathname: location.pathname,
-                search: location.search,
-                hash: '#contact',
-                state: { savedMessage: formData.message }
-            };
-            navigate('/login', { state: { from: fromLocation } });
-            return;
-        }
-        // Handle form submission here (e.g., send data to backend)
-        console.log("Form submitted:", formData);
-        alert("Message sent successfully!");
-        setFormData(prev => ({ ...prev, message: '' })); // Clear message only
-    };
+                  <div className="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                    <p className="text-blk input-title">PHONE NUMBER</p>
+                    <input className="input" id="imgis-5" name="PhoneNumber" />
+                  </div>
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
-
-    return (
-
-        <section className="contact-section" ref={sectionRef} id="contact">
-
-
-            <div className="contact-container">
-                <div className={`contact-header ${isVisible ? 'visible' : ''}`}>
-                    <div className="header-badge">
-                        <span className="badge-icon">✉️</span>
-                        <span className="badge-text">Get in Touch</span>
-                    </div>
-                    <h1 className="section-title">
-                        Let's Start a <span className="gradient-text">Conversation</span>
-                    </h1>
-                    <p className="section-subtitle">
-                        Have a project in mind? We'd love to hear from you.
+                  <div
+                    className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12"
+                    id="i634i-6"
+                  >
+                    <p className="text-blk input-title">
+                      WHAT DO YOU HAVE IN MIND
                     </p>
+                    <textarea
+                      className="textinput"
+                      id="i5vyy-6"
+                      placeholder="Please enter query..."
+                    ></textarea>
+                  </div>
                 </div>
 
-                <div className="contact-content">
-                    {/* Left Side - Lottie Animation */}
-                    <div className={`contact-image-wrapper ${isVisible ? 'animate-left' : ''}`}>
-                        <div className="image-glow"></div>
-                        <div className="lottie-container" style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <DotLottieReact
-                                src={contactAnimation}
-                                loop
-                                autoplay
-                                style={{ width: '140%', height: 'auto', maxWidth: 'none' }}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Right Side - Contact Form */}
-                    <div className={`contact-form-container ${isVisible ? 'animate-right' : ''}`}>
-                        <form className="contact-form" onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Your Name</label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="John Doe"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    disabled={!!currentUser}
-                                    style={currentUser ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Your Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="john@example.com"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    disabled={!!currentUser}
-                                    style={currentUser ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Your Phone</label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="+1 234 567 8900"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Your Message</label>
-                                <textarea
-                                    name="message"
-                                    placeholder="Tell us about your project..."
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                ></textarea>
-                            </div>
-
-                            <button type="submit" className="submit-btn">
-                                <span className="button-text">Send Message</span>
-                                <FaPaperPlane className="plane-icon" />
-                                <div className="button-glow"></div>
-                            </button>
-                        </form>
-                    </div>
+                <div className="btn-wrapper">
+                  <button className="submit-btn">Submit</button>
                 </div>
+              </div>
+            </form>
+          </div>
+
+          {/* RIGHT SIDE INFO */}
+          <div
+            className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-5 wk-ipadp-10"
+            id="ifgi"
+          >
+            <div className="container-box">
+              <div className="text-content">
+                <p className="text-blk contactus-head">Contact us</p>
+                <p className="text-blk contactus-subhead">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna al
+                  iqua. Ut enim
+                </p>
+              </div>
+
+              <div className="workik-contact-bigbox">
+                <div className="workik-contact-box">
+                  <div className="phone text-box">
+                    <img
+                      className="contact-svg"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET21.jpg"
+                      alt=""
+                    />
+                    <p className="contact-text">+1258 3258 5679</p>
+                  </div>
+
+                  <div className="address text-box">
+                    <img
+                      className="contact-svg"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET22.jpg"
+                      alt=""
+                    />
+                    <p className="contact-text">hello@workik.com</p>
+                  </div>
+
+                  <div className="mail text-box">
+                    <img
+                      className="contact-svg"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET23.jpg"
+                      alt=""
+                    />
+                    <p className="contact-text">102 street, y cross 485656</p>
+                  </div>
+                </div>
+
+                <div className="social-media-links">
+                  <a href="">
+                    <img
+                      className="social-svg"
+                      id="is9ym"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-mail.svg"
+                      alt=""
+                    />
+                  </a>
+                  <a href="">
+                    <img
+                      className="social-svg"
+                      id="i706n"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-twitter.svg"
+                      alt=""
+                    />
+                  </a>
+                  <a href="">
+                    <img
+                      className="social-svg"
+                      id="ib9ve"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-insta.svg"
+                      alt=""
+                    />
+                  </a>
+                  <a href="">
+                    <img
+                      className="social-svg"
+                      id="ie9fx"
+                      src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-fb.svg"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
-        </section>
-    );
+          </div>
 
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default React.memo(Contact);
+export default Contact;

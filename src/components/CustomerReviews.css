@@ -6,8 +6,6 @@
     position: relative;
     min-height: 100vh;
     padding: 120px 20px 80px;
-    background-color: #ffffff;
-    /* Pure White */
     overflow: hidden;
     font-family: 'Outfit', sans-serif;
 
@@ -29,7 +27,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ffffff;
     z-index: 0;
 }
 
@@ -98,7 +95,7 @@
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

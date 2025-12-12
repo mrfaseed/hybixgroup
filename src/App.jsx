@@ -1,33 +1,35 @@
 import React, { Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
-import Navbar from './components/Navbar'
-import CustomerReviews from './components/CustomerReviews'
+import Loading from './components/Loading';
 
-import Footer from './components/Footer'
-import SolutionPage from './components/SolutionPage'
+import { useAuth } from './context/AuthContext';
 
+const Navbar = React.lazy(() => import('./components/Navbar'));
+const Footer = React.lazy(() => import('./components/Footer'));
+const SolutionPage = React.lazy(() => import('./components/SolutionPage'));
+const Contact = React.lazy(() => import('./components/Contact'));
 const Login = React.lazy(() => import('./components/Login'));
-import AboutUs from './components/AboutUs'
-import OurWorks from './components/OurWorks'
-import OurTeam from './components/OurTeam'
-import Careers from './components/Careers'
-import NewsMedia from './components/NewsMedia'
-
-
-import HomeCity from './components/HomeCity'
-import ScrollToTop from './components/ScrollToTop'
+const AboutUs = React.lazy(() => import('./components/AboutUs'));
+const OurWorks = React.lazy(() => import('./components/OurWorks'));
+const OurTeam = React.lazy(() => import('./components/OurTeam'));
+const Careers = React.lazy(() => import('./components/Careers'));
+const NewsMedia = React.lazy(() => import('./components/NewsMedia'));
+const HomeCity = React.lazy(() => import('./components/HomeCity'));
+const ScrollToTop = React.lazy(() => import('./components/ScrollToTop'));
+const CustomerReviews = React.lazy(() => import('./components/CustomerReviews'));
 
 // Home Page Component
 function HomePage() {
   return (
-    <>
+    <div className="home-content-wrapper">
       <HomeCity />
-      <AboutUs />
-      <OurWorks />
-      <CustomerReviews />
 
-    </>
+      <OurWorks />
+      <AboutUs />
+      <CustomerReviews />
+      <Contact />
+    </div>
   )
 }
 
@@ -44,39 +46,44 @@ function ReviewsPage() {
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const isLoginPage = location.pathname === '/login';
+
+
+  React.useEffect(() => {
+    if (currentUser && !currentUser.emailVerified && !isLoginPage) {
+      navigate('/login');
+    }
+  }, [currentUser, isLoginPage, navigate]);
+
+
 
   return (
     <div className="app-container">
-      {!isLoginPage && <Navbar />}
-      <ScrollToTop />
+      <Suspense fallback={<Loading />}>
+        {!isLoginPage && <Navbar />}
+        <ScrollToTop />
+        <Routes>
+          {/* Home Route */}
+          <Route path="/" element={<HomePage />} />
+          {/* Company Routes */}
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/our-works" element={<OurWorks />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/news-media" element={<NewsMedia />} />
 
-      <Routes>
-        {/* Home Route */}
-        <Route path="/" element={<HomePage />} />
+          {/* Solution Pages Routes */}
+          <Route path="/solutions/:solutionType" element={<SolutionPage />} />
 
-        {/* Company Routes */}
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/our-team" element={<OurTeam />} />
-        <Route path="/reviews" element={<ReviewsPage />} />
-        <Route path="/our-works" element={<OurWorks />} />
-        <Route path="/careers" element={<Careers />} />
-        
-        <Route path="/news-media" element={<NewsMedia />} />
-
-
-        {/* Solution Pages Routes */}
-        <Route path="/solutions/:solutionType" element={<SolutionPage />} />
-
-        {/* Login Route */}
-        <Route path="/login" element={
-          <Suspense fallback={<div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#020617', color: '#fff' }}>Loading...</div>}>
-            <Login />
-          </Suspense>
-        } />
-      </Routes>
-
-      {!isLoginPage && <Footer />}
+          {/* Login Route */}
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        {!isLoginPage && <Footer />}
+      </Suspense>
     </div>
   )
 }

@@ -8,13 +8,13 @@ const AboutUs = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [scrollY, setScrollY] = useState(0);
 
-    /* CountUp Animation Logic */
+
     const useCountUp = (end, duration = 2000, trigger) => {
         const [count, setCount] = useState(0);
 
         useEffect(() => {
             if (!trigger) {
-                setCount(0); // Reset when not triggered if desired, or keep as is
+                setCount(0);
                 return;
             }
 
@@ -48,22 +48,20 @@ const AboutUs = () => {
         );
     };
 
-    // Simple Re-usable Counter Component
+
     const Counter = ({ end, suffix, trigger }) => {
         const [count, setCount] = useState(0);
         const hasAnimated = useRef(false);
 
         useEffect(() => {
             if (!trigger || hasAnimated.current) return;
-
             hasAnimated.current = true;
             const duration = 2000;
             const startTime = performance.now();
-
             const animate = (currentTime) => {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                // Ease out quart
+
                 const ease = 1 - Math.pow(1 - progress, 4);
 
                 setCount(Math.floor(ease * end));
@@ -92,7 +90,7 @@ const AboutUs = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Scroll Reveal Hook
+    
     const useScrollReveal = (threshold = 0.1) => {
         const ref = useRef(null);
         const [isRevealed, setIsRevealed] = useState(false);
@@ -177,7 +175,6 @@ const AboutUs = () => {
                                 <div className="img-overlay"></div>
                             </div>
                         </div>
-
                         {/* Floating Cards Layer */}
                         <div className="collage-floats">
                             <div className="visual-card card-1 float-animation">
@@ -202,14 +199,12 @@ const AboutUs = () => {
                                 </div>
                             </div>
                         </div>
-
                         {/* Decorative Background */}
                         <div className="collage-deco circle-1"></div>
                         <div className="collage-deco circle-2"></div>
                     </div>
                 </div>
             </section>
-
             {/* Mission & Values */}
             <section className="about-values" ref={missionRef}>
                 <div className={`values-header ${missionVisible ? 'visible' : ''}`}>
@@ -230,20 +225,8 @@ const AboutUs = () => {
                     ))}
                 </div>
             </section>
-
             {/* Statistics Parallax Strip */}
-            <section className="about-stats" ref={statsRef}>
-                <div className="stats-overlay"></div>
-                <div className="stats-container">
-                    {stats.map((stat, index) => (
-                        <div style={{ transitionDelay: `${index * 150}ms` }} key={index}>
-                            <StatItem stat={stat} />
-                        </div>
-                    ))}
-                </div>
-            </section>
         </div>
     );
 };
-
 export default AboutUs;
