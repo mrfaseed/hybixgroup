@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
 import Loading from './components/Loading';
 
@@ -10,6 +10,8 @@ const Footer = React.lazy(() => import('./components/Footer'));
 const SolutionPage = React.lazy(() => import('./components/SolutionPage'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Login = React.lazy(() => import('./components/Login'));
+const AdminLogin = React.lazy(() => import('./components/AdminLogin'));
+const AdminDashboard = React.lazy(() => import('./components/AdminDashboard'));
 const AboutUs = React.lazy(() => import('./components/AboutUs'));
 const OurWorks = React.lazy(() => import('./components/OurWorks'));
 const OurTeam = React.lazy(() => import('./components/OurTeam'));
@@ -44,11 +46,23 @@ function ReviewsPage() {
   )
 }
 
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const { currentUser } = useAuth();
+  const isAdminAuthenticated = sessionStorage.getItem('isAdminAuthenticated') === 'true';
+
+  if (!currentUser || !isAdminAuthenticated) {
+    return <Navigate to="/admin-login" replace />;
+  }
+
+  return children;
+};
+
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUser } = useAuth();
-  const isLoginPage = location.pathname === '/login';
+  const isLoginPage = location.pathname === '/login' || location.pathname === '/admin-login';
 
 
   React.useEffect(() => {
@@ -79,10 +93,21 @@ function App() {
           {/* Solution Pages Routes */}
           <Route path="/solutions/:solutionType" element={<SolutionPage />} />
 
-          {/* Login Route */}
+          {/* Login Routes */}
           <Route path="/login" element={<Login />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+
+          {/* Protected Admin Routes */}
+          <Route
+            path="/admin-dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
-        {!isLoginPage && <Footer />}
+        {!isLoginPage && location.pathname !== '/admin-dashboard' && <Footer />}
       </Suspense>
     </div>
   )

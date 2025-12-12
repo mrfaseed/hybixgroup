@@ -203,13 +203,24 @@ const Login = () => {
                 {/* Right Side - Form */}
                 <div className="auth-form-container">
                     <div className="form-header">
-                        <h3>
-                            {isVerificationPending
-                                ? 'Verify Account'
-                                : isResetPassword
-                                    ? 'Reset Password'
-                                    : isLogin ? 'Sign In' : 'Get Started'}
-                        </h3>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <h3>
+                                {isVerificationPending
+                                    ? 'Verify Account'
+                                    : isResetPassword
+                                        ? 'Reset Password'
+                                        : isLogin ? 'Sign In' : 'Get Started'}
+                            </h3>
+                            {isLogin && (
+                                <button
+                                    onClick={() => navigate('/admin-login')}
+                                    className="admin-login-link"
+                                    title="Admin Login"
+                                >
+                                    Admin Login
+                                </button>
+                            )}
+                        </div>
                         <p className="sub-text">
                             {isVerificationPending
                                 ? 'We have sent a verification link to your email.'
