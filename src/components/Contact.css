@@ -234,6 +234,16 @@
   .contact-title {
     font-size: 3rem;
     padding-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact-lottie{
+    margin-left: -20%;
+    padding-left: 10%;
+  }
+
+  .contact-submit-btn{
+    margin-left: 50%;
   }
 }
 
