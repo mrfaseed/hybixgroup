@@ -470,7 +470,7 @@
 
 .feature-card:hover .feature-icon {
     background: #ffffff;
-    color: var(--primary-color);
+    color: white;
     transform: scale(1.1);
     box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
 }

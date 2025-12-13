@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt, FaCode, FaMobileAlt, FaPaintBrush, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaServer, FaShieldAlt, FaUserTie, FaBuilding, FaChartLine, FaLightbulb, FaRobot, FaChevronRight, FaCheckCircle, FaInfoCircle, FaBriefcase, FaBlog, FaFileAlt, FaBook, FaUsers, FaHeadset } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt, FaCode, FaMobileAlt, FaPaintBrush, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaServer, FaShieldAlt, FaUserTie, FaBuilding, FaChartLine, FaLightbulb, FaRobot, FaChevronRight, FaCheckCircle, FaInfoCircle, FaBriefcase, FaBlog, FaFileAlt, FaBook, FaUsers, FaHeadset, FaWhatsapp } from 'react-icons/fa';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useAuth } from '../context/AuthContext';
 
@@ -433,6 +433,17 @@ const Navbar = () => {
 
                     {/* Actions */}
                     <div className="navbar-actions">
+                        {/* WhatsApp Icon */}
+                        <a
+                            href="https://chat.whatsapp.com/HmpBFZjaoC7DC46CNlR3cD"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="navbar-icon-btn whatsapp-nav-btn"
+                            title="Join WhatsApp Group"
+                        >
+                            <FaWhatsapp />
+                        </a>
+
                         {/* Search Bar */}
                         <div className={`search-wrapper ${isSearchOpen ? 'active' : ''}`}>
                             <div className="search-icon" onClick={() => setIsSearchOpen(!isSearchOpen)}>

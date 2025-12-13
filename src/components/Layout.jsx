@@ -4,6 +4,8 @@ import Loading from './Loading';
 const Navbar = lazy(() => import('./Navbar'));
 const Footer = lazy(() => import('./Footer'));
 
+import ChatBot from './ChatBot';
+
 const Layout = ({ children }) => {
     return (
         <div className="layout-container">
@@ -20,6 +22,8 @@ const Layout = ({ children }) => {
             <Suspense fallback={<Loading />}>
                 <Footer />
             </Suspense>
+
+            <ChatBot />
         </div>
     );
 };
