@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPaperPlane } from "react-icons/fa";
+import { FaPaperPlane, FaSpinner } from "react-icons/fa";
 import './Contact.css'
 import emailAnimation from '../assets/Email.lottie?url';
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const [isSent, setIsSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -15,16 +22,58 @@ const Contact = () => {
     message: ''
   });
 
+  // Prefill data from Auth
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        // Attempt to split display name
+        const displayName = currentUser.displayName || '';
+        const parts = displayName.trim().split(' ');
+        const firstName = parts[0] || '';
+        const lastName = parts.slice(1).join(' ') || '';
+
+        setFormData(prev => ({
+          ...prev,
+          firstName: firstName,
+          lastName: lastName,
+          email: currentUser.email || ''
+        }));
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear status message when user types
+    if (statusMessage) setStatusMessage(null);
   };
 
   const isFormValid = Object.values(formData).every(value => value.trim() !== '');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // If not logged in, redirect to login/signup with prefilled data
+    if (!user) {
+      navigate('/login', {
+        state: {
+          mode: 'signup',
+          email: formData.email,
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          from: '/contact' // Optional: redirect back here after login if desired
+        }
+      });
+      return;
+    }
+
     if (!isFormValid) return;
+
+    setIsLoading(true);
+    setStatusMessage(null);
 
     try {
       const { httpsCallable } = await import("firebase/functions");
@@ -35,21 +84,27 @@ const Contact = () => {
       await sendEmail(formData);
 
       setIsSent(true);
+      setStatusMessage({ type: 'success', text: 'Message successfully sent!' });
+
       // Reset after animation
       setTimeout(() => {
         setIsSent(false);
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phoneNumber: '',
-          message: ''
-        });
-      }, 3500);
+        setStatusMessage(null);
+        // Keep user data even after reset? Typically yes for good UX, but maybe clear message
+        setFormData(prev => ({
+          ...prev,
+          message: '',
+          phoneNumber: '' // Optional: clear phone too
+        }));
+      }, 5000);
 
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Failed to send message. Please try again.");
+      // Check for custom backend error message
+      const message = error.message || "Message didn't send. Please try again.";
+      setStatusMessage({ type: 'error', text: message });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -120,7 +175,11 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  readOnly={!!user} // Only read-only if user is logged in
+                  disabled={!!user} // Only disabled if user is logged in
+                  title={user ? "Email cannot be changed" : "Enter your email"}
                   className="contact-input"
+                  style={user ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
                 />
               </div>
               <div className="form-group">
@@ -150,12 +209,32 @@ const Contact = () => {
               <button
                 type="submit"
                 className="contact-submit-btn"
-                disabled={!isFormValid}
+                disabled={!isFormValid || isLoading}
+                style={{ minWidth: '150px' }}
               >
-                <span>Submit</span>
+                {isLoading ? (
+                  <div className="elegant-loader">
+                    <motion.div className="loader-dot" animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0 }} />
+                    <motion.div className="loader-dot" animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.2 }} />
+                    <motion.div className="loader-dot" animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }} transition={{ repeat: Infinity, duration: 1.2, delay: 0.4 }} />
+                  </div>
+                ) : (
+                  <span>Submit</span>
+                )}
               </button>
 
               <AnimatePresence>
+                {statusMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className={`status-message ${statusMessage.type}`}
+                  >
+                    {statusMessage.text}
+                  </motion.div>
+                )}
+
                 {isSent && (
                   <motion.div
                     initial={{ opacity: 1, x: 0, y: 0, scale: 0.5, rotate: 0 }}
