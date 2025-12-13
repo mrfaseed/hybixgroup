@@ -190,8 +190,7 @@
 .solution-page .hero-subtitle {
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--text-secondary);
-    margin-bottom: -30px;
+    color: #000000;
 }
 
 .solution-page .hero-description {
@@ -476,7 +475,7 @@
 }
 
 .feature-card h3 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'geom', sans-serif;
     font-size: 1.35rem;
     margin-bottom: 12px;
     font-weight: 700;
@@ -484,6 +483,7 @@
 }
 
 .feature-card p {
+    font-family: 'geom', sans-serif;
     color: #ffffff;
     line-height: 1.6;
     font-size: 1rem;

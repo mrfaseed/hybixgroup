@@ -184,13 +184,13 @@
 }
 
 .contact-lottie {
-  width: 140%;
+  width: 170%;
   /* Force it larger than container */
-  max-width: 1500px;
+  max-width: none;
   height: auto;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
   animation: float 6s ease-in-out infinite;
-  margin-left: -10%;
+  margin-left: -35%;
   /* Center it back since it's wider */
 }
 

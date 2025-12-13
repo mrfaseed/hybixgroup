@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaStar, FaRocket } from 'react-icons/fa';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import catAnimation from '../assets/Running Cat.lottie?url';
+import scooterAnimation from '../assets/John and the haverboard.lottie?url';
 import './CompanyTheme.css';
 import './CustomerReviews.css';
 
@@ -102,7 +105,10 @@ const reviews = [
 const StarRating = ({ rating }) => (
     <div className="stars-container">
         {[...Array(5)].map((_, index) => (
-            <span key={index} className={`star ${index < rating ? 'filled' : ''}`}>★</span>
+            <FaStar
+                key={index}
+                className={`star-icon ${index < rating ? 'filled' : 'empty'}`}
+            />
         ))}
     </div>
 );
@@ -136,7 +142,10 @@ const ReviewCard = ({ review, isExpanded, onToggle }) => {
 
             <div className="rating-section">
                 <StarRating rating={review.rating} />
-                <span className="rating-text">{review.rating}.0</span>
+                <div className="rating-badge">
+                    <span className="rating-value">{review.rating}.0</span>
+                    <span className="rating-scale">/ 5</span>
+                </div>
             </div>
 
             <div className="review-content-wrapper">
@@ -370,6 +379,29 @@ const CustomerReviews = () => {
 
             {/* Call to Action */}
             <div className={`reviews-cta ${isVisible ? 'visible' : ''}`}>
+
+                {/* Cat Animation Track */}
+                <div className="cat-track">
+                    <div className="cat-wrapper">
+                        <div className="cat-container">
+                            <DotLottieReact
+                                src={catAnimation}
+                                loop
+                                autoplay
+                                className="cat-lottie"
+                            />
+                        </div>
+                        <div className="scooter-container">
+                            <DotLottieReact
+                                src={scooterAnimation}
+                                loop
+                                autoplay
+                                className="scooter-lottie"
+                            />
+                        </div>
+                    </div>
+                </div>
+
                 <div className="cta-content">
                     <h2 className="cta-title">Ready to Join Our Success Stories?</h2>
                     <p className="cta-subtitle">Let's create something amazing together</p>

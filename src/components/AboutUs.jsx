@@ -181,7 +181,7 @@ const AboutUs = () => {
                                 <div className="icon-box"><FaGlobe /></div>
                                 <div className="card-text">
                                     <span className="count">15+</span>
-                                    <span className="label">Countries Served</span>
+                                    <span className="label">Clients Served</span>
                                 </div>
                             </div>
                             <div className="visual-card card-2 float-animation delay-1">
@@ -194,7 +194,7 @@ const AboutUs = () => {
                             <div className="visual-card card-3 float-animation delay-2">
                                 <div className="icon-box"><FaUsers /></div>
                                 <div className="card-text">
-                                    <span className="count">50+</span>
+                                    <span className="count">10+</span>
                                     <span className="label">Expert Minds</span>
                                 </div>
                             </div>

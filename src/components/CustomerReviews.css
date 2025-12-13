@@ -315,7 +315,41 @@
 .stars-container {
     display: flex;
     gap: 2px;
+}
+
+.star-icon {
+    font-size: 16px;
+    color: #e2e8f0;
+    transition: color 0.3s ease;
+}
+
+.star-icon.filled {
     color: #fbbf24;
+    filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.5));
+}
+
+.rating-badge {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.rating-value {
+    font-family: "geom", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.rating-scale {
+    font-family: "geom", sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #64748b;
 }
 
 /* Text Content with Fade for Collapsed State */
@@ -507,7 +541,10 @@
     font-weight: 700;
     color: #ffffff;
     margin: 0 0 26px;
+    margin: 0 0 26px;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    z-index: 5;
 }
 
 .cta-content .cta-subtitle {
@@ -515,10 +552,13 @@
     color: #ffffff !important;
     font-size: 20px;
     margin: 0 0 32px;
+    position: relative;
+    z-index: 5;
 }
 
 .cta-button {
     position: relative;
+    z-index: 5;
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -548,8 +588,103 @@
     z-index: 2;
 }
 
-/* Responsive Font Sizes */
+/* Cat Animation Track */
+.cat-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    /* Adjust based on cat size */
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.cat-wrapper {
+    position: absolute;
+    left: -800px;
+    /* Start further off-screen for larger combined width */
+    width: 800px;
+    height: 350px;
+    display: flex;
+    align-items: flex-end;
+    /* Align bottom so they run on same 'ground' */
+    justify-content: center;
+}
+
+/* Animate continuously */
+.cat-wrapper {
+    animation: runAcross 8s linear infinite;
+}
+
+.cat-container {
+    width: 250px;
+    height: 250px;
+    margin-right: -20px;
+    /* Slight overlap or gap adjustment */
+    position: relative;
+    bottom: 20px;
+    /* Fine tune vertical alignment */
+}
+
+.scooter-container {
+    width: 350px;
+    /* Scooter might need more space */
+    height: 350px;
+    position: relative;
+    z-index: 2;
+}
+
+.cat-lottie,
+.scooter-lottie {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes runAcross {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 1000px));
+        /* Move across full viewport width */
+    }
+}
+
+@keyframes jetPulse {
+    from {
+        opacity: 0.5;
+        transform: scaleX(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleX(1.2);
+    }
+}
+
+@keyframes smokeTrail {
+    0% {
+        transform: translateX(0) scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateX(-50px) scale(0);
+        opacity: 0;
+    }
+}
+
+
+/* Mobile: Hide Cat */
 @media (max-width: 1200px) {
+    .cat-track {
+        display: none;
+    }
+
     .reviews-title {
         font-size: 52px;
     }

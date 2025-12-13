@@ -258,19 +258,19 @@
 /* Card Positioning */
 .card-1 {
     top: 10%;
-    right: -70px;
+    right: -120px;
     animation: float 6s ease-in-out infinite;
 }
 
 .card-2 {
-    bottom: 25%;
-    left: -10px;
+    bottom: 2%;
+    left: -80px;
     animation: float 7s ease-in-out infinite 1s;
     z-index: 6;
 }
 
 .card-3 {
-    top: 55%;
+    top: 50%;
     right: 40%;
     animation: float 5s ease-in-out infinite 0.5s;
     z-index: 6;
@@ -541,18 +541,18 @@
     }
 
     .card-1 {
-        top: -80px;
+        top: -90px;
         left: 10%;
     }
 
     .card-2 {
-        top: 150px;
+        padding: 10px;
         left: -3%;
     }
 
     .card-3 {
-        top: 290px;
-        left: 40%;
+        left: 50%;
+        top: 40%;
     }
 
     .about-values .values-header h2{
