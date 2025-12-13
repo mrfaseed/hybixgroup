@@ -131,7 +131,7 @@
     opacity: 0.05;
 }
 
-.hero-container {
+.solution-page .hero-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -169,7 +169,7 @@
     letter-spacing: 1px;
 }
 
-.hero-title {
+.solution-page .hero-title {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 5rem;
     font-weight: 600;
@@ -187,14 +187,14 @@
 
 /* Removed :first-child rule to apply consistent coloring */
 
-.hero-subtitle {
+.solution-page .hero-subtitle {
     font-size: 1.8rem;
     font-weight: 400;
     color: var(--text-secondary);
     margin-bottom: -30px;
 }
 
-.hero-description {
+.solution-page .hero-description {
     font-family: 'geom', sans-serif;
     font-size: 1.25rem;
     line-height: 1.3;
@@ -212,8 +212,8 @@
     animation: fadeUp 0.8s ease-out 0.4s forwards;
 }
 
-.cta-primary,
-.btn-primary {
+.solution-page .cta-primary,
+.solution-page .btn-primary {
     padding: 16px 36px;
     background: linear-gradient(135deg, #437dc3, #0a0c86);
     color: white;
@@ -234,8 +234,8 @@
     box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
 }
 
-.cta-secondary,
-.btn-secondary {
+.solution-page .cta-secondary,
+.solution-page .btn-secondary {
     padding: 16px 36px;
     background: white;
     color: var(--text-main);
@@ -395,7 +395,7 @@
     margin-right: auto;
 }
 
-.section-header h2 {
+.solution-page .section-header h2 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 6rem;
     margin-bottom: 16px;
@@ -693,25 +693,25 @@
 /* === Mobile Responsiveness === */
 
 @media (max-width: 1024px) {
-    .hero-container {
+    .solution-page .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 60px;
     }
 
-    .hero-content {
+    .solution-page .hero-content {
         padding-right: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .hero-description {
+    .solution-page .hero-description {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .hero-visuals {
+    .solution-page .hero-visuals {
         height: 500px;
     }
 }
@@ -721,7 +721,7 @@
         overflow-x: hidden;
     }
 
-    .hero-title {
+    .solution-page .hero-title {
         font-size: 3rem;
         letter-spacing: -2px;
         /* Adjusted from 4.5rem */
@@ -729,7 +729,7 @@
 
 
 
-    .hero-subtitle {
+    .solution-page .hero-subtitle {
         font-size: 1.4rem;
     }
 

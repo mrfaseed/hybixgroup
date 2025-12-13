@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --lm-primary: #1a3c75;
     --lm-secondary: #2563eb;
@@ -8,8 +11,8 @@
 }
 
 .learn-more-page {
-    font-family: 'Outfit', sans-serif;
-    background-color: var(--lm-bg);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
     min-height: 100vh;
     padding-top: 80px;
     /* Navbar space */
@@ -22,15 +25,19 @@
     position: relative;
     padding: 100px 20px;
     text-align: center;
-    background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+    background-color: #d32222;
     margin-bottom: 60px;
 }
 
 .lm-hero-title {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 800;
     margin-bottom: 20px;
-    color: #ffffff;
+    letter-spacing: -3px;
+     background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     opacity: 0;
     transform: translateY(20px);
     animation: lmFadeUp 1s ease forwards 0.2s;
@@ -39,16 +46,17 @@
 .lm-hero-icon-wrapper {
     display: inline-flex;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(144, 148, 233, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 50%;
     margin-bottom: 20px;
-    color: #fff;
+    color: #000000;
     font-size: 3rem;
     animation: lmFadeUp 1s ease forwards;
 }
 
 .lm-hero-subtitle {
+    font-family: 'geom', sans-serif;
     font-size: 1.25rem;
     max-width: 700px;
     margin: 0 auto;
@@ -75,7 +83,7 @@
 
 /* Note/Card Styling */
 .lm-note-card {
-    background: var(--lm-card-bg);
+    background: linear-gradient(135deg, var(--lm-secondary) 0%, #1e3a8a 100%);
     border-radius: 16px;
     padding: 60px;
     margin-bottom: 40px;
@@ -93,7 +101,7 @@
     left: 20px;
     right: 20px;
     height: 4px;
-    background: linear-gradient(90deg, var(--lm-secondary), #9333ea);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     border-radius: 0 0 4px 4px;
 }
 
@@ -112,8 +120,8 @@
 .lm-icon-box {
     width: 50px;
     height: 50px;
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--lm-secondary);
+    background: rgba(218, 220, 223, 0.418);
+    color: #ffffff;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -124,7 +132,7 @@
 .lm-section-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #1e293b;
+    color: #ffffff;
     margin: 0;
 }
 
@@ -132,7 +140,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 20px;
-    color: #475569;
+    color: #ffffff;
 }
 
 .lm-section-content p:last-child {
@@ -148,7 +156,7 @@
     margin: 30px 0;
     font-style: italic;
     font-weight: 500;
-    color: #334155;
+    color: #ffffff;
 }
 
 /* List Styling */
@@ -166,11 +174,11 @@
     align-items: center;
     gap: 10px;
     font-size: 1.05rem;
-    color: #334155;
+    color: #ffffff;
 }
 
 .lm-check {
-    color: #10b981;
+    color: #15e09d;
     font-weight: bold;
 }
 
