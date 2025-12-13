@@ -91,21 +91,24 @@ const navItems = [
                 description: 'Explore job opportunities and join our growing team.',
                 features: ['Open Positions', 'Work Culture', 'Employee Benefits', 'Internship Programs'],
                 icon: <FaBriefcase />,
-                buttonText: 'View Jobs'
+                buttonText: 'View Jobs',
+                path: '/careers'
             },
             {
                 name: 'Blog',
                 description: 'Read insights, articles, and updates from our team.',
                 features: ['Latest Articles', 'Tech Insights', 'Industry News', 'Product Updates'],
                 icon: <FaBlog />,
-                buttonText: 'Visit Blog'
+                buttonText: 'Visit Blog',
+                path: '/learn-more?topic=Blog'
             },
             {
                 name: 'Press',
                 description: 'Access company announcements, media kits, and press coverage.',
                 features: ['Media Resources', 'Press Releases', 'Brand Assets', 'Contact PR Team'],
                 icon: <FaBullhorn />,
-                buttonText: 'Press Kit'
+                buttonText: 'Press Kit',
+                path: '/news-media'
             }
         ]
     },
@@ -300,7 +303,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="navbar-logo">
                         <Link to="/">
-                            <h1>Hybix<span>Group</span></h1>
+                            <h1>Hybix<span>Groups</span></h1>
                         </Link>
                     </div>
 

@@ -22,7 +22,8 @@ const Careers = React.lazy(() => import('./components/Careers'));
 const NewsMedia = React.lazy(() => import('./components/NewsMedia'));
 const HomeCity = React.lazy(() => import('./components/HomeCity'));
 const CustomerReviews = React.lazy(() => import('./components/CustomerReviews'));
-
+const LearnMore = React.lazy(() => import('./components/LearnMore'));
+const CaseStudies = React.lazy(() => import('./components/CaseStudies'))
 // Home Page Component
 // Home Page Component
 function HomePage() {

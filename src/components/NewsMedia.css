@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -26,6 +29,27 @@
     transition: transform 0.5s ease;
 }
 
+.page-content h1{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 6rem;
+    font-weight: 800;
+    letter-spacing: -5px;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.page-content p{
+    font-family: 'geom', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #0f172a;
+    margin-bottom: 2rem;
+}
+
 
 
 .news-category {
@@ -48,12 +72,14 @@
 }
 
 .news-date {
+    font-family:'geom', sans-serif;
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
 }
 
 .news-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1.25rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
@@ -61,6 +87,7 @@
 }
 
 .news-excerpt {
+    font-family:'geom', sans-serif;
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
@@ -69,6 +96,7 @@
 }
 
 .read-more {
+    font-family:'geom', sans-serif;
     color: var(--text-accent);
     text-decoration: none;
     font-weight: 600;
@@ -78,4 +106,15 @@
 
 .read-more:hover {
     color: var(--text-accent);
+}
+
+@media (max-width: 768px) {
+    .page-content h1 {
+        font-size: 3rem;
+        letter-spacing: -2px;
+    }
+
+    .page-content p{
+        font-size: 1.1rem;
+    }
 }
