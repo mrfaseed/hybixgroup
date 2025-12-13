@@ -87,6 +87,20 @@ const items = [
 ];
 
 const OurWorks = () => {
+    const [isMobile, setIsMobile] = React.useState(false);
+    const [showAllWorks, setShowAllWorks] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const visibleItems = (isMobile && !showAllWorks)
+        ? items.slice(0, 4)
+        : items;
+
     return (
         <div className="our-works-page">
             <div className="works-header">
@@ -96,7 +110,7 @@ const OurWorks = () => {
 
             <div className="masonry-container">
                 <Masonry
-                    items={items}
+                    items={visibleItems}
                     ease="power3.out"
                     duration={0.8}
                     stagger={0.08}
@@ -107,6 +121,17 @@ const OurWorks = () => {
                     colorShiftOnHover={true}
                 />
             </div>
+
+            {isMobile && !showAllWorks && (
+                <div className="view-more-container">
+                    <button
+                        className="view-more-button"
+                        onClick={() => setShowAllWorks(true)}
+                    >
+                        View More Works
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

@@ -1,6 +1,9 @@
 /* =========================================
    Our Team Page Styles (Transparent Clean Theme)
    ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --team-bg: #ffffff;
     --team-text-primary: #0f172a;
@@ -29,8 +32,10 @@
 }
 
 .page-title {
-    font-size: 4rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
+    letter-spacing: -4px;
+    font-size: 6rem;
     text-align: center;
     margin-bottom: 1rem;
     color: #000000;
@@ -49,6 +54,7 @@
 
 .page-subtitle {
     text-align: center;
+    font-family: 'Geom', sans-serif;
     color: #000000;
     font-size: 1.2rem;
     max-width: 600px;
@@ -144,9 +150,13 @@
 }
 
 .member-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--team-text-primary);
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 0.5rem;
     line-height: 1.1;
 }
@@ -169,6 +179,14 @@
 
 /* Responsive for Mobile */
 @media (max-width: 768px) {
+
+    .page-title {
+        font-size: 4rem;
+    }
+
+    .page-subtitle {
+        font-size: 1.2rem;
+    }
     .team-row {
         flex-direction: column !important;
         text-align: center !important;
