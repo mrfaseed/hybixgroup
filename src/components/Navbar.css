@@ -1,7 +1,9 @@
 /* =========================================
    Navbar Variables & Theme
    ========================================= */
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+   :root {
   /* Dimensions */
   --nav-height: 80px;
   --nav-height-scrolled: 70px;
@@ -109,7 +111,7 @@
 }
 
 .navbar-logo h1 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', sans-seri;
   font-size: 1.75rem;
   font-weight: 800;
   color: var(--nav-text-primary);
@@ -153,7 +155,7 @@
 }
 
 .nav-link {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--nav-text-primary);
@@ -235,7 +237,7 @@
 }
 
 .mega-menu-header h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--nav-text-primary);
@@ -243,7 +245,7 @@
 }
 
 .mega-menu-header p {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   color: var(--nav-text-secondary);
   line-height: 1.6;
@@ -301,7 +303,7 @@
 }
 
 .mega-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--nav-text-primary);
@@ -320,7 +322,7 @@
 }
 
 .dropdown-header h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--nav-text-primary);
@@ -347,7 +349,7 @@
   border-radius: 8px;
   text-decoration: none;
   color: var(--nav-text-primary);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   transition: all var(--transition-fast);
@@ -433,7 +435,7 @@
   color: #000000;
   outline: none;
   padding: 0 12px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   color: var(--nav-text-primary);
 }
@@ -448,7 +450,7 @@
   color: #ffffff;
   padding: 12px 28px;
   border-radius: 50px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
   border: 1px solid transparent;
@@ -487,7 +489,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: var(--nav-text-primary);
@@ -556,7 +558,7 @@
 }
 
 .solution-header h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--nav-text-primary);
@@ -564,7 +566,7 @@
 }
 
 .solution-desc {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 1.05rem;
   color: var(--nav-text-secondary);
   line-height: 1.6;
@@ -582,7 +584,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   color: var(--nav-text-primary);
   font-weight: 500;
@@ -608,7 +610,7 @@
   color: #ffffff;
   padding: 12px 32px;
   border-radius: 50px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
@@ -741,7 +743,7 @@
   background: transparent;
   outline: none;
   width: 100%;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 1rem;
   color: var(--nav-text-primary);
 }
@@ -885,7 +887,7 @@
   ;
   color: #ffffff;
   border-radius: 50px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -1183,15 +1185,16 @@
 }
 
 .result-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Geom', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--nav-text-primary);
 }
 
 .result-category {
+  font-family: 'Geom', sans-serif;
   font-size: 0.75rem;
-  color: var(--nav-text-secondary);
+  color: #000000;
   background: rgba(0, 0, 0, 0.05);
   padding: 2px 6px;
   border-radius: 4px;

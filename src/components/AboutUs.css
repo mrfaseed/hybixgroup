@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --primary-color: #2563eb;
     --secondary-color: #4f46e5;
@@ -36,9 +39,11 @@
 }
 
 .about-hero-content h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 5rem;
     font-weight: 800;
     margin-bottom: 50px;
+    letter-spacing: -3px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 1s ease-out;
@@ -49,6 +54,7 @@
 }
 
 .about-hero-content p{
+    font-family: "geom", sans-serif;
     font-size: 1.3rem;
     font-weight: 400;
 }
@@ -106,9 +112,11 @@
 }
 
 .story-container h2{
-    font-size: 3.5rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 4rem;
     font-weight: 800;
     margin-bottom: 20px;
+    letter-spacing: -3px;
     background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -126,6 +134,8 @@
 }
 
 .story-text p {
+    font-family: "geom", sans-serif;
+    font-weight: 400;
     font-size: 1.3rem;
     line-height: 1.8;
     color: #000000;
@@ -323,13 +333,17 @@
 .values-header {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 60px;
+    margin: 50px auto 80px;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-out;
 }
 
 .about-values .values-header h2{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -3px;
+    font-size: 5rem;
+    font-weight: 800;
     background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -337,6 +351,7 @@
 }
 
 .about-values .values-header p{
+    font-family: "geom", sans-serif;
     font-size: 1.3rem;
     color: #000000;
     margin-bottom: 10px;
@@ -356,14 +371,12 @@
 }
 
 .value-card {
-    background: white;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
     padding: 40px;
     border-radius: 24px;
     transition: all 0.4s ease;
-    border: 5px solid rgba(0, 0, 0, 0.05);
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     /* Base transition */
 }
 
@@ -382,25 +395,28 @@
 .value-icon-wrapper {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: white;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: black;
     font-size: 24px;
     margin-bottom: 24px;
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
 }
 
 .value-card h3 {
+    font-family: "geom", sans-serif;
+    color: white;
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 12px;
 }
 
 .value-card p {
-    color: var(--text-secondary);
+    font-family: "geom", sans-serif;
+    color: white;
     line-height: 1.6;
 }
 
@@ -489,7 +505,8 @@
     }
 
     .about-hero-content h1 {
-        font-size: 2rem;
+        font-size: 3rem;
+        letter-spacing: -2px;
         /* Adjusted for mobile */
     }
 
@@ -524,18 +541,22 @@
     }
 
     .card-1 {
-        top: 20px;
+        top: -80px;
         left: 10%;
     }
 
     .card-2 {
-        top: 120px;
-        right: 10%;
+        top: 150px;
+        left: -3%;
     }
 
     .card-3 {
-        bottom: 20px;
-        left: 20%;
+        top: 290px;
+        left: 40%;
+    }
+
+    .about-values .values-header h2{
+        font-size: 3.3rem;
     }
 
     .about-values .values-header p{

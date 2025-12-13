@@ -296,7 +296,7 @@ const CustomerReviews = () => {
                     <span className="badge-text">Customer Testimonials</span>
                 </div>
                 <h1 className="reviews-title">
-                    What Our <span className="gradient-text">Clients Say</span>
+                    What Our <span className="gradient-text">Clients Say ?</span>
                 </h1>
                 <p className="reviews-subtitle">
                     Discover why businesses trust Hybix Group to transform their digital presence

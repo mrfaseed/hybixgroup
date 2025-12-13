@@ -1,4 +1,8 @@
 /* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Main Container */
@@ -86,12 +90,13 @@
 }
 
 .reviews-title {
-    font-size: 64px;
+    font-size: 5rem;
+    letter-spacing: -3px;
     font-weight: 800;
     color: #000000;
     margin: 0 0 20px;
     line-height: 1.2;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .gradient-text {
@@ -102,8 +107,9 @@
 }
 
 .reviews-subtitle {
+    font-family: "geom", sans-serif;
     font-size: 20px;
-    color: var(--text-secondary);
+    color: #000000;
     margin: 0 0 50px;
     font-weight: 300;
 }
@@ -278,6 +284,7 @@
 }
 
 .reviewer-name {
+    font-family: "geom", sans-serif;
     font-size: 18px;
     font-weight: 700;
     color: #1e293b;
@@ -288,6 +295,7 @@
 }
 
 .reviewer-role {
+    font-family: "geom", sans-serif;
     font-size: 13px;
     color: #64748b;
     margin: 0;
@@ -318,6 +326,7 @@
 }
 
 .review-text {
+    font-family: "geom", sans-serif;
     font-size: 15px;
     line-height: 1.6;
     color: #334155;
@@ -393,6 +402,11 @@
 
 /* Mobile Interaction (Static Full Cards) */
 @media (max-width: 768px) {
+
+    .reviews-header h1{
+        font-size: 2.7rem;
+    }
+
     .reviews-grid-container {
         display: block;
         padding: 1%;
@@ -504,12 +518,12 @@
     font-size: 36px;
     font-weight: 700;
     color: #ffffff;
-    margin: 0 0 16px;
-    font-family: 'Poppins', sans-serif;
+    margin: 0 0 26px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .cta-content .cta-subtitle {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #ffffff !important;
     font-size: 20px;
     margin: 0 0 32px;
@@ -571,13 +585,13 @@
     }
 
     .cta-title {
-        font-size: 24px;
+        font-size: 34px;
     }
 }
 
 @media (max-width: 480px) {
     .reviews-title {
-        font-size: 28px;
+        font-size: 38px;
     }
 
     .stat-divider {

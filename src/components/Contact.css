@@ -41,7 +41,7 @@
 
 
 .contact-title {
-  font-size: 5rem;
+  font-size: 6.8rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 40px;
@@ -92,7 +92,7 @@
   border: 2px solid transparent;
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: inherit;
+  font-family: "geom", sans-serif;
 }
 
 .contact-input:hover,
@@ -228,6 +228,6 @@
   }
 
   .contact-title {
-    font-size: 2.7rem;
+    font-size: 3rem;
   }
 }
