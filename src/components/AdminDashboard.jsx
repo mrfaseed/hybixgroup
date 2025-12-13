@@ -246,7 +246,7 @@ const AdminDashboard = () => {
                     </div>
 
                     <Suspense fallback={<div className="loading-state">Loading section...</div>}>
-                        {activeTab === 'overview' && <AdminOverview />}
+                        {activeTab === 'overview' && <AdminOverview messages={messages} projects={projects} />}
                         {activeTab === 'messages' && (
                             <AdminMessages
                                 messages={messages}
