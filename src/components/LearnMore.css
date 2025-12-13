@@ -30,20 +30,29 @@
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
     opacity: 0;
     transform: translateY(20px);
     animation: lmFadeUp 1s ease forwards 0.2s;
+}
+
+.lm-hero-icon-wrapper {
+    display: inline-flex;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 3rem;
+    animation: lmFadeUp 1s ease forwards;
 }
 
 .lm-hero-subtitle {
     font-size: 1.25rem;
     max-width: 700px;
     margin: 0 auto;
-    color: var(--lm-muted);
+    color: rgba(255, 255, 255, 0.9);
     opacity: 0;
     transform: translateY(20px);
     animation: lmFadeUp 1s ease forwards 0.4s;
@@ -178,4 +187,49 @@
     .lm-section-title {
         font-size: 1.5rem;
     }
+}
+
+.lm-cta-card {
+    background: linear-gradient(135deg, var(--lm-secondary) 0%, #1e3a8a 100%);
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+    margin-top: 60px;
+}
+
+.lm-cta-card h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.lm-cta-card p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lm-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--lm-secondary);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.lm-cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

@@ -120,7 +120,8 @@ const navItems = [
                 description: 'Real-world success stories and results we’ve delivered for clients.',
                 features: ['Client Success Stories', 'Industry Solutions', 'Before & After Results', 'ROI Improvements'],
                 icon: <FaFileAlt />,
-                buttonText: 'View Case Studies'
+                buttonText: 'View Case Studies',
+                path: '/case-studies'
             },
             {
                 name: 'Documentation',
@@ -134,14 +135,16 @@ const navItems = [
                 description: 'Join our community for discussions, events, and contributions.',
                 features: ['Forums', 'Discord/Slack Groups', 'Developer Events', 'Open Source Contributions'],
                 icon: <FaUsers />,
-                buttonText: 'Join Community'
+                buttonText: 'Join Community',
+                path: 'https://chat.whatsapp.com/HmpBFZjaoC7DC46CNlR3cD'
             },
             {
                 name: 'Support',
                 description: 'Get help with products, troubleshooting, and customer service.',
                 features: ['Help Center', 'Contact Support', 'FAQs', 'System Status'],
                 icon: <FaHeadset />,
-                buttonText: 'Get Support'
+                buttonText: 'Get Support',
+                path: '/contact'
             }
         ]
     }
@@ -165,6 +168,10 @@ const Navbar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+
+    useEffect(() => {
+        setActiveSolution(0);
+    }, [activeDropdown]);
 
     useEffect(() => {
         if (searchQuery.trim() === '') {
@@ -329,7 +336,12 @@ const Navbar = () => {
                                                         </div>
                                                         <div className="mega-menu-grid">
                                                             {item.links.map((link, index) => (
-                                                                <Link key={index} to={link.path} className="mega-link-item">
+                                                                <Link
+                                                                    key={index}
+                                                                    to={link.path}
+                                                                    className="mega-link-item"
+                                                                    onClick={() => setActiveDropdown(null)}
+                                                                >
                                                                     <span className="mega-icon">{link.icon}</span>
                                                                     <span className="mega-text">{link.name}</span>
                                                                 </Link>
@@ -352,27 +364,48 @@ const Navbar = () => {
                                                         </div>
                                                         <div className="solutions-content-panel">
                                                             <div className="solution-detail fade-in" key={activeSolution}>
-                                                                <div className="solution-header">
-                                                                    <span className="solution-big-icon">{item.links[activeSolution].icon}</span>
-                                                                    <h3>{item.links[activeSolution].name}</h3>
-                                                                </div>
-                                                                <p className="solution-desc">{item.links[activeSolution].description}</p>
-                                                                <div className="solution-features-list">
-                                                                    {item.links[activeSolution].features.map((feature, i) => (
-                                                                        <div key={i} className="feature-item">
-                                                                            <FaCheckCircle className="feature-icon" />
-                                                                            <span>{feature}</span>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                                <div className="solution-action">
-                                                                    <Link
-                                                                        to={(item.links[activeSolution].buttonText === 'Learn More' || !item.links[activeSolution].buttonText) ? '/learn-more' : (item.links[activeSolution].path || '#')}
-                                                                        className="solution-btn"
-                                                                    >
-                                                                        {item.links[activeSolution].buttonText || 'Learn More'} <FaArrowRight className="btn-arrow" />
-                                                                    </Link>
-                                                                </div>
+                                                                {(() => {
+                                                                    const link = item.links[activeSolution] || item.links[0];
+                                                                    if (!link) return null;
+                                                                    return (
+                                                                        <>
+                                                                            <div className="solution-header">
+                                                                                <span className="solution-big-icon">{link.icon}</span>
+                                                                                <h3>{link.name}</h3>
+                                                                            </div>
+                                                                            <p className="solution-desc">{link.description}</p>
+                                                                            <div className="solution-features-list">
+                                                                                {link.features.map((feature, i) => (
+                                                                                    <div key={i} className="feature-item">
+                                                                                        <FaCheckCircle className="feature-icon" />
+                                                                                        <span>{feature}</span>
+                                                                                    </div>
+                                                                                ))}
+                                                                            </div>
+                                                                            <div className="solution-action">
+                                                                                {link.path && link.path.startsWith('http') ? (
+                                                                                    <a
+                                                                                        href={link.path}
+                                                                                        target="_blank"
+                                                                                        rel="noopener noreferrer"
+                                                                                        className="solution-btn"
+                                                                                        onClick={() => setActiveDropdown(null)}
+                                                                                    >
+                                                                                        {link.buttonText || 'Learn More'} <FaArrowRight className="btn-arrow" />
+                                                                                    </a>
+                                                                                ) : (
+                                                                                    <Link
+                                                                                        to={(link.buttonText === 'Learn More' || !link.buttonText) ? `/learn-more?topic=${encodeURIComponent(link.name)}` : (link.path || '#')}
+                                                                                        className="solution-btn"
+                                                                                        onClick={() => setActiveDropdown(null)}
+                                                                                    >
+                                                                                        {link.buttonText || 'Learn More'} <FaArrowRight className="btn-arrow" />
+                                                                                    </Link>
+                                                                                )}
+                                                                            </div>
+                                                                        </>
+                                                                    );
+                                                                })()}
                                                             </div>
                                                         </div>
                                                     </div>

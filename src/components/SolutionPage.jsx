@@ -368,7 +368,7 @@ const SolutionPage = () => {
                         <p className="hero-subtitle">{solution.subtitle}</p>
                         <p className="hero-description">{solution.description}</p>
                         <div className="hero-cta">
-                            <button className="cta-primary">Get Started</button>
+                            <Link to="/contact" className="cta-primary">Get Started</Link>
                             <Link to="/learn-more" className="cta-secondary">Learn More</Link>
                         </div>
                     </div>
