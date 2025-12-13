@@ -24,6 +24,7 @@ const HomeCity = React.lazy(() => import('./components/HomeCity'));
 const CustomerReviews = React.lazy(() => import('./components/CustomerReviews'));
 const LearnMore = React.lazy(() => import('./components/LearnMore'));
 const CaseStudies = React.lazy(() => import('./components/CaseStudies'));
+const NotFound = React.lazy(() => import('./components/NotFound'));
 
 function HomePage() {
   return (
@@ -129,14 +130,18 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
+
       </Suspense>
-      {!isLoginPage && location.pathname !== '/admin-dashboard' && (
-        <Suspense fallback={<div className="h-20" />}>
-          <Footer />
-        </Suspense>
-      )}
-    </div>
+      {
+        !isLoginPage && location.pathname !== '/admin-dashboard' && (
+          <Suspense fallback={<div className="h-20" />}>
+            <Footer />
+          </Suspense>
+        )
+      }
+    </div >
   )
 }
 

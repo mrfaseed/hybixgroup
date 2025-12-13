@@ -44,10 +44,10 @@ exports.sendContactEmail = onCall({ cors: true }, async (request) => {
             if (doc.exists) {
                 const limitData = doc.data();
                 if (limitData.lastDate === today) {
-                    if (limitData.count >= 2) {
+                    if (limitData.count >= 5) {
                         throw new HttpsError(
                             'resource-exhausted',
-                            'Daily message limit reached. You can only send 2 messages per day.'
+                            'Daily message limit reached. You can only send 5 messages per day.'
                         );
                     }
                     transaction.update(limitRef, { count: admin.firestore.FieldValue.increment(1) });
