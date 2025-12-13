@@ -455,7 +455,7 @@ const SolutionPage = () => {
                     <h2>Ready to Get Started?</h2>
                     <p>Let's discuss how we can help transform your business</p>
                     <div className="cta-buttons">
-                        <button className="btn-primary">Schedule a Consultation</button>
+                        <Link to="/consultation" className="btn-primary">Schedule a Consultation</Link>
                         <Link to="/" className="btn-secondary">Back to Home</Link>
                     </div>
                 </div>
