@@ -27,7 +27,7 @@ const reviews = [
     {
         id: 3,
         name: "Vignesh  Kumar",
-        rating: 4.5,
+        rating: 4,
         review: "The level of creativity and technical excellence Hybix Group brings to the table is outstanding. They turned our complex requirements into an elegant, user-friendly solution.",
         avatar: "VK",
         color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
@@ -36,7 +36,7 @@ const reviews = [
     {
         id: 4,
         name: "Siva Balan",
-        rating: 5,
+        rating: 3,
         review: "Exceptional service and remarkable results! Hybix Group's team demonstrated deep technical knowledge and creative problem-solving skills throughout our project.",
         avatar: "SB",
         color: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
@@ -46,7 +46,7 @@ const reviews = [
         id: 5,
         name: "Imran Cuts",
         role: "Editor, Imran Cuts",
-        rating: 5,
+        rating: 4,
         review: "Hybix Group delivered beyond our wildest expectations. Their attention to detail and commitment to quality is evident in every aspect of their work. Highly recommended!",
         avatar: "IC",
         color: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
@@ -55,7 +55,7 @@ const reviews = [
     {
         id: 6,
         name: "Swathi",
-        rating: 5,
+        rating: 4,
         review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
         avatar: "W",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
@@ -64,7 +64,7 @@ const reviews = [
     {
         id: 7,
         name: "Vidhya",
-        rating: 5,
+        rating: 3,
         review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
         avatar: "V",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
@@ -73,7 +73,7 @@ const reviews = [
     {
         id: 8,
         name: "Mohan",
-        rating: 5,
+        rating: 3,
         review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
         avatar: "M",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
@@ -131,10 +131,7 @@ const ReviewCard = ({ review, isExpanded, onToggle }) => {
                     <h3 className="reviewer-name">{review.name}</h3>
                     <p className="reviewer-role">{review.role}</p>
                 </div>
-                {/* Mobile Expand Visual Cue */}
-                <div className="expand-indicator">
-                    {isExpanded ? '−' : '+'}
-                </div>
+
             </div>
 
             <div className="rating-section">

@@ -16,7 +16,7 @@ const CaseStudies = () => {
             title: "Global E-Commerce Expansion",
             category: "E-Commerce",
             client: "StyleHub International",
-            image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            image: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=800&q=80",
             icon: <FaShoppingCart />,
             stats: [
                 { value: "240%", label: "Sales Growth" },
@@ -31,7 +31,7 @@ const CaseStudies = () => {
             title: "AI-Powered Financial Analytics",
             category: "FinTech",
             client: "FinWise Solutions",
-            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80",
             icon: <FaChartLine />,
             stats: [
                 { value: "500ms", label: "Data Processing" },
@@ -46,7 +46,7 @@ const CaseStudies = () => {
             title: "Telehealth Mobile Platform",
             category: "Healthcare",
             client: "MediConnect",
-            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80",
             icon: <FaMobileAlt />,
             stats: [
                 { value: "15k+", label: "Consultations/Mo" },
@@ -61,7 +61,7 @@ const CaseStudies = () => {
             title: "Smart Logistics Cloud Migration",
             category: "Logistics",
             client: "TransLogix",
-            image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+            image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80",
             icon: <FaCloud />,
             stats: [
                 { value: "40%", label: "Cost Savings" },

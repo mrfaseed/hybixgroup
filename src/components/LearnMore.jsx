@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useLocation, Link } from 'react-router-dom';
 import {
     FaLayerGroup, FaLightbulb, FaRocket, FaHandshake, FaCheckCircle,
-    FaBuilding, FaChartLine, FaRobot, FaArrowRight, FaCogs, FaDatabase, FaShieldAlt
+    FaBuilding, FaChartLine, FaRobot, FaArrowRight, FaCogs, FaDatabase, FaShieldAlt, FaBlog
 } from 'react-icons/fa';
 
 const LearnMore = () => {
@@ -34,7 +34,7 @@ const LearnMore = () => {
             title: 'Enterprise ERP Solutions',
             subtitle: 'Streamline your operations with a unified, intelligent ERP ecosystem.',
             icon: <FaBuilding />,
-            heroColor: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+            heroColor: '#ffffff',
             sections: [
                 {
                     title: 'Centralized Operations',
@@ -64,7 +64,7 @@ const LearnMore = () => {
             title: 'Advanced Data Analytics',
             subtitle: 'Transform raw data into actionable intelligence and strategic value.',
             icon: <FaChartLine />,
-            heroColor: 'linear-gradient(135deg, #312e81 0%, #1e1b4b 100%)',
+            heroColor: '#ffffff',
             sections: [
                 {
                     title: 'Predictive Modeling',
@@ -94,7 +94,7 @@ const LearnMore = () => {
             title: 'Business Intelligence (BI)',
             subtitle: 'Empower your decision-makers with smart, automated reporting tools.',
             icon: <FaLightbulb />,
-            heroColor: 'linear-gradient(135deg, #0f766e 0%, #115e59 100%)',
+            heroColor: '#ffffff',
             sections: [
                 {
                     title: 'Smart Reporting',
@@ -124,7 +124,7 @@ const LearnMore = () => {
             title: 'Intelligent Automation',
             subtitle: 'Accelerate productivity by automating repetitive tasks and workflows.',
             icon: <FaRobot />,
-            heroColor: 'linear-gradient(135deg, #be185d 0%, #9d174d 100%)',
+            heroColor: '#ffffff',
             sections: [
                 {
                     title: 'Robotic Process Automation (RPA)',
@@ -150,12 +150,42 @@ const LearnMore = () => {
                 'Chatbot Integration'
             ]
         },
+        'Blog': {
+            title: 'Hybix Tech Blog',
+            subtitle: 'Insights, trends, and deep dives into the world of technology and innovation.',
+            icon: <FaBlog />,
+            heroColor: '#ffffff',
+            sections: [
+                {
+                    title: 'Latest Tech Trends',
+                    content: 'Stay ahead of the curve with our analysis of emerging technologies, from Generative AI to Edge Computing and beyond.',
+                    icon: <FaChartLine />
+                },
+                {
+                    title: 'Engineering Best Practices',
+                    content: 'Learn how we build scalable, resilient, and maintainable software systems using modern achievements in software engineering.',
+                    icon: <FaCogs />
+                },
+                {
+                    title: 'Digital Transformation',
+                    content: 'Strategies and stories on how businesses are leveraging digital tools to reinvent their operations and customer experiences.',
+                    icon: <FaRocket />
+                }
+            ],
+            features: [
+                'In-depth Technical Articles',
+                'Industry Analysis & Reports',
+                'Developer Tutorials',
+                'Case Study Walkthroughs',
+                'Community & Event Updates'
+            ]
+        },
         // Default Content (Fallback)
         'Default': {
             title: 'Why Choose Hybix?',
             subtitle: 'Deep dive into our philosophy, technical excellence, and methodology.',
             icon: <FaRocket />,
-            heroColor: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+            heroColor: '#ffffff',
             sections: [
                 {
                     title: 'Our Philosophy',

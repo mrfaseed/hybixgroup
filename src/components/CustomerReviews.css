@@ -403,7 +403,7 @@
 /* Mobile Interaction (Static Full Cards) */
 @media (max-width: 768px) {
 
-    .reviews-header h1{
+    .reviews-header h1 {
         font-size: 2.7rem;
     }
 
@@ -444,9 +444,7 @@
     }
 
     /* Hide expansion cue */
-    .expand-indicator {
-        display: none;
-    }
+
 
     /* Hide gradient mask */
     .review-card::after {
@@ -472,17 +470,7 @@
     border-radius: 20px;
 }
 
-.expand-indicator {
-    width: 24px;
-    height: 24px;
-    background: #f1f5f9;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #64748b;
-    font-size: 14px;
-}
+
 
 /* CTA Section */
 .reviews-cta {

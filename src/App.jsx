@@ -26,6 +26,8 @@ const LearnMore = React.lazy(() => import('./components/LearnMore'));
 const CaseStudies = React.lazy(() => import('./components/CaseStudies'));
 const NotFound = React.lazy(() => import('./components/NotFound'));
 
+// Home Page Component
+// Home Page Component
 function HomePage() {
   return (
     <div className="home-content-wrapper">
