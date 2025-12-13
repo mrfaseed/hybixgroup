@@ -10,19 +10,20 @@ import loginAnimation from '../assets/Login.lottie?url';
 const Login = () => {
     const { signup, login, googleLogin, updateUserProfile, currentUser, resetPassword, verifyEmail } = useAuth();
 
-    const [isLogin, setIsLogin] = useState(true);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from || '/';
+    // If coming from Contact with prefilled email, default to SignUp unless specified otherwise
+    const [isLogin, setIsLogin] = useState(location.state?.mode !== 'signup');
     const [isResetPassword, setIsResetPassword] = useState(false);
     const [isVerificationPending, setIsVerificationPending] = useState(currentUser && !currentUser.emailVerified);
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(location.state?.email || '');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const [name, setName] = useState(location.state?.name || '');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from || '/';
 
     useEffect(() => {
         let interval;
@@ -51,7 +52,9 @@ const Login = () => {
         }
     }, [currentUser, navigate, from]);
 
-    const [signupStep, setSignupStep] = useState(1);
+    // Initialize Step based on prefilled data
+    // If name is already provided (e.g. from contact), skip to step 2
+    const [signupStep, setSignupStep] = useState(location.state?.name ? 2 : 1);
 
     const toggleForm = () => {
         setIsLogin(!isLogin);
