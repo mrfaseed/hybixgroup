@@ -4,6 +4,8 @@ import {
     FiGrid, FiMessageSquare, FiFileText, FiBriefcase, FiBell, FiSearch, FiMenu, FiX
 } from 'react-icons/fi';
 import './AdminDashboard.css';
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('overview');
@@ -11,9 +13,13 @@ const AdminDashboard = () => {
 
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-    const handleLogout = () => {
-        // Implement logout logic here
-        window.location.href = '/login';
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            window.location.href = "/login";
+        } catch (error) {
+            console.error("Logout error:", error);
+        }
     };
 
     const navItems = [

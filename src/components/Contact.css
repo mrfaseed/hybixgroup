@@ -164,30 +164,34 @@
   align-items: center;
   padding-left: 0;
   position: relative;
+  overflow: visible;
+  /* Ensure it doesn't clip */
 }
 
 /* Floating animation for the container */
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) scale(1.2);
   }
 
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-15px) scale(1.2);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) scale(1.2);
   }
 }
 
 .contact-lottie {
-  width: 100%;
-  max-width: 1200px;
-  /* Increased size */
+  width: 140%;
+  /* Force it larger than container */
+  max-width: 1500px;
   height: auto;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
   animation: float 6s ease-in-out infinite;
+  margin-left: -10%;
+  /* Center it back since it's wider */
 }
 
 /* --- Responsiveness --- */

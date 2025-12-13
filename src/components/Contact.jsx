@@ -8,11 +8,11 @@ import emailAnimation from '../assets/Email.lottie?url';
 const Contact = () => {
   const [isSent, setIsSent] = useState(false);
   const [formData, setFormData] = useState({
-    FirstName: '',
-    LastName: '',
-    Email: '',
-    PhoneNumber: '',
-    Message: ''
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    message: ''
   });
 
   const handleChange = (e) => {
@@ -22,22 +22,35 @@ const Contact = () => {
 
   const isFormValid = Object.values(formData).every(value => value.trim() !== '');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isFormValid) return; // double check
+    if (!isFormValid) return;
 
-    setIsSent(true);
-    // Reset after animation
-    setTimeout(() => {
-      setIsSent(false);
-      setFormData({
-        FirstName: '',
-        LastName: '',
-        Email: '',
-        PhoneNumber: '',
-        Message: ''
-      });
-    }, 3500);
+    try {
+      const { httpsCallable } = await import("firebase/functions");
+      const { functions } = await import("../firebase");
+
+      const sendEmail = httpsCallable(functions, 'sendContactEmail');
+
+      await sendEmail(formData);
+
+      setIsSent(true);
+      // Reset after animation
+      setTimeout(() => {
+        setIsSent(false);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phoneNumber: '',
+          message: ''
+        });
+      }, 3500);
+
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
@@ -81,8 +94,8 @@ const Contact = () => {
                 <label>FIRST NAME</label>
                 <input
                   type="text"
-                  name="FirstName"
-                  value={formData.FirstName}
+                  name="firstName"
+                  value={formData.firstName}
                   onChange={handleChange}
                   className="contact-input"
                 />
@@ -91,8 +104,8 @@ const Contact = () => {
                 <label>LAST NAME</label>
                 <input
                   type="text"
-                  name="LastName"
-                  value={formData.LastName}
+                  name="lastName"
+                  value={formData.lastName}
                   onChange={handleChange}
                   className="contact-input"
                 />
@@ -104,8 +117,8 @@ const Contact = () => {
                 <label>EMAIL</label>
                 <input
                   type="email"
-                  name="Email"
-                  value={formData.Email}
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
                   className="contact-input"
                 />
@@ -114,8 +127,8 @@ const Contact = () => {
                 <label>PHONE NUMBER</label>
                 <input
                   type="tel"
-                  name="PhoneNumber"
-                  value={formData.PhoneNumber}
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
                   onChange={handleChange}
                   className="contact-input"
                 />
@@ -125,8 +138,8 @@ const Contact = () => {
             <div className="form-group">
               <label>WHAT DO YOU HAVE IN MIND</label>
               <textarea
-                name="Message"
-                value={formData.Message}
+                name="message"
+                value={formData.message}
                 onChange={handleChange}
                 className="contact-textarea"
                 placeholder="Please enter query..."

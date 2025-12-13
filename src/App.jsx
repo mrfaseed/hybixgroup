@@ -11,6 +11,7 @@ import ScrollToTop from './components/ScrollToTop';
 const Footer = React.lazy(() => import('./components/Footer'));
 const SolutionPage = React.lazy(() => import('./components/SolutionPage'));
 const Contact = React.lazy(() => import('./components/Contact'));
+const ConsultationPage = React.lazy(() => import('./components/ConsultationPage'));
 const Login = React.lazy(() => import('./components/Login'));
 const AdminLogin = React.lazy(() => import('./components/AdminLogin'));
 const AdminDashboard = React.lazy(() => import('./components/AdminDashboard'));

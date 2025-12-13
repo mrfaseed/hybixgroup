@@ -11,8 +11,14 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ], "prerender": {
-      "urls": ["/"]
+    ],
+    "prerender": {
+      "urls": [
+        "/"
+      ]
     }
+  },
+  "functions": {
+    "source": "functions"
   }
 }
