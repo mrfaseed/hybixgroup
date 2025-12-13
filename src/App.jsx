@@ -27,17 +27,15 @@ const LearnMore = React.lazy(() => import('./components/LearnMore'));
 const CaseStudies = React.lazy(() => import('./components/CaseStudies'));
 const NotFound = React.lazy(() => import('./components/NotFound'));
 
-// Home Page Component
-// Home Page Component
+
 function HomePage() {
   return (
     <div className="home-content-wrapper">
-      {/* Hero Section - Loads first */}
       <Suspense fallback={<Loading />}>
         <HomeCity />
       </Suspense>
 
-      {/* Subsequent sections load independently to speed up initial paint */}
+
       <Suspense fallback={<div className="section-loader">Loading content...</div>}>
         <OurWorks />
       </Suspense>
@@ -57,7 +55,7 @@ function HomePage() {
   )
 }
 
-// Customer Reviews Page Component
+
 function ReviewsPage() {
   return (
     <>
@@ -68,7 +66,7 @@ function ReviewsPage() {
   )
 }
 
-// Protected Route Component
+
 const ProtectedRoute = ({ children }) => {
   const { currentUser } = useAuth();
   const isAdminAuthenticated = sessionStorage.getItem('isAdminAuthenticated') === 'true';
@@ -102,9 +100,9 @@ function App() {
       <ChatBot />
       <Suspense fallback={<Loading />}>
         <Routes>
-          {/* Home Route */}
+
           <Route path="/" element={<HomePage />} />
-          {/* Company Routes */}
+
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/reviews" element={<ReviewsPage />} />
@@ -114,18 +112,17 @@ function App() {
           <Route path="/news-media" element={<NewsMedia />} />
           <Route path="/learn-more" element={<LearnMore />} />
 
-          {/* Solution Pages Routes */}
+
           <Route path="/solutions/:solutionType" element={<SolutionPage />} />
 
-          {/* Consultation Route */}
           <Route path="/consultation" element={<ConsultationPage />} />
           <Route path="/case-studies" element={<CaseStudies />} />
 
-          {/* Login Routes */}
+
           <Route path="/login" element={<Login />} />
           <Route path="/admin-login" element={<AdminLogin />} />
 
-          {/* Protected Admin Routes */}
+      
           <Route
             path="/admin-dashboard"
             element={

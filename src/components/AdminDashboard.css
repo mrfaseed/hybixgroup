@@ -550,3 +550,537 @@
         display: block;
     }
 }
+
+/* --- New Layouts (Grid/Cards) --- */
+.messages-grid,
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.message-card,
+.project-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.message-card:hover,
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.msg-card-header,
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-header {
+    justify-content: space-between;
+}
+
+.msg-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.msg-info h4,
+.project-header h4 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.msg-email {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.msg-date {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.msg-card-body,
+.project-desc {
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-desc {
+    -webkit-line-clamp: 4;
+    color: var(--text-secondary);
+}
+
+.msg-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.action-btn-sm {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.action-btn-sm.accept {
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.action-btn-sm.accept:hover {
+    background: rgba(34, 197, 94, 0.2);
+}
+
+.action-btn-sm.spam {
+    background: rgba(234, 179, 8, 0.1);
+    color: #facc15;
+    border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.action-btn-sm.spam:hover {
+    background: rgba(234, 179, 8, 0.2);
+}
+
+.action-btn-sm.delete {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.action-btn-sm.delete:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* Project Specifics */
+.budget-badge {
+    background: rgba(34, 211, 238, 0.1);
+    color: var(--accent-color);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.project-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.75rem;
+}
+
+.project-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Rejected List */
+.rejected-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.rejected-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--text-secondary);
+}
+
+.rejected-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.rejected-info strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.rejected-info span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.rejected-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.status-badge.rejected {
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.status-badge.spam {
+    color: #facc15;
+    background: rgba(234, 179, 8, 0.1);
+}
+
+.status-badge.deleted {
+    color: #94a3b8;
+    background: rgba(148, 163, 184, 0.1);
+}
+
+.restore-btn {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.restore-btn:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+/* Budget Modal */
+.budget-modal {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--divider-color);
+    animation: scaleIn 0.2s ease;
+}
+
+.budget-modal h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+}
+
+.budget-modal p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.budget-input-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+}
+
+.budget-input-group svg {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.budget-input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 1rem;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.1s;
+}
+
+.modal-actions button:hover {
+    transform: translateY(-2px);
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.confirm-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.confirm-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+
+    .messages-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+        /* Full width on mobile */
+        gap: 1rem;
+    }
+
+    .message-card,
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .project-header h4 {
+        font-size: 1.1rem;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .budget-badge {
+        font-size: 0.8rem;
+        align-self: flex-start;
+        /* Align left */
+    }
+
+    .message-card {
+        position: relative;
+        padding-top: 3rem;
+        /* Space for absolute date */
+    }
+
+    .msg-date {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+    }
+
+    .msg-card-header {
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .msg-info {
+        flex: 1;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .msg-info h4 {
+        font-size: 1.1rem;
+        /* Larger name */
+        margin-bottom: 4px;
+        white-space: normal;
+        /* Allow wrap if needed */
+    }
+
+    .msg-email {
+        font-size: 0.85rem;
+        opacity: 0.7;
+        white-space: normal;
+        /* Allow wrap */
+    }
+
+    /* Hide the date in flow, since it is absolute now */
+    /* But wait, msg-date is already handled above */
+
+    .msg-card-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn-sm {
+        flex: 1;
+        flex-direction: row;
+        /* Icon left */
+        justify-content: center;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        gap: 0.5rem;
+    }
+
+    @media (max-width: 380px) {
+        .msg-card-actions {
+            flex-direction: column;
+        }
+    }
+
+    .msg-card-body,
+    .project-desc {
+        font-size: 0.9rem;
+        word-break: break-word;
+        /* Prevent long text overflow */
+    }
+
+    .project-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* Adjust Modal for Mobile */
+    .budget-modal {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    .budget-input-group input {
+        font-size: 1rem;
+    }
+
+    /* Rejected List Mobile Fix */
+    .rejected-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .rejected-status {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 0.75rem;
+    }
+
+    .rejected-info {
+        width: 100%;
+    }
+}
+
+/* User Table Styles */
+.users-table-wrapper {
+    overflow-x: auto;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-secondary);
+}
+
+.users-table th {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.users-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+}
+
+.user-cell-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-avatar-small {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #4f46e5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.user-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.user-email {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.delete-user-btn:hover {
+    background: rgba(239, 68, 68, 0.2) !important;
+}
