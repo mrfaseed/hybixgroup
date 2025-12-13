@@ -7,6 +7,7 @@ import { useAuth } from './context/AuthContext';
 
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
+import ChatBot from './components/ChatBot';
 
 const Footer = React.lazy(() => import('./components/Footer'));
 const SolutionPage = React.lazy(() => import('./components/SolutionPage'));
@@ -98,6 +99,7 @@ function App() {
     <div className="app-container">
       {!isLoginPage && location.pathname !== '/admin-dashboard' && <Navbar />}
       <ScrollToTop />
+      <ChatBot />
       <Suspense fallback={<Loading />}>
         <Routes>
           {/* Home Route */}

@@ -3,7 +3,7 @@
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-   :root {
+:root {
   /* Dimensions */
   --nav-height: 80px;
   --nav-height-scrolled: 70px;
@@ -416,6 +416,30 @@
 .search-icon:hover {
   background: #f1f5f9;
   color: var(--nav-accent);
+}
+
+.navbar-icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--nav-text-primary);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.navbar-icon-btn:hover {
+  background: #f1f5f9;
+  color: var(--nav-accent);
+}
+
+.whatsapp-nav-btn:hover {
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.1);
 }
 
 .search-input-container {
@@ -866,6 +890,10 @@
   }
 
   .search-wrapper {
+    display: none;
+  }
+
+  .whatsapp-nav-btn {
     display: none;
   }
 
