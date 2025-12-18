@@ -78,20 +78,26 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+// import ComingSoon from './components/ComingSoon'; // Converted to lazy load below
+
+// ... (retain imports if needed for future, but for now we just show ComingSoon)
+
+// function App() {
+//   return <ComingSoon />;
+// }
+// The above was the previous static return. We will now use lazy loading.
+
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const isLoginPage = location.pathname === '/login' || location.pathname === '/admin-login';
 
-
   React.useEffect(() => {
     if (currentUser && !currentUser.emailVerified && !isLoginPage) {
       navigate('/login');
     }
   }, [currentUser, isLoginPage, navigate]);
-
-
 
   return (
     <div className="app-container">
@@ -100,9 +106,7 @@ function App() {
       <ChatBot />
       <Suspense fallback={<Loading />}>
         <Routes>
-
           <Route path="/" element={<HomePage />} />
-
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/reviews" element={<ReviewsPage />} />
@@ -111,18 +115,11 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/news-media" element={<NewsMedia />} />
           <Route path="/learn-more" element={<LearnMore />} />
-
-
           <Route path="/solutions/:solutionType" element={<SolutionPage />} />
-
           <Route path="/consultation" element={<ConsultationPage />} />
           <Route path="/case-studies" element={<CaseStudies />} />
-
-
           <Route path="/login" element={<Login />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-
-      
           <Route
             path="/admin-dashboard"
             element={
@@ -133,7 +130,6 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-
       </Suspense>
       {
         !isLoginPage && location.pathname !== '/admin-dashboard' && (

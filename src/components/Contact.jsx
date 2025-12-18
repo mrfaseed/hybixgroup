@@ -76,12 +76,20 @@ const Contact = () => {
     setStatusMessage(null);
 
     try {
-      const { httpsCallable } = await import("firebase/functions");
-      const { functions } = await import("../firebase");
+      // Direct Firestore write to bypass Cloud Function issues
+      const { addDoc, collection, serverTimestamp } = await import("firebase/firestore");
+      const { db } = await import("../firebase");
 
-      const sendEmail = httpsCallable(functions, 'sendContactEmail');
-
-      await sendEmail(formData);
+      await addDoc(collection(db, "messages"), {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        message: formData.message,
+        uid: user ? user.uid : 'anonymous',
+        createdAt: serverTimestamp(),
+        read: false
+      });
 
       setIsSent(true);
       setStatusMessage({ type: 'success', text: 'Message successfully sent!' });
@@ -90,19 +98,16 @@ const Contact = () => {
       setTimeout(() => {
         setIsSent(false);
         setStatusMessage(null);
-        // Keep user data even after reset? Typically yes for good UX, but maybe clear message
         setFormData(prev => ({
           ...prev,
           message: '',
-          phoneNumber: '' // Optional: clear phone too
+          phoneNumber: ''
         }));
       }, 5000);
 
     } catch (error) {
-      console.error("Error sending email:", error);
-      // Check for custom backend error message
-      const message = error.message || "Message didn't send. Please try again.";
-      setStatusMessage({ type: 'error', text: message });
+      console.error("Error sending message:", error);
+      setStatusMessage({ type: 'error', text: "Failed to send message. Please try again." });
     } finally {
       setIsLoading(false);
     }

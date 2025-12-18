@@ -219,7 +219,7 @@
 .dropdown-wrapper {
   max-width: var(--nav-container-width);
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 24px 24px;
 }
 
 /* =========================================
@@ -494,7 +494,7 @@
 .mega-solutions-wrapper {
   display: flex;
   width: 100%;
-  min-height: 350px;
+  min-height: 250px;
 }
 
 .solutions-list {
@@ -594,7 +594,7 @@
   font-size: 1.05rem;
   color: var(--nav-text-secondary);
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   max-width: 600px;
 }
 
