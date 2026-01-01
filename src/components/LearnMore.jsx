@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './LearnMore.css';
+import SEO from './SEO';
 import { motion } from 'framer-motion';
 import { useLocation, Link } from 'react-router-dom';
 import {
@@ -7,7 +8,7 @@ import {
     FaBuilding, FaChartLine, FaRobot, FaArrowRight, FaCogs, FaDatabase, FaShieldAlt, FaBlog
 } from 'react-icons/fa';
 
-const LearnMore = () => {
+const LearnMore = ({ topic: propTopic }) => {
     const location = useLocation();
     const [currentTopic, setCurrentTopic] = useState(null);
 
@@ -219,15 +220,20 @@ const LearnMore = () => {
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
-        const topic = params.get('topic');
+        const topic = propTopic || params.get('topic');
         setCurrentTopic(contentData[topic] || contentData['Default']);
         window.scrollTo(0, 0);
-    }, [location]);
+    }, [location, propTopic]);
 
     if (!currentTopic) return <div className="loading-state">Loading...</div>;
 
     return (
         <div className="learn-more-page">
+            <SEO
+                title={currentTopic.title}
+                description={currentTopic.subtitle}
+                keywords={`${currentTopic.title}, technology, hybix learn more`}
+            />
             {/* Dynamic Hero Section */}
             <header className="lm-hero" style={{ background: currentTopic.heroColor }}>
                 <div className="lm-hero-content">

@@ -3,6 +3,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPaperPlane, FaSpinner } from "react-icons/fa";
 import './Contact.css'
+import SEO from './SEO';
 import emailAnimation from '../assets/Email.lottie?url';
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -115,6 +116,11 @@ const Contact = () => {
 
   return (
     <div id="contact-section" className="contact-page-wrapper">
+      <SEO
+        title="Contact Us"
+        description="Connect with Hybix Group for inquiries about Enterprise ERP, Data Analytics, App Development, and more. We are here to help."
+        keywords="contact hybix, hybix support, hire hybix, software consultation, tech inquiry"
+      />
       <div className="contact-container">
 
         {/* Left Side: Form */}

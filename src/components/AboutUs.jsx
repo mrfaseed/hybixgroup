@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './AboutUs.css';
+import SEO from './SEO';
 import { FaRocket, FaLightbulb, FaUsers, FaHandshake, FaGlobe, FaAward, FaCogs } from 'react-icons/fa';
 import aboutTeamImg from '../assets/about_team_v2.jpg';
 import aboutMissionImg from '../assets/about_mission_v2.jpg';
@@ -133,6 +134,11 @@ const AboutUs = () => {
 
     return (
         <div className="about-page">
+            <SEO
+                title="About Us"
+                description="Learn about Hybix Group: our mission to bridge technology and business success, our values of innovation and integrity, and our expert team."
+                keywords="about hybix, hybix group mission, hybix team, tech company story, digital transformation"
+            />
             {/* Hero Section */}
             <section className="about-hero">
                 <div className="about-hero-bg" style={{ transform: `translateY(${scrollY * 0.3}px)` }}></div>

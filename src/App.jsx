@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import './App.css'
+import './App.css'
 import Loading from './components/Loading';
+import SEO from './components/SEO';
 
 import { useAuth } from './context/AuthContext';
 
@@ -31,6 +33,11 @@ const NotFound = React.lazy(() => import('./components/NotFound'));
 function HomePage() {
   return (
     <div className="home-content-wrapper">
+      <SEO
+        title="Home"
+        description="Hybix Group - Your partner for Tech, App Development, AI, ML, and Editing. We build the future."
+        keywords="tech, app, ml, ai, editing, web development, hybix group"
+      />
       <Suspense fallback={<Loading />}>
         <HomeCity />
       </Suspense>
@@ -115,6 +122,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/news-media" element={<NewsMedia />} />
           <Route path="/learn-more" element={<LearnMore />} />
+          <Route path="/solutions/enterprise-erp" element={<LearnMore topic="Enterprise ERP" />} />
+          <Route path="/solutions/data-analytics" element={<LearnMore topic="Data Analytics" />} />
+          <Route path="/solutions/business-intelligence" element={<LearnMore topic="Business Intelligence" />} />
+          <Route path="/solutions/automation" element={<LearnMore topic="Automation" />} />
           <Route path="/solutions/:solutionType" element={<SolutionPage />} />
           <Route path="/consultation" element={<ConsultationPage />} />
           <Route path="/case-studies" element={<CaseStudies />} />

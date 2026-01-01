@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './SolutionPage.css';
+import SEO from './SEO';
 
 import {
     SiReact, SiNextdotjs, SiVuedotjs, SiNodedotjs, SiTypescript, SiTailwindcss,
@@ -321,6 +322,11 @@ const SolutionPage = () => {
 
     return (
         <div className="solution-page">
+            <SEO
+                title={solution.title}
+                description={solution.description}
+                keywords={`${solution.title.toLowerCase()}, ${solution.technologies.map(t => t.name.toLowerCase()).join(', ')}, hybix solutions`}
+            />
             {/* Hero Section */}
             {/* Hero Section */}
             <section className={`solution-hero ${isVisible ? 'visible' : ''}`}>

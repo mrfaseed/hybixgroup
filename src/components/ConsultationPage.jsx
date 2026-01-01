@@ -194,5 +194,4 @@ const ConsultationPage = () => {
         </div>
     );
 };
-
 export default ConsultationPage;

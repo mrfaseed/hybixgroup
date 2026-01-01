@@ -32,6 +32,7 @@
 .lm-hero-title {
     font-size: 5rem;
     font-weight: 800;
+    line-height: 8rem;
     margin-bottom: 20px;
     letter-spacing: -3px;
      background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
@@ -57,10 +58,10 @@
 
 .lm-hero-subtitle {
     font-family: 'geom', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     max-width: 700px;
     margin: 0 auto;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.9);
     opacity: 0;
     transform: translateY(20px);
     animation: lmFadeUp 1s ease forwards 0.4s;
@@ -186,8 +187,11 @@
 @media (max-width: 768px) {
     .lm-hero-title {
         font-size: 2.5rem;
+        line-height: normal;
     }
-
+    .lm-hero-subtitle {
+        font-size: 1.25rem;
+    }
     .lm-note-card {
         padding: 30px;
     }
