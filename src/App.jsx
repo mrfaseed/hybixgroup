@@ -23,6 +23,7 @@ const Careers = React.lazy(() => import('./components/Careers'));
 const NewsMedia = React.lazy(() => import('./components/NewsMedia'));
 const HomeCity = React.lazy(() => import('./components/HomeCity'));
 const CustomerReviews = React.lazy(() => import('./components/CustomerReviews'));
+const OurClients = React.lazy(() => import('./components/OurClients'));
 const LearnMore = React.lazy(() => import('./components/LearnMore'));
 const CaseStudies = React.lazy(() => import('./components/CaseStudies'));
 const NotFound = React.lazy(() => import('./components/NotFound'));
@@ -44,6 +45,10 @@ function HomePage() {
         <AboutUs />
       </Suspense>
 
+      <Suspense fallback={<div className="section-loader">Loading clients...</div>}>
+        <OurClients />
+      </Suspense>
+
       <Suspense fallback={<div className="section-loader">Loading reviews...</div>}>
         <CustomerReviews />
       </Suspense>
@@ -62,6 +67,15 @@ function ReviewsPage() {
       <div style={{ paddingTop: '80px' }}></div>
       <CustomerReviews />
 
+    </>
+  )
+}
+
+function ClientsPage() {
+  return (
+    <>
+      <div style={{ paddingTop: '80px' }}></div>
+      <OurClients />
     </>
   )
 }
@@ -109,6 +123,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/our-clients" element={<ClientsPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/our-works" element={<OurWorks />} />
           <Route path="/careers" element={<Careers />} />
