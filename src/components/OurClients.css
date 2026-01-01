@@ -76,6 +76,7 @@
 }
 
 .client-logo-item1 img {
+    cursor: pointer;
     height: 120px;
     width: auto;
     object-fit: contain;
@@ -84,6 +85,7 @@
 }
 
 .client-logo-item2 img {
+    cursor: pointer;
     height: 300px;
     width: auto;
     object-fit: contain;
@@ -113,5 +115,9 @@
     .client-logo-item2 {
         width: 250px;
         height: 160px;
+    }
+
+    .our-clients-header h2 {
+        font-size: 3.5rem;
     }
 }

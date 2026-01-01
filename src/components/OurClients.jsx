@@ -12,10 +12,10 @@ const OurClients = () => {
 
             <div className="clients-logos-wrapper">
                 <div className="client-logo-item1">
-                    <img src={RiyaMakeoverImg} alt="Riya Makeover" />
+                    <img onClick={() => window.open('https://riyamakeover.in/', '_blank')} src={RiyaMakeoverImg} alt="Riya Makeover" />
                 </div>
                 <div className="client-logo-item2">
-                    <img src={RiyaTattooImg} alt="Riya Tattoo" />
+                    <img onClick={() => window.open('https://riyamakeover.in/tattoo', '_blank')} src={RiyaTattooImg} alt="Riya Tattoo" />
                 </div>
             </div>
         </div>
