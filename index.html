@@ -9,10 +9,101 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Critical CSS for Initial Loader */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Prevent scroll during load */
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+    }
+
+    .loading-logo {
+      width: 140px;
+      height: auto;
+      margin-bottom: 40px;
+      animation: logoPulse 2s ease-in-out infinite;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.05));
+    }
+
+    .modern-loader {
+      width: 50px;
+      height: 50px;
+      position: relative;
+    }
+
+    .modern-loader::before,
+    .modern-loader::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .modern-loader::before {
+      border-top-color: #3b82f6;
+      border-right-color: #3b82f6;
+      animation: spin 1.2s linear infinite;
+      filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.2));
+    }
+
+    .modern-loader::after {
+      inset: 10px;
+      border-bottom-color: #cbd5e1;
+      border-left-color: #cbd5e1;
+      animation: spin 2s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes logoPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.85;
+        transform: scale(0.97);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div class="loading-container">
+      <img src="/src/assets/Hybix.svg" alt="Hybix Logo" class="loading-logo" />
+      <div class="modern-loader"></div>
+    </div>
+  </div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

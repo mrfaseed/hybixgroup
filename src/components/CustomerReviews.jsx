@@ -13,7 +13,7 @@ const reviews = [
         name: "Chandra Bhagavan",
         role: "Riya Beauty Parlour.",
         rating: 4,
-        review: "Hybix Group transformed our digital presence completely. Their innovative solutions and professional approach exceeded all our expectations. The team's dedication to excellence is truly remarkable.",
+        review: "We approached Hybix Group for our business website and they handled everything smoothly. The communication was clear, changes were done quickly, and the final output looked clean and professional.",
         avatar: "CB",
         color: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
         date: "2 weeks ago"
@@ -22,7 +22,7 @@ const reviews = [
         id: 2,
         name: "Russel",
         rating: 4,
-        review: "Working with Hybix Group was an absolute pleasure. They delivered a cutting-edge solution that perfectly aligned with our vision. Their expertise in modern technologies is unmatched.",
+        review: "Overall a very good experience. They understood what we actually needed instead of overcomplicating things. Delivery was on time and the quality met our expectations.",
         avatar: "R",
         color: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
         date: "3 weeks ago"
@@ -31,7 +31,7 @@ const reviews = [
         id: 3,
         name: "Vignesh  Kumar",
         rating: 4,
-        review: "The level of creativity and technical excellence Hybix Group brings to the table is outstanding. They turned our complex requirements into an elegant, user-friendly solution.",
+        review: "I had some specific requirements and the team was patient enough to work through all of them. The end result was simple, functional, and easy to use.",
         avatar: "VK",
         color: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
         date: "1 month ago"
@@ -40,7 +40,7 @@ const reviews = [
         id: 4,
         name: "Siva Balan",
         rating: 3,
-        review: "Exceptional service and remarkable results! Hybix Group's team demonstrated deep technical knowledge and creative problem-solving skills throughout our project.",
+        review: "The work was good and the team was responsive whenever I had questions. A few things took extra time, but overall the project turned out well.",
         avatar: "SB",
         color: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
         date: "1 month ago"
@@ -50,7 +50,7 @@ const reviews = [
         name: "Imran Cuts",
         role: "Editor, Imran Cuts",
         rating: 4,
-        review: "Hybix Group delivered beyond our wildest expectations. Their attention to detail and commitment to quality is evident in every aspect of their work. Highly recommended!",
+        review: "They paid attention to small details and didn’t rush the work. I liked how they suggested improvements instead of just doing the bare minimum.",
         avatar: "IC",
         color: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
         date: "2 months ago"
@@ -59,7 +59,7 @@ const reviews = [
         id: 6,
         name: "Swathi",
         rating: 4,
-        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        review: "The team explained things clearly even though I’m not very technical. Everything works properly and support after delivery was also helpful.",
         avatar: "W",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
         date: "2 months ago"
@@ -68,7 +68,7 @@ const reviews = [
         id: 7,
         name: "Vidhya",
         rating: 3,
-        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        review: "Good service overall. They listened to feedback and made changes when needed. A decent experience and the output matched what we discussed.",
         avatar: "V",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
         date: "2 months ago"
@@ -77,7 +77,7 @@ const reviews = [
         id: 8,
         name: "Mohan",
         rating: 3,
-        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        review: "The project was handled professionally and updates were shared regularly. There were a few delays, but nothing major.",
         avatar: "M",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
         date: "2 months ago"
@@ -86,7 +86,7 @@ const reviews = [
         id: 9,
         name: "Riya Tatoo Studios",
         rating: 5,
-        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        review: "Really happy with the final result. The design looks modern and works smoothly. We’ve already started getting good feedback from customers.",
         avatar: "RTS",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
         date: "2 months ago"
@@ -95,7 +95,7 @@ const reviews = [
         id: 10,
         name: "Mohan Kumar",
         rating: 5,
-        review: "A truly professional team that understands both business needs and technical excellence. Hybix Group's innovative approach helped us achieve our goals faster than anticipated.",
+        review: "Everything from discussion to delivery was smooth. They understood our idea quickly and converted it into something practical and clean.",
         avatar: "MK",
         color: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
         date: "2 months ago"

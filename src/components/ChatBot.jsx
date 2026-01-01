@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaPaperPlane, FaTimes, FaCommentDots, FaRobot, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaArrowRight } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 import { knowledgeBase, findResponse, quickPrompts } from './ChatBotData';
 import './ChatBot.css';
 import favIcon from '../assets/favicon.png';
@@ -20,8 +20,11 @@ const ChatBot = () => {
 
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
-    const chatWindowRef = useRef(null); // Ref for outside click detection
-    const isDragging = useRef(false); // Ref to distinguish click vs drag
+    const chatWindowRef = useRef(null);
+    const isDragging = useRef(false);
+
+    // Drag controls for the window
+    const dragControls = useDragControls();
 
     const toggleChat = () => setIsOpen(!isOpen);
 
@@ -39,7 +42,6 @@ const ChatBot = () => {
     // Close chat on outside click
     useEffect(() => {
         const handleClickOutside = (event) => {
-            // If chat is open and click is OUTSIDE the chat window AND NOT on the toggle button
             if (isOpen &&
                 chatWindowRef.current &&
                 !chatWindowRef.current.contains(event.target) &&
@@ -87,16 +89,22 @@ const ChatBot = () => {
                     <motion.div
                         ref={chatWindowRef}
                         className="chatbot-window-new"
-                        initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                        initial={{ opacity: 0, y: 100, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 100, scale: 0.8 }}
-                        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                        exit={{ opacity: 0, y: 100, scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20 }}
                         drag
-                        dragConstraints={{ left: -window.innerWidth + 400, right: 0, top: -window.innerHeight + 600, bottom: 0 }}
+                        dragListener={false}
+                        dragControls={dragControls}
+                        dragConstraints={{ left: -1000, right: 1000, top: -500, bottom: 500 }}
                         dragMomentum={false}
                     >
-                        {/* Glassmorphism Header */}
-                        <div className="chatbot-header-new">
+                        {/* Glassmorphism Header - Draggable Area */}
+                        <div
+                            className="chatbot-header-new"
+                            onPointerDown={(e) => dragControls.start(e)}
+                            style={{ touchAction: "none", cursor: "grab" }}
+                        >
                             <div className="header-brand">
                                 <div className="header-logo-container">
                                     <img src={favIcon} alt="Hybix AI" className="header-logo-img" />
@@ -108,7 +116,12 @@ const ChatBot = () => {
                                 </div>
                             </div>
                             <div className="header-controls">
-                                <button onClick={toggleChat} className="close-btn-new" title="Close Chat">
+                                <button
+                                    onClick={toggleChat}
+                                    className="close-btn-new"
+                                    title="Close Chat"
+                                    onPointerDown={(e) => e.stopPropagation()}
+                                >
                                     <FaTimes />
                                 </button>
                             </div>
@@ -194,13 +207,13 @@ const ChatBot = () => {
                 <motion.button
                     className="chatbot-trigger-new"
                     onTap={() => !isDragging.current && toggleChat()}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     drag
                     dragMomentum={false}
-                    dragElastic={0}
+                    dragConstraints={{ left: -window.innerWidth + 100, right: 0, top: -window.innerHeight + 100, bottom: 0 }}
                     onDragStart={() => { isDragging.current = true; }}
                     onDragEnd={() => { setTimeout(() => isDragging.current = false, 150); }}
                 >

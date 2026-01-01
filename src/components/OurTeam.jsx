@@ -8,6 +8,8 @@ import teamMember3 from '../assets/Faseed avatar.jpg';
 import teamMember4 from '../assets/team_member_4.jpg';
 import teamMember5 from '../assets/team_member_5.jpg';
 import teamMember6 from '../assets/team_member_6.jpg';
+import teamMember7 from '../assets/team_member_7.jpg';
+
 
 const teamMembers = [
     {
@@ -37,6 +39,13 @@ const teamMembers = [
         image: teamMember4,
 
     },
+        {
+        id: 6,
+        name: "SHOBIKA",
+        role: "Head of Design",
+        image: teamMember6,
+
+    },
     {
         id: 5,
         name: "IKHLASH",
@@ -44,12 +53,12 @@ const teamMembers = [
         image: teamMember5,
 
     },
-    {
-        id: 6,
-        name: "SHOBIKA",
-        role: "Head of Design",
-        image: teamMember6,
 
+    {
+        id: 7,
+        name: "Arfan",
+        role: "Lead developer",
+        image: teamMember7,
     }
 ];
 

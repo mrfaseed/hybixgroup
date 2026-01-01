@@ -36,14 +36,12 @@ const Footer = () => {
 
                 {/* Column 2: Quick Links */}
                 <div className="footer-col">
-                    <h3 className="footer-title">Company</h3>
+                    <h3 className="footer-title">Enterprise Solutions</h3>
                     <ul className="footer-links">
-                        <li><Link to="/about-us">About Us</Link></li>
-                        <li><Link to="/our-team">Our Team</Link></li>
-                        <li><Link to="/reviews">Customer Reviews</Link></li>
-                        <li><Link to="/careers">Careers</Link></li>
-                        <li><Link to="/news-media">News &amp; Media</Link></li>
-                        <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/solutions/enterprise-erp">Enterprise ERP</Link></li>
+                        <li><Link to="/solutions/data-analytics">Data Analytics</Link></li>
+                        <li><Link to="/solutions/business-intelligence">Business Intelligence</Link></li>
+                        <li><Link to="/solutions/automation">Automation</Link></li>
                     </ul>
                 </div>
 

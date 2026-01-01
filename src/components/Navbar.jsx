@@ -34,6 +34,20 @@ const navItems = [
     },
     {
         id: 2,
+        title: 'Company',
+        type: 'mega',
+        description: 'Discover our vision and team.',
+        links: [
+            { name: 'About Us', icon: <FaInfoCircle />, path: '/about-us' },
+            { name: 'Our Team', icon: <FaUsers />, path: '/our-team' },
+            { name: 'Customer Reviews', icon: <FaCheckCircle />, path: '/reviews' },
+            { name: 'Careers', icon: <FaBriefcase />, path: '/careers' },
+            { name: 'News & Media', icon: <FaBullhorn />, path: '/news-media' },
+            { name: 'Contact', icon: <FaPhoneAlt />, path: '/contact' }
+        ]
+    },
+    {
+        id: 3,
         title: 'Solutions',
         type: 'mega-solutions',
         description: 'Strategic innovations for success.',
@@ -61,54 +75,6 @@ const navItems = [
                 description: 'Automate workflows using RPA, AI, and integrations.',
                 features: ['RPA bots', 'Workflow automation', 'AI/ML automation', 'API integrations'],
                 icon: <FaRobot />
-            }
-        ]
-    },
-    {
-        id: 3,
-        title: 'Company',
-        type: 'mega-solutions',
-        description: 'Discover our vision and team.',
-        links: [
-            {
-                name: 'About Us',
-                description: 'Learn about our mission, vision, values, and the story behind Hybix Group.',
-                features: ['Our Mission', 'Our Team', 'Our Journey', 'Our Values'],
-                icon: <FaInfoCircle />,
-                buttonText: 'Learn More',
-                path: '/about-us'
-            },
-            {
-                name: 'Our Works',
-                description: 'Explore our portfolio of successful projects and digital masterpieces.',
-                features: ['Web Applications', 'Mobile Apps', 'Enterprise Solutions', 'Creative Designs'],
-                icon: <FaCode />,
-                buttonText: 'View Portfolio',
-                path: '/our-works'
-            },
-            {
-                name: 'Careers',
-                description: 'Explore job opportunities and join our growing team.',
-                features: ['Open Positions', 'Work Culture', 'Employee Benefits', 'Internship Programs'],
-                icon: <FaBriefcase />,
-                buttonText: 'View Jobs',
-                path: '/careers'
-            },
-            {
-                name: 'Blog',
-                description: 'Read insights, articles, and updates from our team.',
-                features: ['Latest Articles', 'Tech Insights', 'Industry News', 'Product Updates'],
-                icon: <FaBlog />,
-                buttonText: 'Visit Blog',
-                path: '/learn-more?topic=Blog'
-            },
-            {
-                name: 'Press',
-                description: 'Access company announcements, media kits, and press coverage.',
-                features: ['Media Resources', 'Press Releases', 'Brand Assets', 'Contact PR Team'],
-                icon: <FaBullhorn />,
-                buttonText: 'Press Kit',
-                path: '/news-media'
             }
         ]
     },
