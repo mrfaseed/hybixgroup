@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Changa+One:ital@0;1&family=Figtree:ital,wght@0,300..900;1,300..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Momo+Signature&family=Momo+Trust+Display&family=Notable&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+.our-clients-container {
+    padding: 80px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.our-clients-header {
+    margin-bottom: 50px;
+}
+
+.our-clients-header h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 6rem;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #437dc3 0%, #0a0c86 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.clients-quotes {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.clients-quotes p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.clients-logos-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.client-logo-item1 {
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.client-logo-item2 {
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.client-logo-item1:hover {
+    transform: scale(1.05);
+}
+
+.client-logo-item2:hover {
+    transform: scale(1.05);
+}
+
+.client-logo-item1 img {
+    cursor: pointer;
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+    transition: filter 0.3s ease;
+}
+
+.client-logo-item2 img {
+    cursor: pointer;
+    height: 300px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+    transition: filter 0.3s ease;
+}
+
+.client-logo-item1:hover img {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+.client-logo-item2:hover img {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+@media (max-width: 768px) {
+    .clients-logos-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .client-logo-item1 {
+        width: 250px;
+        height: 160px;
+    }
+
+    .client-logo-item2 {
+        width: 250px;
+        height: 160px;
+    }
+
+    .our-clients-header h2 {
+        font-size: 3.5rem;
+    }
+}

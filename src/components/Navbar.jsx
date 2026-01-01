@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt, FaCode, FaMobileAlt, FaPaintBrush, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaServer, FaShieldAlt, FaUserTie, FaBuilding, FaChartLine, FaLightbulb, FaRobot, FaChevronRight, FaCheckCircle, FaInfoCircle, FaBriefcase, FaBlog, FaFileAlt, FaBook, FaUsers, FaHeadset, FaWhatsapp } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaSearch, FaArrowRight, FaPhoneAlt, FaCode, FaMobileAlt, FaPaintBrush, FaBullhorn, FaCloud, FaShoppingCart, FaLink, FaBrain, FaServer, FaShieldAlt, FaUserTie, FaBuilding, FaChartLine, FaLightbulb, FaRobot, FaChevronRight, FaCheckCircle, FaInfoCircle, FaBriefcase, FaBlog, FaFileAlt, FaBook, FaUsers, FaHeadset, FaWhatsapp, FaHandshake } from 'react-icons/fa';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useAuth } from '../context/AuthContext';
 
@@ -40,6 +40,7 @@ const navItems = [
         links: [
             { name: 'About Us', icon: <FaInfoCircle />, path: '/about-us' },
             { name: 'Our Team', icon: <FaUsers />, path: '/our-team' },
+            { name: 'Our Clients', icon: <FaHandshake />, path: '/our-clients' },
             { name: 'Customer Reviews', icon: <FaCheckCircle />, path: '/reviews' },
             { name: 'Careers', icon: <FaBriefcase />, path: '/careers' },
             { name: 'News & Media', icon: <FaBullhorn />, path: '/news-media' },

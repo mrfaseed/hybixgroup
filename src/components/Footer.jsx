@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaLinkedinIn, FaInstagram, FaGithub, FaTwitter } from 'react-icons/fa';
 import { MdPhone, MdEmail, MdLocationOn } from 'react-icons/md';
 
 const Footer = () => {
@@ -28,10 +28,9 @@ const Footer = () => {
                         Pioneering the future of digital innovation. We craft immersive web experiences, robust software, and cutting-edge AI solutions.
                     </p>
                     <div className="social-links">
-                        <a href="#" className="social-icon" aria-label="Facebook"><FaFacebookF /></a>
                         <a href="#" className="social-icon" aria-label="Twitter"><FaTwitter /></a>
-                        <a href="#" className="social-icon" aria-label="LinkedIn"><FaLinkedinIn /></a>
-                        <a href="#" className="social-icon" aria-label="Instagram"><FaInstagram /></a>
+                        <a href="#" className="social-icon" aria-label="Github"><FaGithub /></a>
+                        <a href="https://www.instagram.com/hybixgroups/?next=https%3A%2F%2Fwww.instagram.com%2F" className="social-icon" aria-label="Instagram"><FaInstagram /></a>
                     </div>
                 </div>
 
